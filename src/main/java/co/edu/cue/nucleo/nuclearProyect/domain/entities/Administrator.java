@@ -1,18 +1,16 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.TypeAdmin;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
+@Data
+@Entity
 public class Administrator extends User{
+    @ManyToOne
     private TypeAdmin typeAdmin;
-
+    @Id
     private String id;
 
 }
+

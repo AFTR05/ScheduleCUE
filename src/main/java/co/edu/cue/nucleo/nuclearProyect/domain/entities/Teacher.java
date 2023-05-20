@@ -1,17 +1,20 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Entity
 public class Teacher {
+    @Id
+    private String id;
+    @ManyToMany
     private List<HourInterval> availability;
+    @OneToOne
+    @JoinColumn(name="schedule_id")
     private Schedule schedule;
+    @OneToMany
     private List<Curse> curses;
 }

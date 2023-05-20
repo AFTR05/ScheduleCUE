@@ -1,11 +1,20 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
 
-@AllArgsConstructor
-@Getter
-public enum TypeAdmin { COO("Coordinacion de programas"), DEC("Decanatura"),COL("Coodinacion de laboratorios");
+
+
+@Data
+@Entity
+public class TypeAdmin {
+    /*COO("Coordinacion de programas"), DEC("Decanatura"),COL("Coodinacion de laboratorios");*/
+    @Id
+    @GeneratedValue(strategy    = GenerationType.IDENTITY)
+    private String id;
     private String typeAdmin;
 
 }

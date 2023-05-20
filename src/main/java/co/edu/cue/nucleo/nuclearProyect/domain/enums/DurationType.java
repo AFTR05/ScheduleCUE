@@ -1,11 +1,19 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
-@AllArgsConstructor
-@Getter
-public enum DurationType { TRIMESTRAL("Trimestral",12),SEMESTRAL("Semestral",24);
+@Data
+@Entity
+public class DurationType {
+
+    /*TRIMESTRAL("Trimestral",12),SEMESTRAL("Semestral",24);*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
     private String type;
     private Integer weeks;
 }

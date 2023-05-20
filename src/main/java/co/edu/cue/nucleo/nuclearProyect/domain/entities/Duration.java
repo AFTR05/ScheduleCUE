@@ -1,16 +1,16 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
+
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Entity
 public class Duration {
+    @Id
+    private String id;
     private LocalDate begin;
     private LocalDate end;
 
