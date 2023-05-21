@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 public class Duration {
     @Id
-    private Integer id;
+    private String id;
     private LocalDate begin;
     private LocalDate end;
 

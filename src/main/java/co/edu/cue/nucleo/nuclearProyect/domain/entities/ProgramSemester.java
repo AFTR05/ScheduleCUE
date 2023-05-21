@@ -12,7 +12,7 @@ import lombok.*;
 @Entity
 public class ProgramSemester {
     @Id
-    private Integer id;
+    private String id;
     @ManyToOne
     @JoinColumn(name="program_id")
     private Program program;

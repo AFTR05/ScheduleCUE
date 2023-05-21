@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class Curse {
     @Id
-    private Integer id;
+    private String id;
     @ManyToOne
     @JoinColumn(name="duration_id")
     private Duration duration;

@@ -24,7 +24,7 @@ public class Program {
     ,TUR("Tecnología en Gestión del Turismo Cultural y de Naturaleza",4,"Ciencias administrativas");*/
     @Id
     @GeneratedValue(strategy    = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     private String name;
     private Integer countSemester;
     private String faculty;

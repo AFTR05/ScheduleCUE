@@ -11,7 +11,7 @@ import lombok.Getter;
 @Entity
 public class Modality { /*DAY("Diurno"), NIGHT("Nocturno");*/
     @Id
-    private Integer id;
+    private String id;
     private String modality;
 
 }
