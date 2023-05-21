@@ -13,7 +13,7 @@ public class DurationType {
     /*TRIMESTRAL("Trimestral",12),SEMESTRAL("Semestral",24);*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
     private String type;
     private Integer weeks;
 }

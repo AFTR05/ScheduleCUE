@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Entity
 public class HourInterval {
     @Id
-    private String id;
+    private Integer id;
     private LocalTime intervalBegin;
     private LocalTime intervalEnd;
     private String day;

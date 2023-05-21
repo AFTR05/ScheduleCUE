@@ -11,7 +11,7 @@ import lombok.*;
 @Entity
 public class Room {
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private Integer capacity;
     private Boolean available;

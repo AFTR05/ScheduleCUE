@@ -7,7 +7,7 @@ import lombok.*;
 @Entity
 public class RoomHour {
     @Id
-    private String id;
+    private Integer id;
     @ManyToOne
     @JoinColumn(name="hour_interval_id")
     private HourInterval hourInterval;

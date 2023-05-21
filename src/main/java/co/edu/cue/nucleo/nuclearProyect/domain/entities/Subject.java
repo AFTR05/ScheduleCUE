@@ -12,7 +12,7 @@ import lombok.*;
 @Entity
 public class Subject {
     @Id
-    private String id;
+    private Integer id;
     private String name;
     @ManyToOne
     @JoinColumn(name="type_subject_id")

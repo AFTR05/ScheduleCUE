@@ -7,14 +7,19 @@ import java.util.List;
 
 @Data
 @Entity
-public class Teacher {
+@NoArgsConstructor
+public class Teacher extends User{
     @Id
     private String id;
     @ManyToMany
     private List<HourInterval> availability;
-    @OneToOne
-    @JoinColumn(name="schedule_id")
-    private Schedule schedule;
     @OneToMany
     private List<Curse> curses;
+
+    public Teacher(String name, String email, String password, String id, List<HourInterval> availability,  List<Curse> curses) {
+        super(name, email, password);
+        this.id = id;
+        this.availability = availability;
+        this.curses = curses;
+    }
 }

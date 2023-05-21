@@ -23,5 +23,6 @@ public class EquitmentRoom {
     private Boolean fan;
     private Boolean board;
     private Boolean computer;
+    private Boolean camera;
 
 }

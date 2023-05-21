@@ -6,11 +6,17 @@ import lombok.*;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Administrator extends User{
     @ManyToOne
     private TypeAdmin typeAdmin;
     @Id
     private String id;
 
+    public Administrator(String name, String email, String password, TypeAdmin typeAdmin, String id) {
+        super(name, email, password);
+        this.typeAdmin = typeAdmin;
+        this.id = id;
+    }
 }
 
