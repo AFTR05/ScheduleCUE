@@ -14,7 +14,6 @@ public class Room {
     private String id;
     private String name;
     private Integer capacity;
-    private Boolean available;
     @ManyToOne
     @JoinColumn(name="equitment_room_id")
     private EquitmentRoom equitmentRoom;
