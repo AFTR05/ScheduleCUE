@@ -14,10 +14,5 @@ public class NuclearProyectApplication {
 		SpringApplication.run(NuclearProyectApplication.class, args);
 		Student e=new Student();
 	}
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-
-	}
 
 }

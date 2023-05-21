@@ -14,7 +14,7 @@ public class TypeAdmin {
     /*COO("Coordinacion de programas"), DEC("Decanatura"),COL("Coodinacion de laboratorios");*/
     @Id
     @GeneratedValue(strategy    = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     private String typeAdmin;
 
 }

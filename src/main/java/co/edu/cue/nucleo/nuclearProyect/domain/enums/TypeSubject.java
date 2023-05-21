@@ -14,7 +14,7 @@ public class TypeSubject {
     /*CBU("Ciclo basico universitario"),AEL("Asignatura electiva")
                         ,AOP("Asignaturas optativas"),AOB("Asignaturas obligatorias");*/
     @Id
-    private Integer id;
+    private String id;
     private String typeSubject;
 
 }
