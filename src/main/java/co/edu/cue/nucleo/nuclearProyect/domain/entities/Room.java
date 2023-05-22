@@ -8,13 +8,15 @@ import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Room {
     @Id
     private String id;
     private String name;
+    private String campus;
     private Integer capacity;
-    private Boolean available;
     @ManyToOne
     @JoinColumn(name="equitment_room_id")
     private EquitmentRoom equitmentRoom;

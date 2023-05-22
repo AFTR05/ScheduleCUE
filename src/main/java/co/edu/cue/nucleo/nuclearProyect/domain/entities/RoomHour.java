@@ -16,7 +16,7 @@ public class RoomHour {
     @JoinColumn(name="room_id")
     private Room room;
     @ManyToOne
-    @JoinColumn(name="curse_id")
-    private Curse curse;
+    @JoinColumn(name="course_id")
+    private Course course;
 
 }

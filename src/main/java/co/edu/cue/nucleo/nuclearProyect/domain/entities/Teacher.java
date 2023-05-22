@@ -16,12 +16,12 @@ public class Teacher extends User{
     @ManyToMany
     private List<HourInterval> availability;
     @OneToMany
-    private List<Curse> curses;
+    private List<Course> courses;
 
-    public Teacher(String name, String email, String password, String id, List<HourInterval> availability,  List<Curse> curses) {
+    public Teacher(String name, String email, String password, String id, List<HourInterval> availability,  List<Course>courses) {
         super(name, email, password);
         this.id = id;
         this.availability = availability;
-        this.curses = curses;
+        this.courses= courses;
     }
 }
