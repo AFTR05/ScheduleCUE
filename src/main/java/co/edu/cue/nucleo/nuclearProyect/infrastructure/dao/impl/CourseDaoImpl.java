@@ -1,14 +1,16 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
-import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.CurseDao;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.CourseDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 import jakarta.persistence.Query;
 import java.util.List;
 @Repository
 @Transactional
-public class CurseDaoImpl implements CurseDao<Course> {
+public class CourseDaoImpl implements CourseDao<Course> {
     @PersistenceContext
     EntityManager entityManager;
     @Override

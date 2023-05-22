@@ -4,7 +4,7 @@ import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
 
 import java.util.List;
 
-public interface CurseDao<T> {
+public interface CourseDao<T> {
     List<Course> listCurses();
 
     List<Course> listByTeacherId(String teacherId);
