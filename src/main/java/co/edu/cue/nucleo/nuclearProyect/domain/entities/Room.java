@@ -13,6 +13,7 @@ public class Room {
     @Id
     private String id;
     private String name;
+    private String campus;
     private Integer capacity;
     @ManyToOne
     @JoinColumn(name="equitment_room_id")
