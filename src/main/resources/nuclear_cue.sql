@@ -38,10 +38,10 @@ CREATE TABLE `administrator` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `curse`
+-- Estructura de tabla para la tabla `course`
 --
 
-CREATE TABLE `curse` (
+CREATE TABLE `course` (
   `id` varchar(50) NOT NULL,
   `teacher_id` varchar(50) NOT NULL,
   `subject_id` varchar(50) NOT NULL,
@@ -52,12 +52,12 @@ CREATE TABLE `curse` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `curse_student`
+-- Estructura de tabla para la tabla `course_student`
 --
 
-CREATE TABLE `curse_student` (
+CREATE TABLE `course_student` (
   `student_id` varchar(50) NOT NULL,
-  `curse_id` varchar(50) NOT NULL
+  `course_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -145,7 +145,7 @@ CREATE TABLE `hour_room` (
   `id` int NOT NULL,
   `hour_interval_id` int NOT NULL,
   `room_id` varchar(50) NOT NULL,
-  `curse_id` varchar(50) NOT NULL
+  `course_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -329,9 +329,9 @@ ALTER TABLE `administrator`
   ADD KEY `type_admin_id` (`type_admin_id`);
 
 --
--- Indices de la tabla `curse`
+-- Indices de la tabla `course`
 --
-ALTER TABLE `curse`
+ALTER TABLE `course`
   ADD PRIMARY KEY (`id`),
   ADD KEY `teacher_id` (`teacher_id`),
   ADD KEY `subject_id` (`subject_id`),
@@ -339,11 +339,11 @@ ALTER TABLE `curse`
   ADD KEY `duration_id` (`duration_id`);
 
 --
--- Indices de la tabla `curse_student`
+-- Indices de la tabla `course_student`
 --
-ALTER TABLE `curse_student`
+ALTER TABLE `course_student`
   ADD KEY `student_id` (`student_id`),
-  ADD KEY `curse_id` (`curse_id`);
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indices de la tabla `duration`
@@ -376,7 +376,7 @@ ALTER TABLE `hour_room`
   ADD PRIMARY KEY (`id`),
   ADD KEY `hour_interval_id` (`hour_interval_id`),
   ADD KEY `room_id` (`room_id`),
-  ADD KEY `curse_id` (`curse_id`);
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indices de la tabla `modality`
@@ -472,20 +472,20 @@ ALTER TABLE `administrator`
   ADD CONSTRAINT `administrator_ibfk_1` FOREIGN KEY (`type_admin_id`) REFERENCES `type_admin` (`id`);
 
 --
--- Filtros para la tabla `curse`
+-- Filtros para la tabla `course`
 --
-ALTER TABLE `curse`
-  ADD CONSTRAINT `curse_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`),
-  ADD CONSTRAINT `curse_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`),
-  ADD CONSTRAINT `curse_ibfk_3` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`),
-  ADD CONSTRAINT `curse_ibfk_4` FOREIGN KEY (`duration_id`) REFERENCES `duration` (`id`);
+ALTER TABLE `course`
+  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`),
+  ADD CONSTRAINT `course_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`),
+  ADD CONSTRAINT `course_ibfk_3` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`),
+  ADD CONSTRAINT `course_ibfk_4` FOREIGN KEY (`duration_id`) REFERENCES `duration` (`id`);
 
 --
--- Filtros para la tabla `curse_student`
+-- Filtros para la tabla `course_student`
 --
-ALTER TABLE `curse_student`
-  ADD CONSTRAINT `curse_student_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
-  ADD CONSTRAINT `curse_student_ibfk_2` FOREIGN KEY (`curse_id`) REFERENCES `curse` (`id`);
+ALTER TABLE `course_student`
+  ADD CONSTRAINT `course_student_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
+  ADD CONSTRAINT `course_student_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
 
 --
 -- Filtros para la tabla `hour_room`
@@ -493,7 +493,7 @@ ALTER TABLE `curse_student`
 ALTER TABLE `hour_room`
   ADD CONSTRAINT `hour_room_ibfk_1` FOREIGN KEY (`hour_interval_id`) REFERENCES `hour_interval` (`id`),
   ADD CONSTRAINT `hour_room_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`),
-  ADD CONSTRAINT `hour_room_ibfk_3` FOREIGN KEY (`curse_id`) REFERENCES `curse` (`id`);
+  ADD CONSTRAINT `hour_room_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
 
 --
 -- Filtros para la tabla `program_semester`
