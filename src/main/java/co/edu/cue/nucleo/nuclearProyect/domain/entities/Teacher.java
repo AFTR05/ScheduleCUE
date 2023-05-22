@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-
+@Table(name = "Teachers")
 @Data
 @Entity
 @NoArgsConstructor
 public class Teacher extends User{
+
     @Id
+    @Column (name = "id")
     private String id;
     @ManyToMany
     private List<HourInterval> availability;
