@@ -8,12 +8,11 @@ import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Repository
 @Transactional
-public class RoomDAOImpl implements ObjectDao<Room> {
+public class RoomDaoImpl implements ObjectDao<Room> {
     @PersistenceContext
     EntityManager entityManager;
     @Override

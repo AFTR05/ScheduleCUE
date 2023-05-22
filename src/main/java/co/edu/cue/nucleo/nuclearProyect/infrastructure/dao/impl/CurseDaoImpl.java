@@ -1,59 +1,73 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Curse;
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
-import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.CurseDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 @Repository
 @Transactional
-public class CurseDaoImpl implements ObjectDao<Curse> {
+public class CurseDaoImpl implements CurseDao<Course> {
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager entityManager;
     @Override
-    public List<Curse> list() {
-        String query = "FROM Room";
+    public List<Course> listCurses() {
+        String query = "FROM Course";
         return entityManager.createQuery(query).getResultList();
     }
 
     @Override
-    public Curse byId(String id) {
-        return entityManager.find(Curse.class, id);
+    public List<Course> listByTeacherId(String teacherId) {
+        Query query=entityManager.createQuery("select c from Course c where c.teacher.id=?1", Course.class);
+        query.setParameter(1, teacherId);
+        return (List<Course>) query.getResultList();
     }
 
     @Override
-    public Curse save(Curse curse) {
-        return entityManager.merge(curse);
+    public List<Course> listByProgramId(String programId) {
+        Query query=entityManager.createQuery("select c from Course c where c.program.id=?1", Course.class);
+        query.setParameter(1, programId);
+        return (List<Course>) query.getResultList();
+    }
+
+    @Override
+    public List<Course> listBySubjectId(String subjectId) {
+        Query query=entityManager.createQuery("select c from Course c where c.subject.id=?1", Course.class);
+        query.setParameter(1, subjectId);
+        return (List<Course>) query.getResultList();
+    }
+
+    @Override
+    public List<Course> listByStudentId(String studentId) {
+        Query query=entityManager.createQuery("SELECT p FROM Course p JOIN p.students c WHERE c.id = ?1", Course.class);
+        query.setParameter(1, studentId);
+        return (List<Course>) query.getResultList();
+    }
+
+
+    @Override
+    public Course save(Course course) {
+        return entityManager.merge(course);
     }
 
     @Override
     public void delete(String id) {
-        Curse curse= entityManager.find(Curse.class, id);
-        entityManager.remove(curse);
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
+
     }
 
     @Override
-    public Curse update(String id, Curse curse) {
-        Curse curse1= entityManager.find(Curse.class, id);
-        curse1.setId(curse.getId());
-        curse1.setSubject(curse.getSubject());
-        curse1.setProgram(curse.getProgram());
-        curse1.setTeacher(curse.getTeacher());
-        entityManager.merge(curse1);
-        return curse1;
-    }
-
-    @Override
-    public Curse byName(String program) {
-        Query query=entityManager.createQuery("select c from Curse c where c.program=?1", Curse.class);
-        query.setParameter(1, program);
-        query.setMaxResults(1);
-        return (Curse) query.getSingleResult();
+    public Course update(String id, Course source) {
+        Course course =entityManager.find(Course.class, id);
+        course.setTeacher(source.getTeacher());
+        course.setSubject(source.getSubject());
+        course.setDuration(source.getDuration());
+        course.setId(source.getId());
+        course.setStudents(source.getStudents());
+        course.setProgram(source.getProgram());
+        course.setRoomHours(source.getRoomHours());
+        return entityManager.merge(course);
     }
 }
