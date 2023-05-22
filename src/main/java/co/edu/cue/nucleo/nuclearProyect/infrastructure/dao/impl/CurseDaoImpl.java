@@ -5,9 +5,9 @@ import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.CurseDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-
 import java.util.List;
-
+@Repository
+@Transactional
 public class CurseDaoImpl implements CurseDao<Course> {
     @PersistenceContext
     EntityManager entityManager;

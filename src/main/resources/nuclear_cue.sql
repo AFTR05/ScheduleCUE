@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 21-05-2023 a las 02:48:29
+-- Tiempo de generación: 22-05-2023 a las 21:17:04
 -- Versión del servidor: 8.0.33
 -- Versión de PHP: 8.1.18
 
@@ -225,6 +225,13 @@ CREATE TABLE `room` (
   `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `room`
+--
+
+INSERT INTO `room` (`id`, `name`, `capacity`, `campus`, `equitment_room_id`, `active`) VALUES
+('104ASede alcazar', '104A', 20, 'Sede alcazar', 'SCP', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -249,7 +256,8 @@ CREATE TABLE `subject` (
   `id` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `duration_type_id` varchar(50) NOT NULL,
-  `type_subject_id` varchar(50) NOT NULL
+  `type_subject_id` varchar(50) NOT NULL,
+  `count_semanal_hours` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
