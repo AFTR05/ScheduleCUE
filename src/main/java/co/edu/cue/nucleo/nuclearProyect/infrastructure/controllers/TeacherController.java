@@ -1,9 +1,11 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
-import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.TeacherDao;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateTeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +15,21 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/teacher")
 public class TeacherController {
-
-    @Autowired
-    private TeacherDao teacherDao;
-    @GetMapping("/prove")
-    public String prove(){
-        return "prove teacher";
+    private final TeacherService service;
+    @GetMapping("/get-all")
+    public List<TeacherRequestDTO> getAllTeachers(){
+        return service.getAllTeachers();
     }
-
-    @RequestMapping(value = "api/teacher", method = RequestMethod.POST)
-    public void registerTeacher(@RequestBody Teacher teacher){
-        teacherDao.register(teacher);
+    @PostMapping("/create")
+    public TeacherRequestDTO createTeacher(@RequestBody
+                                           @Valid
+                                           TeacherRequestDTO teacher){
+        return service.createTeacher(teacher);
+    }
+    @PutMapping("/update")
+    public TeacherRequestDTO updateTeacher(@RequestBody
+                                           @Valid
+                                           UpdateTeacherRequestDTO updateTeacher){
+        return service.updateTeacher(updateTeacher.id(), updateTeacher.teacherRequestDTO());
     }
 }
