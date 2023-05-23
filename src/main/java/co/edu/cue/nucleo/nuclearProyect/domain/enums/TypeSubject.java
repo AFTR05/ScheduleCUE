@@ -1,11 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.enums;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 
 
 @Data

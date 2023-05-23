@@ -1,18 +1,23 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
-
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.Subject;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.SubjectDao;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/subject")
 public class SubjectController {
-    @GetMapping("/prove")
-    public String prove(){
-        return "prove subject";
+    SubjectDao subjectDao;
+    @PostMapping("/create")
+    public void createSubject(@RequestBody Subject subject){
+        subjectDao.createSubject(subject);
     }
+
+    @GetMapping("/delete/{id}")
+    public void deleteSubject(@PathVariable Long id){
+        subjectDao.deleteSubject(id);
+    }
+
 }
