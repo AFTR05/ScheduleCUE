@@ -1,5 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.EquitmentRoom;
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,10 +21,13 @@ public class Course {
     @ManyToOne
     @JoinColumn(name="subject_id")
     private Subject subject;
-    @OneToMany(mappedBy = "curse")
+    @OneToMany
     private List<RoomHour> roomHours;
-    @OneToMany(mappedBy = "curse")
+    @OneToMany
     private List<Student> students;
+    @ManyToOne
+    @JoinColumn(name="equitment_room_id")
+    private EquitmentRoom necessaryEquitment;
     @ManyToOne
     @JoinColumn(name="program_id")
     private Program program;

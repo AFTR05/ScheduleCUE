@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 public interface CourseMapper {
     CourseRequestDTO mapToDTO(Course source);
 
-
     @Mapping(target = "id", ignore = true)
     Course mapToDTO(CourseRequestDTO source);
 }

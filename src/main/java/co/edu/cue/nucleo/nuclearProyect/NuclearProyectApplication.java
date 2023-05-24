@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class NuclearProyectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NuclearProyectApplication.class, args);
-		Student e=new Student();
 	}
 
 }

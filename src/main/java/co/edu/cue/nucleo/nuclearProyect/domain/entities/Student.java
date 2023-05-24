@@ -13,7 +13,7 @@ import java.util.List;
 public class Student extends User{
     @Id
     private String id;
-    @ManyToMany(mappedBy = "student")
+    @ManyToMany
     private List<Course> courses;
     @ManyToOne
     @JoinColumn(name="progran_semester_id")
