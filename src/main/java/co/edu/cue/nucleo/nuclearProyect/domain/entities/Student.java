@@ -1,10 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,17 +13,17 @@ import java.util.List;
 public class Student extends User{
     @Id
     private String id;
-    @ManyToMany
-    private List<Curse> curses;
+    @ManyToMany(mappedBy = "student")
+    private List<Course> courses;
     @ManyToOne
     @JoinColumn(name="program_semester_id")
     private ProgramSemester ownSemester;
 
 
-    public Student(String name, String email, String password, String id, List<Curse> curses, ProgramSemester ownSemester) {
+    public Student(String name, String email, String password, String id, List<Course> courses, ProgramSemester ownSemester) {
         super(name, email, password);
         this.id = id;
-        this.curses = curses;
+        this.courses = courses;
         this.ownSemester = ownSemester;
     }
 }
