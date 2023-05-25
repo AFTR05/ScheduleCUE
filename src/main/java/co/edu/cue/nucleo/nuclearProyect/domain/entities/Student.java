@@ -10,20 +10,21 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Student extends User{
+public class Student{
     @Id
     private String id;
-    @ManyToMany(mappedBy = "student")
-    private List<Course> courses;
+    private String name;
+    @JoinColumn(name = "email_address")
+    @Column(name = "email_address")
+    private String email;
+    private String password;
+    @ManyToMany()
+    @JoinColumn(name="course_id")
+    private List<Course> course;
     @ManyToOne
-    @JoinColumn(name="progran_semester_id")
+    @JoinColumn(name="program_semester_id")
     private ProgramSemester ownSemester;
 
 
-    public Student(String name, String email, String password, String id, List<Course> courses, ProgramSemester ownSemester) {
-        super(name, email, password);
-        this.id = id;
-        this.courses = courses;
-        this.ownSemester = ownSemester;
-    }
+
 }

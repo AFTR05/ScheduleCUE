@@ -1,8 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.enums;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -15,6 +13,8 @@ public class TypeSubject {
                         ,AOP("Asignaturas optativas"),AOB("Asignaturas obligatorias");*/
     @Id
     private String id;
+    @JoinColumn(name = "type")
+    @Column(name="type")
     private String typeSubject;
 
 }

@@ -1,9 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.enums;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -26,6 +23,8 @@ public class Program {
     @GeneratedValue(strategy    = GenerationType.IDENTITY)
     private String id;
     private String name;
+    @JoinColumn(name = "count_semester")
+    @Column(name = "count_semester")
     private Integer countSemester;
     private String faculty;
 

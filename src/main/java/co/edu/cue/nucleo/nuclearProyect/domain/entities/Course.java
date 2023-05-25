@@ -20,9 +20,9 @@ public class Course {
     @ManyToOne
     @JoinColumn(name="subject_id")
     private Subject subject;
-    @OneToMany(mappedBy = "curse")
+    @OneToMany()
     private List<RoomHour> roomHours;
-    @OneToMany(mappedBy = "curse")
+    @OneToMany()
     private List<Student> students;
     @ManyToOne
     @JoinColumn(name="program_id")
