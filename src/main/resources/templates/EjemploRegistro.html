@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Usuarios</title>
+  <script>
+    function cambiarFormulario(tipoUsuario) {
+      var formEstudiante = document.getElementById("formEstudiante");
+      var formDocente = document.getElementById("formDocente");
+      var formAdministrador = document.getElementById("formAdministrador");
+
+      formEstudiante.style.display = "none";
+      formDocente.style.display = "none";
+      formAdministrador.style.display = "none";
+
+      if (tipoUsuario === "estudiante") {
+        formEstudiante.style.display = "block";
+      } else if (tipoUsuario === "docente") {
+        formDocente.style.display = "block";
+      } else if (tipoUsuario === "administrador") {
+        formAdministrador.style.display = "block";
+      }
+    }
+  </script>
+  <script >
+    async function registerteacher(){
+      let data ={};
+      datos.name = document.getElementById('nombreDocente').value;
+      datos.password = document.getElementById('contrasenaDocente').value;
+      datos.email = document.getElementById('emailDocente').value;
+      const request = await fetch('api/teacher', {
+        method: 'POST' ,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      const teacher = await request.json();
+    }
+  </script>
+</head>
+<body>
+<h1>Registro de Usuarios</h1>
+<button onclick="cambiarFormulario('estudiante')">Registrar Estudiante</button>
+<button onclick="cambiarFormulario('docente')">Registrar Docente</button>
+<button onclick="cambiarFormulario('administrador')">Registrar Administrador</button>
+
+<form id="formEstudiante" style="display: none;">
+  <h2>Registro de Estudiante</h2>
+  <label for="nombreEstudiante">Nombre:</label>
+  <input type="text" id="nombreEstudiante" required><br><br>
+
+  <label for="emailEstudiante">Email:</label>
+  <input type="email" id="emailEstudiante" required><br><br>
+
+  <label for="contrasenaEstudiante">Contraseña:</label>
+  <input type="password" id="contrasenaEstudiante" required><br><br>
+
+  <label for="programSemesterId">Programa/Semestre ID:</label>
+  <input type="text" id="programSemesterId" required><br><br>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<form id="formDocente" style="display: none;">
+  <h2>Registro de Docente</h2>
+  <label for="nombreDocente">Nombre:</label>
+  <input type="text" id="nombreDocente" required><br><br>
+
+  <label for="emailDocente">Email:</label>
+  <input type="email" id="emailDocente" required><br><br>
+
+  <label for="contrasenaDocente">Contraseña:</label>
+  <input type="password" id="contrasenaDocente" required><br><br>
+
+  <button onclick="registerteacher()">Guardar</button>
+</form>
+
+<form id="formAdministrador" style="display: none;">
+  <h2>Registro de Administrador</h2>
+  <label for="nombreAdministrador">Nombre:</label>
+  <input type="text" id="nombreAdministrador" required><br><br>
+
+  <label for="emailAdministrador">Email:</label>
+  <input type="email" id="emailAdministrador" required><br><br>
+
+  <label for="contrasenaAdministrador">Contraseña:</label>
+  <input type="password" id="contrasenaAdministrador" required><br><br>
+
+  <label for="tipoAdministrador">Tipo de Administrador:</label>
+  <select id="tipoAdministrador" required>
+    <option value="tipo1">Tipo 1</option>
+    <option value="tipo2">Tipo 2</option>
+    <option value="tipo3">Tipo 3</option>
+  </select><br><br>
+
+  <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
