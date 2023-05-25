@@ -17,7 +17,6 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name="duration_type_id")
     private DurationType durationType;
-
-    @Column(name = "count_semanal_hours")
+    @JoinColumn(name = "count_semanal_hours")
     private Integer countSemanalHours;
 }

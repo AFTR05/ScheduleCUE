@@ -16,7 +16,7 @@ public class Student extends User{
     @ManyToMany(mappedBy = "student")
     private List<Course> courses;
     @ManyToOne
-    @JoinColumn(name="progran_semester_id")
+    @JoinColumn(name="program_semester_id")
     private ProgramSemester ownSemester;
 
 
