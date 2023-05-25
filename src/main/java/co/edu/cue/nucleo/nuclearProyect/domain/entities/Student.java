@@ -18,7 +18,7 @@ public class Student extends User{
     @ManyToMany
     private List<Curse> curses;
     @ManyToOne
-    @JoinColumn(name="progran_semester_id")
+    @JoinColumn(name="program_semester_id")
     private ProgramSemester ownSemester;
 
 
