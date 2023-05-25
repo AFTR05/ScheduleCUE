@@ -11,3 +11,4 @@ public interface ObjectDao<T> {
     T update(String id,T t);
     T byName(String name);
 }
+

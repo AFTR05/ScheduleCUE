@@ -42,12 +42,12 @@ CREATE TABLE `administrator` (
 --
 
 CREATE TABLE `course` (
-                          `id` varchar(50) NOT NULL,
-                          `teacher_id` varchar(50) NOT NULL,
-                          `subject_id` varchar(50) NOT NULL,
-                          `program_id` varchar(50) NOT NULL,
-                          `duration_id` varchar(50) NOT NULL,
-                          `equitment_room_id` varchar(50) NOT NULL
+  `id` varchar(50) NOT NULL,
+  `teacher_id` varchar(50) NOT NULL,
+  `subject_id` varchar(50) NOT NULL,
+  `program_id` varchar(50) NOT NULL,
+  `duration_id` varchar(50) NOT NULL,
+  `equitment_room_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -216,7 +216,7 @@ CREATE TABLE `program_semester` (
 --
 
 INSERT INTO `program_semester` (`id`, `program_id`, `semester`, `modality_id`) VALUES
-    ('1', 'ADE', 1, 'DIA');
+('1', 'ADE', 1, 'DIA');
 
 -- --------------------------------------------------------
 
@@ -238,9 +238,10 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`id`, `name`, `capacity`, `campus`, `equitment_room_id`, `active`) VALUES
-                                                                                           ('104ASede alcazar', '104A', 20, 'Sede alcazar', 'SCP', 1),
-                                                                                           ('3002-C', '3002', 20, '-C', 'SCP', 1),
-                                                                                           ('302-C', '302', 20, '-C', 'SCP', 1);
+('104ASede alcazar', '104A', 20, 'Sede alcazar', 'SCP', 1),
+('3002-C', '3002', 20, '-C', 'SCP', 1),
+('302-C', '302', 20, '-C', 'SCP', 1);
+
 
 -- --------------------------------------------------------
 
@@ -261,8 +262,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `name`, `email_address`, `password`, `program_semester_id`) VALUES
-                                                                                             ('1029220397', 'Juan', 'Jposada1026@cue.edu.co', 'hola21121', '1'),
-                                                                                             ('1212121', 'Toro', 'Atoro@cue.edu.co', '123', '1');
+('1029220397', 'Juan', 'Jposada1026@cue.edu.co', 'hola21121', '1'),
+('1212121', 'Toro', 'Atoro@cue.edu.co', '123', '1');
+
 
 -- --------------------------------------------------------
 
@@ -283,9 +285,9 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `duration_type_id`, `type_subject_id`, `count_semanal_hours`) VALUES
-                                                                                                       ('2', 'Catedra', 'TRI', 'AOB', 0),
-                                                                                                       ('matetri', 'Matemáticas básicas', 'SEM', 'CBU', 0),
-                                                                                                       ('ProgramacionAsignaturas obligatorias', 'Programacion', 'TRI', 'AOB', 0);
+('2', 'Catedra', 'TRI', 'AOB', 0),
+('matetri', 'Matemáticas básicas', 'SEM', 'CBU', 0),
+('ProgramacionAsignaturas obligatorias', 'Programacion', 'TRI', 'AOB', 0);
 
 -- --------------------------------------------------------
 
