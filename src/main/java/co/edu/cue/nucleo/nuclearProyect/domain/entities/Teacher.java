@@ -9,17 +9,19 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class Teacher extends User{
+
+    private String name;
+    @JoinColumn(name = "email_address")
+    @Column(name = "email_address")
+    private String email;
+    private String password;
     @Id
     private String id;
     @ManyToMany
-    private List<HourInterval> availability;
+    @JoinColumn(name = "hour_interval")
+    @Column(name = "hour_interval_id")
+    private List<HourInterval> hour_interval;
     @OneToMany
-    private List<Course> courses;
+    private List<Course> course;
 
-    public Teacher(String name, String email, String password, String id, List<HourInterval> availability,  List<Course>courses) {
-        super(name, email, password);
-        this.id = id;
-        this.availability = availability;
-        this.courses= courses;
-    }
 }

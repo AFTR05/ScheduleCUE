@@ -1,7 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
-import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.CourseDao;
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -10,43 +11,28 @@ import jakarta.persistence.Query;
 import java.util.List;
 @Repository
 @Transactional
-public class CourseDaoImpl implements CourseDao<Course> {
+public class CourseDaoImpl implements ObjectDao<Course> {
     @PersistenceContext
     EntityManager entityManager;
+
     @Override
-    public List<Course> listCurses() {
+    public List<Course> list() {
         String query = "FROM Course";
         return entityManager.createQuery(query).getResultList();
     }
 
     @Override
-    public List<Course> listByTeacherId(String teacherId) {
-        Query query=entityManager.createQuery("select c from Course c where c.teacher.id=?1", Course.class);
-        query.setParameter(1, teacherId);
-        return (List<Course>) query.getResultList();
+    public Course byId(String id) {
+        return entityManager.find(Course.class, id);
     }
 
     @Override
-    public List<Course> listByProgramId(String programId) {
-        Query query=entityManager.createQuery("select c from Course c where c.program.id=?1", Course.class);
-        query.setParameter(1, programId);
-        return (List<Course>) query.getResultList();
+    public Course byName(String name) {
+        Query query=entityManager.createQuery("select c from Course c where c.subject.name=?1", Course.class);
+        query.setParameter(1, name);
+        query.setMaxResults(1);
+        return (Course) query.getSingleResult();
     }
-
-    @Override
-    public List<Course> listBySubjectId(String subjectId) {
-        Query query=entityManager.createQuery("select c from Course c where c.subject.id=?1", Course.class);
-        query.setParameter(1, subjectId);
-        return (List<Course>) query.getResultList();
-    }
-
-    @Override
-    public List<Course> listByStudentId(String studentId) {
-        Query query=entityManager.createQuery("SELECT p FROM Course p JOIN p.students c WHERE c.id = ?1", Course.class);
-        query.setParameter(1, studentId);
-        return (List<Course>) query.getResultList();
-    }
-
 
     @Override
     public Course save(Course course) {
@@ -67,9 +53,10 @@ public class CourseDaoImpl implements CourseDao<Course> {
         course.setSubject(source.getSubject());
         course.setDuration(source.getDuration());
         course.setId(source.getId());
-        course.setStudents(source.getStudents());
+        course.setStudent(source.getStudent());
         course.setProgram(source.getProgram());
-        course.setRoomHours(source.getRoomHours());
+        course.setHourRoom(source.getHourRoom());
+        course.setEquitmentRoom(source.getEquitmentRoom());
         return entityManager.merge(course);
     }
 }
