@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class Teacher{
-
     @Id
     @Column (name = "id")
     private String id;
@@ -19,7 +18,10 @@ public class Teacher{
     private String email;
     private String password;
     @ManyToMany
-    private List<HourInterval> interval;
+    @JoinColumn(name = "hour_interval")
+    @Column(name = "hour_interval_id")
+    private List<HourInterval> hour_interval;
+
     @OneToMany
     private List<Course> course;
 

@@ -5,6 +5,7 @@ import lombok.*;
 
 @Data
 @Entity
+@Table(name="hour_room")
 public class RoomHour {
     @Id
     private Integer id;

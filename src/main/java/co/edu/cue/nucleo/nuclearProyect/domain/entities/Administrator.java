@@ -18,10 +18,5 @@ public class Administrator extends User{
     @Id
     private String id;
 
-    public Administrator(String name, String email, String password, TypeAdmin typeAdmin, String id) {
-        super(name, email, password);
-        this.typeAdmin = typeAdmin;
-        this.id = id;
-    }
 }
 
