@@ -21,6 +21,7 @@ public class Course {
     @ManyToOne
     @JoinColumn(name="subject_id")
     private Subject subject;
+
     @OneToMany(mappedBy = "course")
     private List<RoomHour> hourRoom;
     @ManyToMany()
@@ -33,6 +34,7 @@ public class Course {
     @ManyToOne
     @JoinColumn(name="equitment_room_id")
     private EquitmentRoom equitmentRoom;
+
     @ManyToOne
     @JoinColumn(name="program_id")
     private Program program;

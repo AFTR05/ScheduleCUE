@@ -4,23 +4,24 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-
+@Table(name = "teacher")
 @Data
 @Entity
 @NoArgsConstructor
-public class Teacher extends User{
-
+public class Teacher{
+    @Id
+    @Column (name = "id")
+    private String id;
     private String name;
     @JoinColumn(name = "email_address")
     @Column(name = "email_address")
     private String email;
     private String password;
-    @Id
-    private String id;
     @ManyToMany
     @JoinColumn(name = "hour_interval")
     @Column(name = "hour_interval_id")
     private List<HourInterval> hour_interval;
+
     @OneToMany
     private List<Course> course;
 

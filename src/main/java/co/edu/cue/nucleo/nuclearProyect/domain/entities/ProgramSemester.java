@@ -16,6 +16,7 @@ public class ProgramSemester {
     @ManyToOne
     @JoinColumn(name="program_id")
     private Program program;
+
     private Integer semester;
     @ManyToOne
     @JoinColumn(name="modality_id")
