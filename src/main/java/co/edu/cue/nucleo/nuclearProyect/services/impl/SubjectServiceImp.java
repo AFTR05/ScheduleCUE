@@ -21,7 +21,7 @@ public class SubjectServiceImp implements SubjectService {
     public List<SubjectRequestDTO> getAllSubjects() {
         return objectDao.list()
                 .parallelStream()
-                .map(e -> mapper.mapToDTO(e))
+                .map(mapper::mapToDTO)
                 .toList();
     }
     @Override
@@ -34,7 +34,7 @@ public class SubjectServiceImp implements SubjectService {
     @Override
     public SubjectRequestDTO createSubject(SubjectRequestDTO subject) {
         Subject sub=mapper.mapToDTO(subject);
-        sub.setId(subject.name()+subject.typeSubject().getTypeSubject());
+        sub.setId(subject.name()+subject.typeSubject().getId());
         return mapper.mapToDTO(
                 objectDao.save(
                         sub

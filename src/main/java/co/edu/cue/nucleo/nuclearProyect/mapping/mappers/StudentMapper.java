@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 @Component
 public interface StudentMapper {
+    @Mapping(target = "courses", source = "source.course")
     StudentRequestDTO mapToDTO(Student source);
 
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "course", source = "source.courses")
     Student mapToDTO(StudentRequestDTO source);
 }

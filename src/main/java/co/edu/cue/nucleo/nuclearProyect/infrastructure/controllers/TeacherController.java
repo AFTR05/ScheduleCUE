@@ -30,6 +30,6 @@ public class TeacherController {
     public TeacherRequestDTO updateTeacher(@RequestBody
                                            @Valid
                                            UpdateTeacherRequestDTO updateTeacher){
-        return service.updateTeacher(updateTeacher.id(), updateTeacher.teacherRequestDTO());
+        return service.updateTeacher(updateTeacher.teacherRequestDTO(),updateTeacher.password());
     }
 }

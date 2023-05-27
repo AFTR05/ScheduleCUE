@@ -1,10 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.TeacherMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
 import lombok.AllArgsConstructor;
@@ -29,16 +27,20 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
         Teacher teacherAb=mapper.mapToDTO(teacher);
-        teacherAb.setId(teacher.name());
+        teacherAb.setPassword(teacher.id());
         return mapper.mapToDTO(
                 objectDao.save(teacherAb
                 ));
     }
 
     @Override
-    public TeacherRequestDTO updateTeacher(String id, TeacherRequestDTO teacher) {
-        Teacher teacherUp=mapper.mapToDTO(teacher);
-        teacherUp.setId(id);
-        return mapper.mapToDTO(objectDao.update(id,teacherUp));
+    public TeacherRequestDTO getOneTeacher(String id){
+        return mapper.mapToDTO(
+                objectDao.byId(id));
+    }
+    @Override
+    public TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password) {
+        Teacher t=mapper.mapToDTO(teacher);
+        return mapper.mapToDTO(objectDao.update(password,t));
     }
 }

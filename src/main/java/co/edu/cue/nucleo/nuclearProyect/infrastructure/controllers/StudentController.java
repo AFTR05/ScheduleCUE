@@ -1,9 +1,11 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateStudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +27,18 @@ public class StudentController {
                                            StudentRequestDTO student){
         return service.createStudent(student);
     }
+
+    @GetMapping("/get-by-id/{id}")
+    public StudentRequestDTO getRoomByName(@PathVariable
+                                         @Size(max = 20)
+                                         String id) {
+        return service.getOneStudent(id);
+    }
     @PutMapping("/update")
     public StudentRequestDTO updateStudent(@RequestBody
                                            @Valid
                                            UpdateStudentRequestDTO updateStudentRequestDTO){
-        return service.updateStudent(updateStudentRequestDTO.id(),updateStudentRequestDTO.studentRequestDTO());
+        return service.updateStudent(updateStudentRequestDTO.password(),updateStudentRequestDTO.studentRequestDTO());
     }
 
 }

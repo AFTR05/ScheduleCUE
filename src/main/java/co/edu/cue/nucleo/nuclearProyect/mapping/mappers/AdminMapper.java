@@ -12,6 +12,6 @@ public interface AdminMapper {
     AdminRequestDTO mapToDTO(Administrator source);
 
 
-    @Mapping(target = "id", ignore = true)
+
     Administrator mapToDTO(AdminRequestDTO source);
 }

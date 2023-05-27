@@ -6,6 +6,6 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-public record StudentRequestDTO(String name, String email, String password, List<Course> courses, ProgramSemester ownSemester) {
+public record StudentRequestDTO(String name, String email, String id, List<Course> courses, ProgramSemester ownSemester) {
 
 }

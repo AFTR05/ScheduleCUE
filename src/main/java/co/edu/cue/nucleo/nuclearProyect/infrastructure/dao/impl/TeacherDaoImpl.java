@@ -36,15 +36,15 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
     }
 
     @Override
-    public Teacher update(String id, Teacher t) {
-        Teacher teacher=entityManager.find(Teacher.class, id);
+    public Teacher update(String password, Teacher t) {
+        Teacher teacher=entityManager.find(Teacher.class, t.getId());
         teacher.setName(t.getName());
-        teacher.setPassword(t.getPassword());
+        teacher.setPassword(password);
         teacher.setEmail(t.getEmail());
         teacher.setCourse(t.getCourse());
         teacher.setId(t.getId());
-        entityManager.merge(t);
-        return t;
+        entityManager.merge(teacher);
+        return teacher;
     }
 
     @Override

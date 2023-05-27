@@ -1,6 +1,5 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
@@ -24,20 +23,23 @@ public class StudentServiceImpl implements StudentService {
                 .map(e -> mapper.mapToDTO((Student) e))
                 .toList();
     }
+    @Override
+    public StudentRequestDTO getOneStudent(String id){
+        return mapper.mapToDTO(
+                objectDao.byId(id));
+    }
 
     @Override
     public StudentRequestDTO createStudent(StudentRequestDTO student) {
         Student studentAb=mapper.mapToDTO(student);
-        studentAb.setId(student.name());
+        studentAb.setPassword(student.id());
         return mapper.mapToDTO(
                 objectDao.save(studentAb
                 ));
     }
 
     @Override
-    public StudentRequestDTO updateStudent(String id, StudentRequestDTO student) {
-        Student studentUp=mapper.mapToDTO(student);
-        studentUp.setId(id);
-        return mapper.mapToDTO(objectDao.update(id,studentUp));
+    public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {
+        return mapper.mapToDTO(objectDao.update(password,mapper.mapToDTO(student)));
     }
 }
