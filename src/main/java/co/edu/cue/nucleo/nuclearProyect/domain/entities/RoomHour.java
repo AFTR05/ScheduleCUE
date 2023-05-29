@@ -6,6 +6,8 @@ import lombok.*;
 @Data
 @Entity
 @Table(name="hour_room")
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoomHour {
     @Id
     private Integer id;
@@ -20,4 +22,9 @@ public class RoomHour {
     @JoinColumn(name="course_id")
     private Course course;
 
+    public RoomHour(HourInterval hourInterval, Room room, Course course) {
+        this.hourInterval = hourInterval;
+        this.room = room;
+        this.course = course;
+    }
 }
