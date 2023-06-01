@@ -9,6 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * Creación de la clase User para las clases de Teacher, Student y Administrator
+ * @author Juan Andrpes Posada
+ */
 public class User {
 
     private String name;
