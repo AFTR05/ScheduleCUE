@@ -17,20 +17,12 @@ import java.util.List;
 public class RoomController {
     private final RoomService service;
 
-    /**
-     * Metodo que nos devuelve toda la lista de Salones
-     * @return una Lista del Record DTO RoomRequestDTO
-     */
+
     @GetMapping("/get-all")
     public List<RoomRequestDTO> getAllRooms() {
         return service.getAllRooms();
     }
 
-    /**
-     * Este metodo busca por un nombre
-     * @param name : Es el nombre que que se pasa desde el Front
-     * @return Record RoomRequestDTO
-     */
     @GetMapping("/get-by-name/{name}")
     public RoomRequestDTO getRoomByName(@PathVariable
                                 @Size(max = 20)
@@ -38,11 +30,6 @@ public class RoomController {
         return service.getOneRoom(name);
     }
 
-    /**
-     * Este metodo agrega salones a la base de Datos
-     * @param room: Es el salon que se desea crear
-     * @return nos devuelve un  Record RoomRequestDTO
-     */
     @PostMapping("/create")
     public RoomRequestDTO saveRoom(@RequestBody
                                            @Valid
@@ -50,11 +37,6 @@ public class RoomController {
         return service.createRoom(room);
     }
 
-    /**
-     * Este metodo
-     * @param updateRoomRequestDTO
-     * @return
-     */
     @PutMapping("/update")
     public RoomRequestDTO updateRoom(@RequestBody
                                          @Valid   UpdateRoomRequestDTO updateRoomRequestDTO){
