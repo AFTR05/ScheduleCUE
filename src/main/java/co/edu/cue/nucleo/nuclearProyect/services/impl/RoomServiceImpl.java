@@ -17,6 +17,10 @@ public class RoomServiceImpl implements RoomService {
 
     private final RoomMapper mapper;
 
+    /**
+     * Metodo que mapea una lista de Salones a un Record RoomRequestDTO
+     * @return Record RoomRequestDTO
+     */
     @Override
     public List<RoomRequestDTO> getAllRooms() {
         return objectDao.list()
@@ -24,13 +28,26 @@ public class RoomServiceImpl implements RoomService {
                 .map(e -> mapper.mapToDTO((Room) e))
                 .toList();
     }
+
+    /**
+     * Metodo que un salon por nombre y devuelve un Objeto RoomRequestDTO
+     * @param name: Nombre que viene desde el ControllerRoom
+     * @return record RoomRequestDTO
+     */
     @Override
     public RoomRequestDTO getOneRoom(String name){
         return mapper.mapToDTO(
                 objectDao.byName(name)
         );
     }
-    //melo
+
+    /**
+     * Metodo que mapea un RoomRequestDTO para almacenar un Room en
+     * la base de datos para luego mapear otra vez delvolver un
+     * record RoomRequestDTO
+     * @param room: Es un DTO que contiene la Informacion del Salon
+     * @return record RoomRequestDTO
+     */
     @Override
     public RoomRequestDTO createRoom(RoomRequestDTO room) {
         Room roomAb=mapper.mapToDTO(room);
@@ -41,6 +58,14 @@ public class RoomServiceImpl implements RoomService {
                 ));
     }
 
+    /**
+     * Metodo que actualiza un elemento en la base de datos por id ,
+     * actualizandolo con un nuevo objeto
+     * @param id: Id que nos sirve para hacer la busqueda
+     * @param room: Record Dto que nos va ha servir para actualizar la base de Datos
+     * @return un record RoomRequestDTO que es igual al mismo objeto que se
+     * actualizo en la base de datos
+     */
     @Override
     public RoomRequestDTO updateRoom(String id, RoomRequestDTO room){
         Room roomUpdater=mapper.mapToDTO(room);
@@ -51,6 +76,13 @@ public class RoomServiceImpl implements RoomService {
                 ));
     }
 
+    /**
+     * Este metodo activara o desactivara la disponibilidad de un Salon y
+     * lo actualizara en la base de Datos
+     * @param active: Nos sirve para cambiar el estado a un Salon
+     * @param roomRequestDTO: objecto que actualizaremos en la base de Datos
+     * @return un record RoomRequestDTO que actualizamos en la base de datos
+     */
     @Override
     public RoomRequestDTO activeChangeRoom(Boolean active, RoomRequestDTO roomRequestDTO) {
         Room room=mapper.mapToDTO(roomRequestDTO);
