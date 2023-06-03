@@ -23,6 +23,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     /**
      * Este metodo realizara la creacion de horarios en los cursos que no tengan horario
      * @return La lista de cursos
+     * @author Andrés Felipe Toro Rendón
      */
     @Override
     public List<CourseRequestDTO> createSchedule(){
