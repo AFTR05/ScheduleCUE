@@ -20,6 +20,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     private final ObjectDao<Room> roomDao;
     private final CourseMapper mapper;
 
+    /**
+     * Este metodo realizara la creacion de horarios en los cursos que no tengan horario
+     * @return La lista de cursos
+     */
     @Override
     public List<CourseRequestDTO> createSchedule(){
         return OrganizerListCourse.organizeWithAll(courseDao.list(),roomDao.list()).stream()
