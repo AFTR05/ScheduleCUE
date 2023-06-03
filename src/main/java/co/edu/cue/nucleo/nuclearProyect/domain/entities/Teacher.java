@@ -22,7 +22,7 @@ public class Teacher{ //hola esto tiene un error en las demas ramas
     @Column(name = "hour_interval_id")
     private List<HourInterval> hour_interval;
 
-    @OneToMany
+    @OneToMany(mappedBy = "teacher")
     private List<Course> course;
 
 }

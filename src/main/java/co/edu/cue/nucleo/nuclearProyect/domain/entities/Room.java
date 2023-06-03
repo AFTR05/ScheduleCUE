@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Room {
+public class  Room {
     @Id
     private String id;
     private String name;

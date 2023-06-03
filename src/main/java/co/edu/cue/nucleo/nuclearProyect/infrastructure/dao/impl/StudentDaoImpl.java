@@ -39,15 +39,15 @@ public class StudentDaoImpl implements ObjectDao<Student> {
     }
 
     @Override
-    public Student update(String id, Student s) {
-        Student student=entityManager.find(Student.class, id);
+    public Student update(String password, Student s) {
+        Student student=entityManager.find(Student.class, s.getId());
         student.setName(s.getName());
-        student.setPassword(s.getPassword());
+        student.setPassword(password);
         student.setEmail(s.getEmail());
         student.setOwnSemester(s.getOwnSemester());
         student.setId(s.getId());
-        entityManager.merge(s);
-        return s;
+        entityManager.merge(student);
+        return student;
     }
 
     @Override

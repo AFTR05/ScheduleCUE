@@ -7,6 +7,11 @@ import lombok.*;
 @Data
 @Entity
 @NoArgsConstructor
+/**
+ * Creación de la clase de Administrator que extiende de la clase de User
+ *
+ * @author Juan Andrés Posada
+ */
 public class Administrator extends User{
     private String name;
     @JoinColumn(name = "email_address")

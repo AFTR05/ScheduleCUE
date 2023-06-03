@@ -1,10 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.TeacherMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
 import lombok.AllArgsConstructor;
@@ -18,6 +16,12 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
     private final ObjectDao<Teacher> objectDao;
     private final TeacherMapper mapper;
+
+        /**
+         * Obtiene una lista de todos los profesores.
+         *
+         * @return Lista de objetos TeacherRequestDTO que representan a los profesores.
+         */
     @Override
     public List<TeacherRequestDTO> getAllTeachers() {
         return objectDao.list()
@@ -26,19 +30,44 @@ public class TeacherServiceImpl implements TeacherService {
                 .toList();
     }
 
+        /**
+         * Crea un nuevo profesor.
+         *
+         * @param teacher Objeto TeacherRequestDTO que contiene los detalles del profesor a crear.
+         * @return Objeto TeacherRequestDTO que representa al profesor creado.
+         */
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
         Teacher teacherAb=mapper.mapToDTO(teacher);
-        teacherAb.setId(teacher.name());
+        teacherAb.setPassword(teacher.id());
         return mapper.mapToDTO(
                 objectDao.save(teacherAb
                 ));
     }
 
+        /**
+         * Obtiene un profesor basado en el ID proporcionado.
+         *
+         * @param id ID del profesor a buscar.
+         * @return Objeto TeacherRequestDTO que representa al profesor encontrado.
+         */
+
     @Override
-    public TeacherRequestDTO updateTeacher(String id, TeacherRequestDTO teacher) {
-        Teacher teacherUp=mapper.mapToDTO(teacher);
-        teacherUp.setId(id);
-        return mapper.mapToDTO(objectDao.update(id,teacherUp));
+    public TeacherRequestDTO getOneTeacher(String id){
+        return mapper.mapToDTO(
+                objectDao.byId(id));
+    }
+
+        /**
+         * Actualiza un profesor existente.
+         *
+         * @param teacher  Objeto TeacherRequestDTO que contiene los detalles actualizados del profesor.
+         * @param password Contraseña requerida para realizar la actualización.
+         * @return Objeto TeacherRequestDTO que representa al profesor actualizado.
+         */
+    @Override
+    public TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password) {
+        Teacher t=mapper.mapToDTO(teacher);
+        return mapper.mapToDTO(objectDao.update(password,t));
     }
 }

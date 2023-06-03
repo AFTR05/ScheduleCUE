@@ -17,6 +17,7 @@ import java.util.List;
 public class RoomController {
     private final RoomService service;
 
+
     @GetMapping("/get-all")
     public List<RoomRequestDTO> getAllRooms() {
         return service.getAllRooms();
@@ -35,12 +36,12 @@ public class RoomController {
                                            RoomRequestDTO room) {
         return service.createRoom(room);
     }
-        @PutMapping("/update")
-        public RoomRequestDTO updateRoom(@RequestBody
-            @Valid
-                                         UpdateRoomRequestDTO updateRoomRequestDTO){
-                return service.updateRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.roomRequestDTO());
-        }
+
+    @PutMapping("/update")
+    public RoomRequestDTO updateRoom(@RequestBody
+                                         @Valid   UpdateRoomRequestDTO updateRoomRequestDTO){
+            return service.updateRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.roomRequestDTO());
+    }
     @PutMapping("/changeActive")
     public RoomRequestDTO activeRoom(@RequestBody@Valid Boolean active, RoomRequestDTO roomRequestDTO){
         return service.activeChangeRoom(active,roomRequestDTO);

@@ -39,15 +39,15 @@ public class AdminDaoImpl implements ObjectDao<Administrator> {
     }
 
     @Override
-    public Administrator update(String id, Administrator a) {
-        Administrator admin=entityManager.find(Administrator.class, id);
+    public Administrator update(String password, Administrator a) {
+        Administrator admin=entityManager.find(Administrator.class, a.getId());
         admin.setName(a.getName());
-        admin.setPassword(a.getPassword());
+        admin.setPassword(password);
         admin.setEmail(a.getEmail());
         admin.setTypeAdmin(a.getTypeAdmin());
         admin.setId(a.getId());
-        entityManager.merge(a);
-        return a;
+        entityManager.merge(admin);
+        return admin;
     }
 
     @Override

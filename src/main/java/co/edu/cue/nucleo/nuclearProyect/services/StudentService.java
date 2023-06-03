@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface StudentService {
     List<StudentRequestDTO> getAllStudents();
+        StudentRequestDTO getOneStudent(String id);
+
     StudentRequestDTO createStudent(StudentRequestDTO student);
-    StudentRequestDTO updateStudent(String id, StudentRequestDTO student);
+
+    StudentRequestDTO updateStudent( String password,StudentRequestDTO student);
 }

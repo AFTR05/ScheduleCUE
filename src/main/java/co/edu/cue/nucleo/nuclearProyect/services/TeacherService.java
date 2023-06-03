@@ -7,5 +7,8 @@ import java.util.List;
 public interface TeacherService {
     List<TeacherRequestDTO> getAllTeachers();
     TeacherRequestDTO createTeacher(TeacherRequestDTO teacher);
-    TeacherRequestDTO updateTeacher(String id, TeacherRequestDTO teacher);
+
+    TeacherRequestDTO getOneTeacher(String id);
+
+    TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password);
 }
