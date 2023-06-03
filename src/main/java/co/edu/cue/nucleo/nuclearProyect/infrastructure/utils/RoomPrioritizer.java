@@ -15,4 +15,13 @@ public class RoomPrioritizer {
         List<Room> activeRooms=roomsSpecified.stream().filter(x->x.getActive().equals(true)).collect(Collectors.toList());
         return Optional.of(activeRooms.stream().filter(x->x.getCapacity()>=course.getStudent().size()).collect(Collectors.toList()));
     }
+
+    public static Optional<List<Room>> getRoomCampus(List<Room> rooms,Course course,String campus) {
+        Optional<List<Room>> filterByNecessaryRoom = getRoomNecessary(rooms, course);
+        return filterByNecessaryRoom.get().isEmpty()? Optional.empty() :Optional.of(filterByNecessaryRoom.get().stream()
+                    .filter(x->x.getCampus().equals(campus))
+                        .collect(Collectors.toList()));
+
+
+    }
 }

@@ -3,6 +3,8 @@ package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.CourseHourGenerator;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.OrganizerListCourse;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.CourseRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.CourseMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.CourseService;
@@ -20,8 +22,8 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<CourseRequestDTO> getAllCourses() {
         return objectDao.list()
-                .parallelStream()
-                .map(e -> mapper.mapToDTO((Course) e))
+                .stream()
+                .map(e -> mapper.mapToDTO(e))
                 .toList();
     }
     @Override
@@ -49,6 +51,8 @@ public class CourseServiceImpl implements CourseService {
                         id,courseUpdater
                 ));
     }
+
+
 
 
 

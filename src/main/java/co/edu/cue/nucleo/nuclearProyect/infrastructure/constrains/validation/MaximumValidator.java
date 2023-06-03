@@ -1,4 +1,4 @@
-package co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.Validation;
+package co.edu.cue.nucleo.nuclearProyect.infrastructure.constrains.validation;
 
 public class MaximumValidator {
     public static Boolean validateMaximumDay(Integer hoursInDay){

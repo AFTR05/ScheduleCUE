@@ -11,4 +11,5 @@ public interface CourseService {
     CourseRequestDTO getOneCourse(String name);
 
     CourseRequestDTO updateRoom(String id, CourseRequestDTO course);
+
 }
