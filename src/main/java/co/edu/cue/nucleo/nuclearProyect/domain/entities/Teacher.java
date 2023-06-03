@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
-public class Teacher{
+public class Teacher{ //hola esto tiene un error en las demas ramas
     @Id
     @Column (name = "id")
     private String id;
