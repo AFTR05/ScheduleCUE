@@ -1,7 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.*;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -57,6 +56,6 @@ public class CourseDaoImpl implements ObjectDao<Course> {
         course.setProgram(source.getProgram());
         course.setHourRoom(source.getHourRoom());
         course.setEquitmentRoom(source.getEquitmentRoom());
-        return entityManager.merge(course);
+        return save(course);
     }
 }

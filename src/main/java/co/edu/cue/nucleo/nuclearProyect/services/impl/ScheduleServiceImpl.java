@@ -29,9 +29,9 @@ public class ScheduleServiceImpl implements ScheduleService {
      */
     @Override
     public List<CourseWithSchedule> createSchedule(){
-        List<CourseWithSchedule> sis=OrganizerListCourse.organizeWithAll(courseDao.list(),roomDao.list()).stream()
-                .map(mapper::mapToDTO).collect(Collectors.toList());
-        return OrganizerListCourse.organizeWithAll(courseDao.list(),roomDao.list()).stream()
-                .map(mapper::mapToDTO).collect(Collectors.toList());
+        List<Course> createdCourses=OrganizerListCourse.organizeWithAll(courseDao.list(),roomDao.list()).stream()
+                .collect(Collectors.toList());
+        createdCourses.stream().map(c->mapper.mapToDTO(courseDao.update(c.getId(),c)));
+        return createdCourses.stream().map(mapper::mapToDTO).collect(Collectors.toList());
     }
 }

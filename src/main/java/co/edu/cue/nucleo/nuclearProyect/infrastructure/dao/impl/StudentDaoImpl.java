@@ -1,6 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 
 
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
@@ -46,7 +47,7 @@ public class StudentDaoImpl implements ObjectDao<Student> {
         student.setEmail(s.getEmail());
         student.setOwnSemester(s.getOwnSemester());
         student.setId(s.getId());
-        entityManager.merge(student);
+        save(s);
         return student;
     }
 

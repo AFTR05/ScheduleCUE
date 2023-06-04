@@ -47,7 +47,7 @@ public class SubjectDaoImpl implements ObjectDao<Subject> {
         room.setDurationType(o.getDurationType());
         room.setId(o.getId());
         room.setCountSemanalHours(o.getCountSemanalHours());
-        entityManager.merge(o);
+        save(o);
         return o;
     }
 

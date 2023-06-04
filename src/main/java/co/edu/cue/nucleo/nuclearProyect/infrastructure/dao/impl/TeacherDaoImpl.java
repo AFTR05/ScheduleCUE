@@ -43,7 +43,7 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
         teacher.setEmail(t.getEmail());
         teacher.setCourse(t.getCourse());
         teacher.setId(t.getId());
-        entityManager.merge(teacher);
+        save(t);
         return teacher;
     }
 

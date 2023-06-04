@@ -17,7 +17,8 @@ public class CourseHourGenerator {
             }
             while (true){
                 Optional<HourInterval> hourInterval=TimeOperator.additionInterval(interval,countClass);
-                if (hourInterval.isEmpty()|| TimeValidator.validateLunch(hourInterval.get())){
+                if (hourInterval.isEmpty()|| TimeValidator.validateLunch(hourInterval.get())
+                        || !TimeValidator.validateScheduleOnDay(hourInterval.get())){
                     break;
                 }
                 List<Student> studentRegret = validateTotalhours(course,hourInterval.get()); // codigo de validacion de dia total de

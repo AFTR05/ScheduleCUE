@@ -45,7 +45,7 @@ public class RoomDaoImpl implements ObjectDao<Room> {
         room.setCapacity(o.getCapacity());
         room.setId(o.getId());
         room.setActive(o.getActive());
-        entityManager.merge(o);
+        save(o);
         return o;
     }
 
