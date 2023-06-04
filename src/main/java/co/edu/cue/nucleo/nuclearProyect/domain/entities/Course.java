@@ -27,6 +27,7 @@ public class Course {
     private Subject subject;
 
     @OneToMany(mappedBy = "course")
+    @JsonManagedReference
     @ToString.Exclude
     private List<RoomHour> hourRoom;
     @ManyToMany()
