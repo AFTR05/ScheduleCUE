@@ -28,7 +28,7 @@ public class CourseServiceImpl implements CourseService {
     }
     @Override
     public CourseRequestDTO createCourse(CourseRequestDTO course){
-        Course nativeCourse=mapper.mapToDTO(course);
+        Course nativeCourse=mapper.mapToEntity(course);
         nativeCourse.setId(course.subject().getName()+course.program().getName());
         return mapper.mapToDTO(
                 objectDao.save(
@@ -44,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
     }
     @Override
     public CourseRequestDTO updateRoom(String id, CourseRequestDTO course){
-        Course courseUpdater=mapper.mapToDTO(course);
+        Course courseUpdater=mapper.mapToEntity(course);
         courseUpdater.setId(id);
         return mapper.mapToDTO(
                 objectDao.update(

@@ -32,7 +32,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminRequestDTO createAdmin(AdminRequestDTO admin) {
-        Administrator AdminnAb=mapper.mapToDTO(admin);
+        Administrator AdminnAb=mapper.mapToEntity(admin);
         AdminnAb.setPassword(AdminnAb.getId());
         return mapper.mapToDTO(
                 objectDao.save(AdminnAb
@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminRequestDTO updateAdmin(AdminRequestDTO admin, String password) {
-        Administrator a=mapper.mapToDTO(admin);
+        Administrator a=mapper.mapToEntity(admin);
         a.setPassword(password);
         return mapper.mapToDTO(objectDao.update(admin.id(),a));
     }

@@ -12,5 +12,5 @@ public interface RoomMapper {
     RoomRequestDTO mapToDTO(Room source);
   
     @Mapping(target = "id", ignore = true)
-    Room mapToDTO(RoomRequestDTO source);
+    Room mapToEntity(RoomRequestDTO source);
 }

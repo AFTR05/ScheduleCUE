@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentRequestDTO> getAllStudents() {
         return objectDao.list()
-                .parallelStream()
+                .stream()
                 .map(e -> mapper.mapToDTO((Student) e))
                 .toList();
     }
@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentRequestDTO createStudent(StudentRequestDTO student) {
-        Student studentAb=mapper.mapToDTO(student);
+        Student studentAb=mapper.mapToEntity(student);
         studentAb.setPassword(student.id());
         return mapper.mapToDTO(
                 objectDao.save(studentAb
@@ -40,6 +40,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {
-        return mapper.mapToDTO(objectDao.update(password,mapper.mapToDTO(student)));
+        return mapper.mapToDTO(objectDao.update(password,mapper.mapToEntity(student)));
     }
 }

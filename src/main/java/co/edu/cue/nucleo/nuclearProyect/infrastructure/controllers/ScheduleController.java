@@ -1,6 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.CourseRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.CourseWithSchedule;
 import co.edu.cue.nucleo.nuclearProyect.services.CourseService;
 import co.edu.cue.nucleo.nuclearProyect.services.ScheduleService;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ScheduleController {
     ScheduleService service;
     @PutMapping("/create-schedule")
-    public List<CourseRequestDTO> createSchedule(){
+    public List<CourseWithSchedule> createSchedule(){
         return service.createSchedule();
     }
 }

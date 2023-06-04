@@ -13,5 +13,5 @@ public interface SubjectMapper {
 
 
     @Mapping(target = "id", ignore = true)
-    Subject mapToDTO(SubjectRequestDTO source);
+    Subject mapToEntity(SubjectRequestDTO source);
 }
