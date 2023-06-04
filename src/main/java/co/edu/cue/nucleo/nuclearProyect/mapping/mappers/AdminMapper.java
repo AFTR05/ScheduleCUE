@@ -13,5 +13,5 @@ public interface AdminMapper {
 
 
 
-    Administrator mapToDTO(AdminRequestDTO source);
+    Administrator mapToEntity(AdminRequestDTO source);
 }

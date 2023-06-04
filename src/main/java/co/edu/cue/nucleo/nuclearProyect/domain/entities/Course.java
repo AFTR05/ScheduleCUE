@@ -2,12 +2,15 @@ package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.EquitmentRoom;
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Course {
     @Id
@@ -16,6 +19,7 @@ public class Course {
     @JoinColumn(name="duration_id")
     private Duration duration;
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="teacher_id")
     private Teacher teacher;
     @ManyToOne
@@ -23,8 +27,12 @@ public class Course {
     private Subject subject;
 
     @OneToMany(mappedBy = "course")
+    @JsonManagedReference
+    @ToString.Exclude
     private List<RoomHour> hourRoom;
     @ManyToMany()
+    @ToString.Exclude
+    @JsonManagedReference
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),

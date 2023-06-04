@@ -24,8 +24,9 @@ public class TeacherServiceImpl implements TeacherService {
          */
     @Override
     public List<TeacherRequestDTO> getAllTeachers() {
+        List<Teacher> teachers=objectDao.list();
         return objectDao.list()
-                .parallelStream()
+                .stream()
                 .map(e -> mapper.mapToDTO((Teacher) e))
                 .toList();
     }
@@ -38,7 +39,7 @@ public class TeacherServiceImpl implements TeacherService {
          */
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
-        Teacher teacherAb=mapper.mapToDTO(teacher);
+        Teacher teacherAb=mapper.mapToEntity(teacher);
         teacherAb.setPassword(teacher.id());
         return mapper.mapToDTO(
                 objectDao.save(teacherAb
@@ -67,7 +68,7 @@ public class TeacherServiceImpl implements TeacherService {
          */
     @Override
     public TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password) {
-        Teacher t=mapper.mapToDTO(teacher);
+        Teacher t=mapper.mapToEntity(teacher);
         return mapper.mapToDTO(objectDao.update(password,t));
     }
 }

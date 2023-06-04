@@ -50,7 +50,7 @@ public class RoomServiceImpl implements RoomService {
      */
     @Override
     public RoomRequestDTO createRoom(RoomRequestDTO room) {
-        Room roomAb=mapper.mapToDTO(room);
+        Room roomAb=mapper.mapToEntity(room);
         roomAb.setId(room.name()+room.campus());
         return mapper.mapToDTO(
                  objectDao.save(
@@ -68,7 +68,7 @@ public class RoomServiceImpl implements RoomService {
      */
     @Override
     public RoomRequestDTO updateRoom(String id, RoomRequestDTO room){
-        Room roomUpdater=mapper.mapToDTO(room);
+        Room roomUpdater=mapper.mapToEntity(room);
         roomUpdater.setId(id);
         return mapper.mapToDTO(
                 objectDao.update(
@@ -85,9 +85,9 @@ public class RoomServiceImpl implements RoomService {
      */
     @Override
     public RoomRequestDTO activeChangeRoom(Boolean active, RoomRequestDTO roomRequestDTO) {
-        Room room=mapper.mapToDTO(roomRequestDTO);
+        Room room=mapper.mapToEntity(roomRequestDTO);
         room.setActive(active);
         return mapper.mapToDTO(objectDao.update(
-                mapper.mapToDTO(roomRequestDTO).getId(),room));
+                mapper.mapToEntity(roomRequestDTO).getId(),room));
     }
 }

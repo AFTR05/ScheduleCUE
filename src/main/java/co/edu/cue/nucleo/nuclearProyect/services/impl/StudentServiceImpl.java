@@ -13,51 +13,46 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 
-    public class StudentServiceImpl implements StudentService {
-        private final ObjectDao<Student> objectDao;
-        private final StudentMapper mapper;
-
-        /**
+public class StudentServiceImpl implements StudentService {
+    private final ObjectDao<Student> objectDao;
+    private final StudentMapper mapper;
+     /**
          * Devuelve una lista de todos los estudiantes.
          *
          * @return Lista de objetos StudentRequestDTO que representan a los estudiantes.
          */
-        @Override
-        public List<StudentRequestDTO> getAllStudents() {
-            return objectDao.list()
-                    .parallelStream()
-                    .map(e -> mapper.mapToDTO((Student) e))
-                    .toList();
-        }
-
-        /**
+    @Override
+    public List<StudentRequestDTO> getAllStudents() {
+        return objectDao.list()
+                .stream()
+                .map(e -> mapper.mapToDTO((Student) e))
+                .toList();
+    }
+    /**
          * Obtiene un estudiante basado en el ID proporcionado.
          *
          * @param id ID del estudiante a buscar.
          * @return Objeto StudentRequestDTO que representa al estudiante encontrado.
          */
-        @Override
-        public StudentRequestDTO getOneStudent(String id){
-            return mapper.mapToDTO(
-                    objectDao.byId(id));
-        }
-
+    @Override
+    public StudentRequestDTO getOneStudent(String id){
+        return mapper.mapToDTO(
+                objectDao.byId(id));
+    }
         /**
          * Crea un nuevo estudiante.
          *
          * @param student Objeto StudentRequestDTO que contiene los detalles del estudiante a crear.
          * @return Objeto StudentRequestDTO que representa al estudiante creado.
          */
-
-        @Override
-        public StudentRequestDTO createStudent(StudentRequestDTO student) {
-            Student studentAb=mapper.mapToDTO(student);
-            studentAb.setPassword(student.id());
-            return mapper.mapToDTO(
-                    objectDao.save(studentAb
-                    ));
-        }
-
+    @Override
+    public StudentRequestDTO createStudent(StudentRequestDTO student) {
+        Student studentAb=mapper.mapToEntity(student);
+        studentAb.setPassword(student.id());
+        return mapper.mapToDTO(
+                objectDao.save(studentAb
+                ));
+    }
         /**
          * Actualiza un estudiante existente.
          *
@@ -66,8 +61,8 @@ import java.util.List;
          * @return Objeto StudentRequestDTO que representa al estudiante actualizado.
          */
 
-        @Override
-        public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {
-            return mapper.mapToDTO(objectDao.update(password,mapper.mapToDTO(student)));
-        }
+    @Override
+    public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {
+        return mapper.mapToDTO(objectDao.update(password,mapper.mapToEntity(student)));
     }
+}

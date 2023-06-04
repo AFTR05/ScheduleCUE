@@ -10,6 +10,8 @@ import java.time.LocalTime;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class HourInterval {
     @Id
     @Column(name = "id")
@@ -23,4 +25,9 @@ public class HourInterval {
     private LocalTime intervalEnd;
     private String day;
 
+    public HourInterval(LocalTime intervalBegin, LocalTime intervalEnd, String day) {
+        this.intervalBegin = intervalBegin;
+        this.intervalEnd = intervalEnd;
+        this.day = day;
+    }
 }

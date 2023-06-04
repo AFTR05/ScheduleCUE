@@ -14,5 +14,5 @@ public interface StudentMapper {
 
 
     @Mapping(target = "course", source = "source.courses")
-    Student mapToDTO(StudentRequestDTO source);
+    Student mapToEntity(StudentRequestDTO source);
 }

@@ -52,7 +52,7 @@ public class SubjectServiceImp implements SubjectService {
      */
     @Override
     public SubjectRequestDTO createSubject(SubjectRequestDTO subject) {
-        Subject sub=mapper.mapToDTO(subject);
+        Subject sub=mapper.mapToEntity(subject);
         sub.setId(subject.name()+subject.typeSubject().getId());
         return mapper.mapToDTO(
                 objectDao.save(
@@ -68,7 +68,7 @@ public class SubjectServiceImp implements SubjectService {
      */
     @Override
     public SubjectRequestDTO updateRoom(String id, SubjectRequestDTO subject){
-        Subject subjectUpdater=mapper.mapToDTO(subject);
+        Subject subjectUpdater=mapper.mapToEntity(subject);
         subjectUpdater.setId(id);
         return mapper.mapToDTO(
                 objectDao.update(
