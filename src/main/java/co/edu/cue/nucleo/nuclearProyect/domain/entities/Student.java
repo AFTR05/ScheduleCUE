@@ -11,6 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+/**
+ * Creación de la clase de Student que extiende de la clase de User
+ *
+* @author Juan Andrés Posdda
+ */
+
 public class Student{
     @Id
     private String id;

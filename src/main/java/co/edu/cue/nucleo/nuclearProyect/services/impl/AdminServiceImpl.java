@@ -16,6 +16,12 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
     private final ObjectDao<Administrator> objectDao;
     private final AdminMapper mapper;
+
+        /**
+         * Obtiene una lista de todos los administradores.
+         *
+         * @return Lista de objetos AdminRequestDTO que representan a los administradores.
+         */
     @Override
     public List<AdminRequestDTO> getAllAdmins() {
         return objectDao.list()
@@ -24,11 +30,24 @@ public class AdminServiceImpl implements AdminService {
                 .toList();
     }
 
+    /**
+     * Obtiene un administrador basado en el ID proporcionado.
+     *
+     * @param id ID del administrador a buscar.
+     * @return Objeto AdminRequestDTO que representa al administrador encontrado.
+     */
     @Override
     public AdminRequestDTO getOneAdmin(String id){
         return mapper.mapToDTO(
                 objectDao.byId(id));
     }
+
+        /**
+         * Crea un nuevo administrador.
+         *
+         * @param admin Objeto AdminRequestDTO que contiene los detalles del administrador a crear.
+         * @return Objeto AdminRequestDTO que representa al administrador creado.
+         */
 
     @Override
     public AdminRequestDTO createAdmin(AdminRequestDTO admin) {
@@ -38,6 +57,14 @@ public class AdminServiceImpl implements AdminService {
                 objectDao.save(AdminnAb
                 ));
     }
+
+        /**
+         * Actualiza un administrador existente.
+         *
+         * @param admin    Objeto AdminRequestDTO que contiene los detalles actualizados del administrador.
+         * @param password Contraseña requerida para realizar la actualización.
+         * @return Objeto AdminRequestDTO que representa al administrador actualizado.
+         */
 
     @Override
     public AdminRequestDTO updateAdmin(AdminRequestDTO admin, String password) {

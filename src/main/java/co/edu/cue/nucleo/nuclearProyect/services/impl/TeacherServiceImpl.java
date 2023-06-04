@@ -16,6 +16,12 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
     private final ObjectDao<Teacher> objectDao;
     private final TeacherMapper mapper;
+
+        /**
+         * Obtiene una lista de todos los profesores.
+         *
+         * @return Lista de objetos TeacherRequestDTO que representan a los profesores.
+         */
     @Override
     public List<TeacherRequestDTO> getAllTeachers() {
         List<Teacher> teachers=objectDao.list();
@@ -25,6 +31,12 @@ public class TeacherServiceImpl implements TeacherService {
                 .toList();
     }
 
+        /**
+         * Crea un nuevo profesor.
+         *
+         * @param teacher Objeto TeacherRequestDTO que contiene los detalles del profesor a crear.
+         * @return Objeto TeacherRequestDTO que representa al profesor creado.
+         */
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
         Teacher teacherAb=mapper.mapToEntity(teacher);
@@ -34,11 +46,26 @@ public class TeacherServiceImpl implements TeacherService {
                 ));
     }
 
+        /**
+         * Obtiene un profesor basado en el ID proporcionado.
+         *
+         * @param id ID del profesor a buscar.
+         * @return Objeto TeacherRequestDTO que representa al profesor encontrado.
+         */
+
     @Override
     public TeacherRequestDTO getOneTeacher(String id){
         return mapper.mapToDTO(
                 objectDao.byId(id));
     }
+
+        /**
+         * Actualiza un profesor existente.
+         *
+         * @param teacher  Objeto TeacherRequestDTO que contiene los detalles actualizados del profesor.
+         * @param password Contraseña requerida para realizar la actualización.
+         * @return Objeto TeacherRequestDTO que representa al profesor actualizado.
+         */
     @Override
     public TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password) {
         Teacher t=mapper.mapToEntity(teacher);

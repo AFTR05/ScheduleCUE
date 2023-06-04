@@ -17,6 +17,11 @@ public class SubjectServiceImp implements SubjectService {
 
     private final SubjectMapper mapper;
 
+    /**
+     *Este metodo mapea una lista de Subjects a List<SubjectRequestDTO>.Es
+     * para obtener toda la lista de materias de la universidad
+     * @return List<SubjectRequestDTO>
+     */
     @Override
     public List<SubjectRequestDTO> getAllSubjects() {
         return objectDao.list()
@@ -24,6 +29,13 @@ public class SubjectServiceImp implements SubjectService {
                 .map(mapper::mapToDTO)
                 .toList();
     }
+
+    /**
+     * Este metodo busca por nombre en la base de datos
+     * @param name: Parametro con el que vamos ha hacer la busqueda
+     * por nombre
+     * @return SubjectRequestDTO
+     */
     @Override
     public SubjectRequestDTO getOneSubject(String name){
         return mapper.mapToDTO(
@@ -31,6 +43,13 @@ public class SubjectServiceImp implements SubjectService {
         );
     }
 
+    /**
+     * Con este metodo mapeamos un record SubjectRequestDTO a Subject
+     * para almacenarlo en la base de datos
+     * @param subject : objecto que vamos a mapear
+     * @return record SubjectRequestDTO nuevo que se agrego en la base
+     * de datos
+     */
     @Override
     public SubjectRequestDTO createSubject(SubjectRequestDTO subject) {
         Subject sub=mapper.mapToEntity(subject);
@@ -41,6 +60,12 @@ public class SubjectServiceImp implements SubjectService {
                 ));
     }
 
+    /**
+     * Este metodo actualiza un elemento de la base datos por su Id
+     * @param id: id con el que vamos ha hacer la busqueda
+     * @param subject: objecto que vamos ha reemplazar en la base de datos
+     * @return un record SubjectRequestDTO
+     */
     @Override
     public SubjectRequestDTO updateRoom(String id, SubjectRequestDTO subject){
         Subject subjectUpdater=mapper.mapToEntity(subject);

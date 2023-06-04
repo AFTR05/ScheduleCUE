@@ -16,6 +16,11 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     private final ObjectDao<Student> objectDao;
     private final StudentMapper mapper;
+     /**
+         * Devuelve una lista de todos los estudiantes.
+         *
+         * @return Lista de objetos StudentRequestDTO que representan a los estudiantes.
+         */
     @Override
     public List<StudentRequestDTO> getAllStudents() {
         return objectDao.list()
@@ -23,12 +28,23 @@ public class StudentServiceImpl implements StudentService {
                 .map(e -> mapper.mapToDTO((Student) e))
                 .toList();
     }
+    /**
+         * Obtiene un estudiante basado en el ID proporcionado.
+         *
+         * @param id ID del estudiante a buscar.
+         * @return Objeto StudentRequestDTO que representa al estudiante encontrado.
+         */
     @Override
     public StudentRequestDTO getOneStudent(String id){
         return mapper.mapToDTO(
                 objectDao.byId(id));
     }
-
+        /**
+         * Crea un nuevo estudiante.
+         *
+         * @param student Objeto StudentRequestDTO que contiene los detalles del estudiante a crear.
+         * @return Objeto StudentRequestDTO que representa al estudiante creado.
+         */
     @Override
     public StudentRequestDTO createStudent(StudentRequestDTO student) {
         Student studentAb=mapper.mapToEntity(student);
@@ -37,6 +53,13 @@ public class StudentServiceImpl implements StudentService {
                 objectDao.save(studentAb
                 ));
     }
+        /**
+         * Actualiza un estudiante existente.
+         *
+         * @param password Contraseña requerida para realizar la actualización.
+         * @param student  Objeto StudentRequestDTO que contiene los detalles actualizados del estudiante.
+         * @return Objeto StudentRequestDTO que representa al estudiante actualizado.
+         */
 
     @Override
     public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {

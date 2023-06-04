@@ -10,6 +10,12 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
+/**
+ * Creación de la clase de Teacher que extiende de la clase de User
+ *
+ * @author Juan Andrés Posada
+ */
+
 public class Teacher{
     @Id
     @Column (name = "id")
