@@ -19,6 +19,10 @@ public class CourseServiceImpl implements CourseService {
     private final ObjectDao<Course> objectDao;
     private final CourseMapper mapper;
 
+    /**Este metodo traera toda la lista de courses de la base de datos
+     * @return Lista de courses
+     * @author Andrés Felipe Toro Rendón
+     */
     @Override
     public List<CourseRequestDTO> getAllCourses() {
         return objectDao.list()
@@ -26,6 +30,12 @@ public class CourseServiceImpl implements CourseService {
                 .map(e -> mapper.mapToDTO(e))
                 .toList();
     }
+
+    /**
+     * @param course DTO de course con datos de interfaz
+     * @return El objeto que se creo en la base de datos
+     * @author Andrés Felipe Toro Rendón
+     */
     @Override
     public CourseRequestDTO createCourse(CourseRequestDTO course){
         Course nativeCourse=mapper.mapToEntity(course);
@@ -36,12 +46,24 @@ public class CourseServiceImpl implements CourseService {
                 ));
     }
 
+    /**
+     * @param id Es el codigo del course a buscar
+     * @return El objeto que se encontro con el id digitado en la base de datos
+     * @author Andrés Felipe Toro Rendón
+     */
     @Override
-    public CourseRequestDTO getOneCourse(String name){
+    public CourseRequestDTO getOneCourse(String id){
         return mapper.mapToDTO(
-                objectDao.byName(name)
+                objectDao.byName(id)
         );
     }
+
+    /**
+     * @param id Es el codigo del course a buscar
+     * @param course DTO de course con datos de interfaz
+     * @return El objeto que se actualiza segun las modificaciones en la base de datos
+     * @author Andrés Felipe Toro Rendón
+     */
     @Override
     public CourseRequestDTO updateRoom(String id, CourseRequestDTO course){
         Course courseUpdater=mapper.mapToEntity(course);

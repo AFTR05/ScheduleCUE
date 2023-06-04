@@ -11,14 +11,15 @@ import java.util.stream.Collectors;
 public class OrganizerListCourse {
 
     public static List<Course> organizeWithAll(List<Course> courses, List<Room> rooms){
-        List<Course> coursesWithNoSchedule=organizeBySubject(courseListWithNoSchedule(courses));
+        List<Course> courseListWithNoSchedule=courseListWithNoSchedule(courses);
+        List<Course> coursesWithNoSchedule=organizeBySubject(courseListWithNoSchedule);
         coursesWithNoSchedule.forEach(x->CourseHourGenerator.generateWithAll(x,rooms));
         List<Course> coursesWithLowDisponibility=sortByDisponibility(courseListWithNoSchedule(courses));
         coursesWithLowDisponibility.forEach(x->CourseHourGenerator.generateWithAll(x,rooms));
         return courses;
     }
     public static List<Course> courseListWithNoSchedule(List<Course> courses){
-        return courses.stream().filter(x->!x.getHourRoom().isEmpty()).collect(Collectors.toList());
+        return courses.stream().filter(x->x.getHourRoom().isEmpty()).collect(Collectors.toList());
     }
 
     public static List<Course> organizeBySubject(List<Course> courses){
