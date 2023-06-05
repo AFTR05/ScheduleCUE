@@ -12,7 +12,7 @@ import lombok.*;
     public class RoomHour {
         @Id
         private Integer id;
-        @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name="hour_interval_id")
         private HourInterval hourInterval;
 
