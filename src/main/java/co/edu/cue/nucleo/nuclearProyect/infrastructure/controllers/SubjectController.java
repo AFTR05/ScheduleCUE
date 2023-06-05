@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/subject")
+@RequestMapping("/subject_ad")
 public class SubjectController {
     private final SubjectService service;
 

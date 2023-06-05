@@ -26,11 +26,11 @@ public class Course {
     @JoinColumn(name="subject_id")
     private Subject subject;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     @ToString.Exclude
     private List<RoomHour> hourRoom;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonManagedReference
     @JoinTable(

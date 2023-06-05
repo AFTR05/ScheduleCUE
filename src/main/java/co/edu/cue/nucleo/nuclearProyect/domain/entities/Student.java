@@ -25,7 +25,7 @@ public class Student{
     @Column(name = "email_address")
     private String email;
     private String password;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonBackReference
     @JoinColumn(name="course_id")
