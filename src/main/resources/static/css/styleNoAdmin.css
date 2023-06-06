@@ -1,0 +1,24 @@
+#navbar{
+    background-color: #103E69;
+    height: 120px;
+}
+
+.img-logo{
+    width: 8%;
+}
+
+.nav-item{
+    font-size: 20px;
+}
+
+.user-btn{
+    width: 80%;
+}
+
+.navbar-collapse{
+    padding-left: 1%;
+}
+
+.logo-container{
+    width: 100% ;
+}
