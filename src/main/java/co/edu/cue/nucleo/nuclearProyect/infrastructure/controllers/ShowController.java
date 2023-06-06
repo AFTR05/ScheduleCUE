@@ -22,7 +22,7 @@ public class ShowController {
     }
     @GetMapping("/teacher")
     public String showTeacher(){
-        return "teacher";
+        return "teacher/teacher";
     }
     @GetMapping("/admin")
     public String showAdmin(){
