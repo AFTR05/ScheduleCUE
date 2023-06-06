@@ -18,7 +18,7 @@ public class ShowController {
     }
     @GetMapping("/student")
     public String showStudent(){
-        return "student";
+        return "student/student";
     }
     @GetMapping("/teacher")
     public String showTeacher(){
@@ -26,37 +26,8 @@ public class ShowController {
     }
     @GetMapping("/admin")
     public String showAdmin(){
-        return "admin";
+        return "admin/admin";
     }
 
-    @GetMapping("/admin/courses")
-    public String showAdminCourses(){
-        return "admin-courses";
-    }
-
-    @GetMapping("/admin/teachers")
-    public String showAdminTeachers(){
-        return "admin-teachers";
-    }
-
-    @GetMapping("/admin/students")
-    public String showAdminStudents(){
-        return "admin-students";
-    }
-
-    @GetMapping("/admin/rooms")
-    public String showAdminRooms(){
-        return "admin-rooms";
-    }
-
-    @GetMapping("/admin/subjects")
-    public String showAdminSubject(){
-        return "admin-subjects";
-    }
-
-    @GetMapping("/admin/reserve")
-    public String showAdminReserve(){
-        return "admin-reserve";
-    }
 }
 
