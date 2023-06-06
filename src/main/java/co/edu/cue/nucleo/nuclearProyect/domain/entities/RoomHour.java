@@ -20,4 +20,5 @@ public class RoomHour {
     @JoinColumn(name="course_id")
     private Course course;
 
+
 }
