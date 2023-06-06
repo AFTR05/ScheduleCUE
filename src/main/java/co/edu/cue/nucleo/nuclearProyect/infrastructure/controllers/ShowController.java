@@ -18,14 +18,16 @@ public class ShowController {
     }
     @GetMapping("/student")
     public String showStudent(){
-        return "student";
+        return "student/student";
     }
     @GetMapping("/teacher")
     public String showTeacher(){
-        return "teacher";
+        return "teacher/teacher";
     }
     @GetMapping("/admin")
     public String showAdmin(){
-        return "admin";
+        return "admin/admin";
     }
+
 }
+
