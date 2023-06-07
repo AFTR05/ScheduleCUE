@@ -1,5 +1,5 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.constrains.functional;
 @FunctionalInterface
-public interface Function<R> {
-    void transform(R value);
+public interface Function<R,E> {
+    void transform(R value1,E value2);
 }
