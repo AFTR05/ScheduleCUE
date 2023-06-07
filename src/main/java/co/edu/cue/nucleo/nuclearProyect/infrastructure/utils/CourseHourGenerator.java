@@ -10,36 +10,38 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CourseHourGenerator {
+
     public static Optional<HourInterval> generateHour(Course course, Integer countClass) { // esto hace que confirme
         for (HourInterval interval:course.getTeacher().getHour_interval()) {// la hora
             if (!DayValidation.validateCourseOnDay(course, interval.getDay())) {
+                interval=TimeOperator.incrementOrigin(interval,1).get();
                 continue;
             }
             while (true){
                 Optional<HourInterval> hourInterval=TimeOperator.additionInterval(interval,countClass);
-                if (hourInterval.isEmpty()|| TimeValidator.validateLunch(hourInterval.get())
+                if (hourInterval.isEmpty()){break;}
+                if (TimeValidator.validateLunch(hourInterval.get())
                         || !TimeValidator.validateScheduleOnDay(hourInterval.get())){
-                    break;
+                    interval=TimeOperator.incrementOrigin(interval,1).get();
+                    continue ;
                 }
                 List<Student> studentRegret = validateTotalhours(course,hourInterval.get()); // codigo de validacion de dia total de
                 List<Student> rh= searchSpace(course.getStudent(), interval).get(); // horas dia
                 if (studentRegret.isEmpty() && rh.isEmpty()){
                     Optional<List<Student>> campusStudent= searchCampus(course.getStudent(),interval);
-                    if (campusStudent.get().isEmpty()){
-                        return hourInterval;
-                    }else {
+                    if (campusStudent.get().isEmpty()){return hourInterval;}
+                    else {
                         Optional<HourInterval> fixHour=TimeOperator.plusBoth(hourInterval.get(),interval,1);
-                        if (fixHour.isEmpty() || TimeValidator.validateLunch(fixHour.get())) {
+                        if (fixHour.isEmpty()) {
                             break;
-                        } else {
-                            return fixHour;
-                        }
+                        } if(TimeValidator.validateLunch(fixHour.get())){
+                            interval=TimeOperator.incrementOrigin(interval,1).get();
+                            continue ;
+                        }else {return fixHour;}
                     }
                 }
-                Optional<HourInterval> increment=TimeOperator.incrementOrigin(interval,countClass);
-                if (increment.isEmpty()){
-                    break;
-                }
+                Optional<HourInterval> increment=TimeOperator.incrementOrigin(interval,1);
+                if (increment.isEmpty()){   break;}
             }
         }return Optional.empty();
     }

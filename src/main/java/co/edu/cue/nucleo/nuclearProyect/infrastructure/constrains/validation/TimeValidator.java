@@ -27,7 +27,7 @@ public class TimeValidator {
     public static Boolean validateScheduleOnDay(HourInterval hourInterval){
         LocalTime beginInterval = LocalTime.of(7,0,0);
         LocalTime endInterval = LocalTime.of(22,0,0);
-        return (OperationFactory.getPredicateTwoParameter(PredicateTwoEnum.MOREEQUAL).test(hourInterval.getIntervalEnd(),beginInterval)
+        return (OperationFactory.getPredicateTwoParameter(PredicateTwoEnum.MOREEQUAL).test(hourInterval.getIntervalBegin(),beginInterval)
         //hourInterval.getIntervalBegin().compareTo(beginInterval)>=0
             && OperationFactory.getPredicateTwoParameter(PredicateTwoEnum.BEFORETIME).test(hourInterval.getIntervalBegin(),endInterval))
         //hourInterval.getIntervalBegin().isBefore(endInterval))
