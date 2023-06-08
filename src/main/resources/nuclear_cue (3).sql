@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 26-05-2023 a las 01:29:55
+-- Tiempo de generación: 08-06-2023 a las 13:14:47
 -- Versión del servidor: 8.0.33
--- Versión de PHP: 8.1.18
+-- Versión de PHP: 8.1.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,17 +32,18 @@ CREATE TABLE `administrator` (
   `name` varchar(50) NOT NULL,
   `email_address` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `type_admin_id` varchar(50) NOT NULL
+  `type_admin_id` varchar(50) NOT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `administrator`
 --
 
-INSERT INTO `administrator` (`id`, `name`, `email_address`, `password`, `type_admin_id`) VALUES
-('546', 'Estefania', 'efania@cue.edu.co', 'estefi', 'DEC'),
-('852', 'Sarhita', 'sarhita@cue.edu.co', 'saja', 'COL'),
-('Sarhita', 'Jaramillo', 'sarhita@cue.edu.co', 'saja', 'COL');
+INSERT INTO `administrator` (`id`, `name`, `email_address`, `password`, `type_admin_id`, `active`) VALUES
+('546', 'Estefania', 'efania@cue.edu.co', 'estefi', 'DEC', 1),
+('852', 'Sarhita', 'sarhita@cue.edu.co', 'saja', 'COL', 1),
+('Sarhita', 'Jaramillo', 'sarhita@cue.edu.co', 'saja', 'COL', 1);
 
 -- --------------------------------------------------------
 
@@ -64,9 +65,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `teacher_id`, `subject_id`, `program_id`, `duration_id`, `equitment_room_id`) VALUES
-('Matemáticas básicasIngeniería de software ', 'Monica Tobon', 'matetri', 'SOFT', 'semestral', 'SN'),
-('mathSOFT', 'Monica Tobon', 'matetri', 'SOFT', 'semestral', 'ALLNOC'),
-('Programming', 'Monica Tobon', 'ProgramacionAsignaturas obligatorias', 'SOFT', 'semestral', 'SS');
+('rfdcxzcxz', '8527410', 'ProgramacionAsignaturas obligatorias', 'CIV', 'trimestral', 'SCNP');
 
 -- --------------------------------------------------------
 
@@ -150,6 +149,13 @@ CREATE TABLE `hour_interval` (
   `begin_time` time NOT NULL,
   `end_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `hour_interval`
+--
+
+INSERT INTO `hour_interval` (`id`, `day`, `begin_time`, `end_time`) VALUES
+(12, 'Martes', '00:00:00', '10:00:00');
 
 -- --------------------------------------------------------
 
@@ -255,7 +261,8 @@ CREATE TABLE `room` (
 INSERT INTO `room` (`id`, `name`, `capacity`, `campus`, `equitment_room_id`, `active`) VALUES
 ('104ASede alcazar', '104A', 20, 'Sede alcazar', 'SCP', 1),
 ('3002-C', '3002', 20, '-C', 'SCP', 1),
-('302-C', '302', 20, '-C', 'SCP', 1);
+('302-C', '302', 20, '-C', 'SCP', 1),
+('343223', 'Juan', 10, '-P', 'SCNP', 1);
 
 -- --------------------------------------------------------
 
@@ -268,17 +275,18 @@ CREATE TABLE `student` (
   `name` varchar(50) NOT NULL,
   `email_address` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `program_semester_id` varchar(50) NOT NULL
+  `program_semester_id` varchar(50) NOT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `student`
 --
 
-INSERT INTO `student` (`id`, `name`, `email_address`, `password`, `program_semester_id`) VALUES
-('1029220397', 'Juan', 'Jposada1026@cue.edu.co', 'hola21121', '1'),
-('1212121', 'Toro', 'Atoro@cue.edu.co', '123', '1'),
-('Gerardo', 'Gerardo', 'gmendez10@cue.edu.co', 'hola', '1');
+INSERT INTO `student` (`id`, `name`, `email_address`, `password`, `program_semester_id`, `active`) VALUES
+('1029220397', 'Juan', 'Jposada1026@cue.edu.co', 'hola21121', '1', 1),
+('1212121', 'Toro', 'Atoro@cue.edu.co', '123', '1', 1),
+('Gerardo', 'Gerardo', 'gmendez10@cue.edu.co', 'hola', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -310,9 +318,9 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `duration_type_id`, `type_subject_id`, `count_semanal_hours`) VALUES
-('2', 'Catedra', 'TRI', 'AOB', 0),
-('matetri', 'Matemáticas básicas', 'SEM', 'CBU', 0),
-('ProgramacionAsignaturas obligatorias', 'Programacion', 'TRI', 'AOB', 0);
+('2', 'Catedra', 'TRI', 'AOB', 2),
+('matetri', 'Matemáticas básicas', 'SEM', 'CBU', 2),
+('ProgramacionAsignaturas obligatorias', 'Programacion', 'TRI', 'AOB', 2);
 
 -- --------------------------------------------------------
 
@@ -324,17 +332,17 @@ CREATE TABLE `teacher` (
   `id` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email_address` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `teacher`
 --
 
-INSERT INTO `teacher` (`id`, `name`, `email_address`, `password`) VALUES
-('846', 'Monica Tobon', 'moni@cue.edu.co', 'peaches'),
-('951', 'Arle', 'ardiuno@cue.edu.co', 'ardu'),
-('Monica Tobon', 'Monica Tobon', 'moni@cue.edu.co', 'peaches');
+INSERT INTO `teacher` (`id`, `name`, `email_address`, `password`, `active`) VALUES
+('846', 'Monica Tobon', 'moni@cue.edu.co', 'peaches', 1),
+('8527410', 'Andres Mauricio', 'moni@cue.edu.co', 'papa', 1);
 
 -- --------------------------------------------------------
 
@@ -346,6 +354,13 @@ CREATE TABLE `teacher_hour_interval` (
   `teacher_id` varchar(50) NOT NULL,
   `hour_interval_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `teacher_hour_interval`
+--
+
+INSERT INTO `teacher_hour_interval` (`teacher_id`, `hour_interval_id`) VALUES
+('8527410', 12);
 
 -- --------------------------------------------------------
 
@@ -525,7 +540,7 @@ ALTER TABLE `type_subject`
 -- AUTO_INCREMENT de la tabla `hour_interval`
 --
 ALTER TABLE `hour_interval`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `hour_room`

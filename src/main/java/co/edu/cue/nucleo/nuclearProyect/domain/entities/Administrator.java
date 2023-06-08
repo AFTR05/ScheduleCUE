@@ -14,6 +14,7 @@ import lombok.*;
  */
 public class Administrator extends User{
     private String name;
+    private Boolean active;
     @JoinColumn(name = "email_address")
     @Column(name = "email_address")
     private String email;
