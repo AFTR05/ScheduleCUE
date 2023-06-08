@@ -4,9 +4,11 @@ package co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Course;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -53,6 +55,9 @@ public class StudentDaoImpl implements ObjectDao<Student> {
 
     @Override
     public Student byName(String name) {
-        return null;
+        Query query=entityManager.createQuery("select s from Teacher s where s.name=?1", Student.class);
+        query.setParameter(1, name);
+        query.setMaxResults(1);
+        return (Student) query.getSingleResult();
     }
 }

@@ -5,6 +5,7 @@ import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -52,6 +53,9 @@ public class AdminDaoImpl implements ObjectDao<Administrator> {
 
     @Override
     public Administrator byName(String name) {
-        return null;
+        Query query=entityManager.createQuery("select a from Teacher a where a.name=?1",Administrator.class);
+        query.setParameter(1, name);
+        query.setMaxResults(1);
+        return (Administrator) query.getSingleResult();
     }
 }

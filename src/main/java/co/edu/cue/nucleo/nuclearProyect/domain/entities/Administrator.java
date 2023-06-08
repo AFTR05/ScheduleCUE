@@ -24,5 +24,6 @@ public class Administrator extends User{
     @Id
     private String id;
 
+
 }
 
