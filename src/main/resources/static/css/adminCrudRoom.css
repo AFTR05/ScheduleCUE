@@ -1,0 +1,156 @@
+.content{
+    max-height: 500px;
+    overflow: auto;
+    padding: 30px 30px;
+}
+
+.main-container-crud-room{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.container-title-crud-room{
+    width: 100%;
+    background-color: rgb(36, 2, 129);
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #fff;
+}
+
+.container-search-crud-room{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.container-search-crud-room input{
+    margin-left: 5px;
+    border-radius: 2px;
+    padding: 5px 5px;
+    border: 1px solid #cdcbcb;
+    outline: none;
+}
+
+.container-table-crud-room{
+    padding: 0 40px;
+    width: 100%;
+}
+
+.container-table-crud-room table{
+    border-collapse: collapse;
+    margin: 5px 0px 10px 0px;
+    font-size: 0.9em;
+    width: 100%;
+}
+
+.table-crud-room thead tr {
+    background-color: #009879;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.table-crud-room th{
+    padding: 5px 5px;
+    text-align: center;
+    background-color: #291670;
+}
+
+.table-crud-room tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-crud-room td{
+    height: 50px;
+    text-align: center;
+}
+
+.table-crud-room .equipamentTd{
+    position: relative;
+}
+
+.table-crud-room .equipament{
+    cursor: pointer;
+}
+
+.table-crud-room .add_circle{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+
+.overlay-crud-rooms{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.overlay-crud-rooms .pop-up{
+    background-color: #fff;
+    padding: 10px 5px 10px 5px;
+    border-radius: 10px;
+    max-width: 300px;
+    width: 100%;
+    position: relative;
+}
+
+.overlay-crud-rooms .title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+.overlay-crud-rooms .container-checkbox{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.overlay-crud-rooms .container-load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-crud-rooms .container-load input{
+    border: solid 1px #fff;
+    padding: 5px 5px;
+    background-color: #1d60aa;
+    border-radius: 5px;
+    outline: none;
+}
+
+.overlay-crud-rooms .container-load input:hover{
+    background-color: #1d60aa;
+    cursor: pointer;
+}
+
+.overlay-crud-rooms.active{
+    visibility: visible;
+}
+
+.overlay-crud-rooms .pop-up .close{
+    position: absolute;
+    right: 2%;
+    top: 2%;
+}
+
+.close{
+    cursor: pointer;
+}

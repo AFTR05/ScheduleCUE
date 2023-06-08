@@ -12,6 +12,11 @@
     --color-font-header:#fff;
     --color-front-table:#afaeb1;
 }
+.content{
+    max-height: 500px;
+    overflow: auto;
+    padding: 30px 30px;
+}
 .header{
     display: flex;
     justify-content: center;
@@ -75,10 +80,9 @@
     border-radius: 10px 10px;
     width: 100%;
 }
-
-th,
-td{
-    border: 1px solid rgb(202, 198, 198);
+.table th,
+.table td{
+    border-bottom: 1px solid #d3d3d3;
     width: 140px;
 }
 
@@ -87,17 +91,18 @@ td{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 
+
 }
 
 .tr-head th{
     background-color:var(--color-front-table);
 }
-table tr{
+.table tr{
     height: 30px;
     text-align: center;
 }
 
-.tr-body{
+.table .tr-body{
     height: 80px;
 }
 

@@ -7,7 +7,7 @@ function navigate(page) {
     $('#' + page).addClass('active');
 
     $.ajax({
-        url:'admin/'+ page + '.html',
+        url:'../admin/'+ page + '.html',
         method: 'GET',
         success: function(response) {
             $('#content').html(response);
