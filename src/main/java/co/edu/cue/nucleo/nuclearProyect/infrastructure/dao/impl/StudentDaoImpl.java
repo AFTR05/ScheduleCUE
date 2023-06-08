@@ -49,7 +49,7 @@ public class StudentDaoImpl implements ObjectDao<Student> {
         student.setEmail(s.getEmail());
         student.setOwnSemester(s.getOwnSemester());
         student.setId(s.getId());
-        save(s);
+        save(student);
         return student;
     }
 

@@ -45,7 +45,8 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
         teacher.setEmail(t.getEmail());
         teacher.setCourse(t.getCourse());
         teacher.setId(t.getId());
-        save(t);
+        teacher.setActive(t.getActive());
+        save(teacher);
         return teacher;
     }
 

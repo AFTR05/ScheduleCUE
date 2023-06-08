@@ -1,6 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,9 +28,9 @@ public class Student{
     @Column(name = "email_address")
     private String email;
     private String password;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany()
     @ToString.Exclude
-    @JsonBackReference
+    @JsonIgnoreProperties("student")
     @JoinColumn(name="course_id")
     private List<Course> course;
     @ManyToOne

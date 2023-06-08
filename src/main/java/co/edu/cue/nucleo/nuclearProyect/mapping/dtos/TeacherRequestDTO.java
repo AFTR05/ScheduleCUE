@@ -5,5 +5,5 @@ import co.edu.cue.nucleo.nuclearProyect.domain.entities.HourInterval;
 
 import java.util.List;
 
-public record TeacherRequestDTO(String name, String email, String id, List<HourInterval> availability, List<Course>courses) {
+public record TeacherRequestDTO(String name, String email, String id, List<HourInterval> availability, List<Course>courses,Boolean active) {
 }

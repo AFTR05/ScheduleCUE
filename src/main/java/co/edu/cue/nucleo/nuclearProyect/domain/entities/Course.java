@@ -2,8 +2,7 @@ package co.edu.cue.nucleo.nuclearProyect.domain.entities;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.EquitmentRoom;
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Course {
     @Id
     private String id;
@@ -32,7 +33,7 @@ public class Course {
     private List<RoomHour> hourRoom;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JsonManagedReference
+    @JsonIgnoreProperties("course")
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),
