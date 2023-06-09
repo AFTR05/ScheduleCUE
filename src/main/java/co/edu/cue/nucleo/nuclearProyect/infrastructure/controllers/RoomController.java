@@ -1,5 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.ChangeActiveRoomDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateRoomRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.RoomService;
@@ -43,8 +44,8 @@ public class RoomController {
             return service.updateRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.roomRequestDTO());
     }
     @PutMapping("/changeActive")
-    public RoomRequestDTO activeRoom(@RequestBody@Valid Boolean active, RoomRequestDTO roomRequestDTO){
-        return service.activeChangeRoom(active,roomRequestDTO);
+    public RoomRequestDTO activeRoom(@RequestBody@Valid ChangeActiveRoomDTO changeActiveRoomDTO){
+        return service.activeChangeRoom(changeActiveRoomDTO.active(),changeActiveRoomDTO.roomRequestDTO());
 
     }
 }

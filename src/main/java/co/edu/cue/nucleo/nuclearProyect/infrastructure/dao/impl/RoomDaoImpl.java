@@ -43,10 +43,10 @@ public class RoomDaoImpl implements ObjectDao<Room> {
         room.setName(o.getName());
         room.setEquitmentRoom(o.getEquitmentRoom());
         room.setCapacity(o.getCapacity());
-        room.setId(o.getId());
+        room.setId(id);
         room.setActive(o.getActive());
-        save(o);
-        return o;
+        save(room);
+        return room;
     }
 
     @Override

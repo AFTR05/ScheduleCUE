@@ -88,6 +88,6 @@ public class RoomServiceImpl implements RoomService {
         Room room=mapper.mapToEntity(roomRequestDTO);
         room.setActive(active);
         return mapper.mapToDTO(objectDao.update(
-                mapper.mapToEntity(roomRequestDTO).getId(),room));
+                roomRequestDTO.name()+roomRequestDTO.campus(),room));
     }
 }
