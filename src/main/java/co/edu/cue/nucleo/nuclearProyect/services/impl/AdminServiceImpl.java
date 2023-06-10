@@ -1,7 +1,9 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Administrator;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.TypeAdmin;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.AdminMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.AdminService;
@@ -16,6 +18,7 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
     private final ObjectDao<Administrator> objectDao;
     private final AdminMapper mapper;
+    private final ObjectDao<TypeAdmin> typeDao;
 
         /**
          * Obtiene una lista de todos los administradores.
@@ -48,10 +51,10 @@ public class AdminServiceImpl implements AdminService {
          * @param admin Objeto AdminRequestDTO que contiene los detalles del administrador a crear.
          * @return Objeto AdminRequestDTO que representa al administrador creado.
          */
-
     @Override
-    public AdminRequestDTO createAdmin(AdminRequestDTO admin) {
-        Administrator AdminnAb=mapper.mapToEntity(admin);
+    public AdminRequestDTO createAdmin(AdminInterfaceDTO admin) {
+        Administrator AdminnAb=mapper.mapToEntity(new AdminRequestDTO(admin.id(), admin.name(),
+                admin.email(),typeDao.byName(admin.typeAdmin()),admin.active()));
         AdminnAb.setPassword(AdminnAb.getId());
         return mapper.mapToDTO(
                 objectDao.save(AdminnAb

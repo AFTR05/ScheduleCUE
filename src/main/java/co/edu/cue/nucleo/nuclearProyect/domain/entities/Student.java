@@ -28,10 +28,19 @@ public class Student{
     @Column(name = "email_address")
     private String email;
     private String password;
-    @ManyToMany()
+
     @ToString.Exclude
     @JsonIgnoreProperties("student")
     @JoinColumn(name="course_id")
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    },fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "student_course",
+            joinColumns = {@JoinColumn(name = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")}
+    )
     private List<Course> course;
     @ManyToOne
     @JoinColumn(name="program_semester_id")

@@ -1,5 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminUpdateDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
@@ -29,7 +30,7 @@ public class AdminController {
     @PostMapping("/create")
     public AdminRequestDTO createAdmin(@RequestBody
                                        @Valid
-                                       AdminRequestDTO admin){ return service.createAdmin(admin);}
+                                       AdminInterfaceDTO admin){ return service.createAdmin(admin);}
     @PutMapping("/update")
     public AdminRequestDTO updateAdmin(@RequestBody
                                        @Valid

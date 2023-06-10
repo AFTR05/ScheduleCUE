@@ -3,15 +3,19 @@
     <div id="div-form">
         <form>
             <div class="form-floating">
-                <input type="text" class="form-control" id="username" placeholder="#">
-                <label for="username">Nombre</label>
+            <input type="text" class="form-control" id="id-txt-teachers" placeholder="#">
+            <label for="id-txt-teachers">Numero de identificación</label>
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="#">
-                <label for="floatingInput">Correo electrónico</label>
+                <input type="text" class="form-control" id="username-txt-teachers" placeholder="#">
+                <label for="username-txt-teachers">Nombre</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email-txt-teachers" placeholder="#">
+                <label for="email-txt-teachers">Correo electrónico</label>
             </div>
             <div id="submit-btn">
-                <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" onclick="registrarProfesores()" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
             </div>
 
         </form>
@@ -20,9 +24,9 @@
         <table id="tablaEstudiantes" class="table table-hover">
             <thead>
             <tr class="table-primary">
+                <th scope="col">Numero de identificación</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Email</th>
-                <th scope="col">Tipo de adminitrativo</th>
                 <th scope="col">Active</th>
             </tr>
             </thead>

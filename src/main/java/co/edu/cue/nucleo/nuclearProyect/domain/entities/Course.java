@@ -31,14 +31,10 @@ public class Course {
     @JsonManagedReference
     @ToString.Exclude
     private List<RoomHour> hourRoom;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "course")
     @ToString.Exclude
     @JsonIgnoreProperties("course")
-    @JoinTable(
-            name = "student_course",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id")
-    )
     private List<Student> student;
     @ManyToOne
     @JoinColumn(name="equitment_room_id")
