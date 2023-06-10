@@ -1,7 +1,83 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
 <head>
   <title>Registro de Usuarios</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min%20(4).css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .buttons-container button {
+      flex-basis: 30%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    .form-section {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .form-section label {
+      width: 45%;
+    }
+
+    .form-section input,
+    .form-section select {
+      width: 50%;
+    }
+
+    button[type="submit"],
+    button[type="button"] {
+      align-self: flex-end;
+    }
+
+    table {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        width: 90%;
+      }
+
+      .form-section label {
+        width: 40%;
+      }
+
+      .form-section input,
+      .form-section select {
+        width: 60%;
+      }
+
+      table {
+        width: 90%;
+      }
+    }
+  </style>
   <script>
     function cambiarFormulario(tipoUsuario) {
       var formEstudiante = document.getElementById("formEstudiante");
@@ -21,29 +97,14 @@
       }
     }
   </script>
-  <script >
-    async function registerteacher(){
-      let data ={};
-      datos.name = document.getElementById('nombreDocente').value;
-      datos.password = document.getElementById('contrasenaDocente').value;
-      datos.email = document.getElementById('emailDocente').value;
-      const request = await fetch('api/teacher', {
-        method: 'POST' ,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      const teacher = await request.json();
-    }
-  </script>
 </head>
 <body>
 <h1>Registro de Usuarios</h1>
-<button onclick="cambiarFormulario('estudiante')">Registrar Estudiante</button>
-<button onclick="cambiarFormulario('docente')">Registrar Docente</button>
-<button onclick="cambiarFormulario('administrador')">Registrar Administrador</button>
+<div class="buttons-container">
+  <button class="btn btn-outline-secondary" onclick="cambiarFormulario('estudiante')">Registrar Estudiante</button>
+  <button class="btn btn-outline-secondary" onclick="cambiarFormulario('docente')">Registrar Docente</button>
+  <button class="btn btn-outline-secondary" onclick="cambiarFormulario('administrador')">Registrar Administrador</button>
+</div>
 
 <form id="formEstudiante" style="display: none;">
   <h2>Registro de Estudiante</h2>
@@ -60,6 +121,29 @@
   <input type="text" id="programSemesterId" required><br><br>
 
   <button type="submit">Guardar</button>
+  <table id="tablaEstudiantes" class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col">Programa/Semestre ID</th>
+      <th scope="col">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Nombre administrador 1</td>
+      <td>Email administrador 1</td>
+      <td>Contraseña administrador 1</td>
+      <td>Tipo administrador 1</td>
+      <td>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-success">Actualizar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </form>
 
 <form id="formDocente" style="display: none;">
@@ -74,6 +158,28 @@
   <input type="password" id="contrasenaDocente" required><br><br>
 
   <button onclick="registerteacher()">Guardar</button>
+  <table id="tablaDocentes" class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Nombre administrador 1</td>
+      <td>Email administrador 1</td>
+      <td>Contraseña administrador 1</td>
+      <td>Tipo administrador 1</td>
+      <td>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-success">Actualizar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </form>
 
 <form id="formAdministrador" style="display: none;">
@@ -95,6 +201,29 @@
   </select><br><br>
 
   <button type="submit">Guardar</button>
+  <table id="tablaAdministradores" class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col">Tipo de Administrador</th>
+      <th scope="col">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Nombre administrador 1</td>
+      <td>Email administrador 1</td>
+      <td>Contraseña administrador 1</td>
+      <td>Tipo administrador 1</td>
+      <td>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-success">Actualizar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </form>
 </body>
 </html>

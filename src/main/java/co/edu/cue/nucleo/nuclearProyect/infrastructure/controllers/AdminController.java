@@ -37,3 +37,5 @@ public class AdminController {
         return service.updateAdmin(adminUpdateDTO.adminRequestDTO(), adminUpdateDTO.password());}
 
 }
+
+
