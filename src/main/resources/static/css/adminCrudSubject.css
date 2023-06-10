@@ -1,89 +1,75 @@
-.content{
-    max-height: 500px;
-    overflow: auto;
-    padding: 30px 30px;
-}
-
-.main-container-crud-subject{
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #fff;
-    border-radius: 10px;
-    max-height: 500px;
-    overflow: auto;
-}
-
-.container-title-crud-subject{
-    width: 100%;
-    background-color: rgb(36, 2, 129);
-    margin-bottom: 10px;
-    padding: 10px 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: #fff;
-}
-
-.container-search-crud-subject{
-    width: 100%;
+#Registrar-materia {
     display: flex;
-    justify-content: right;
-    align-items: center;
-    padding: 10px 40px;
+    justify-content: space-between;
+    align-items: flex-start;
 }
+.container-form-crud-subject {
+                                flex: 1;
+                                margin-right: 20px;
+                            }
 
-.container-search-crud-subject input{
-    margin-left: 5px;
-    border-radius: 2px;
-    padding: 5px 5px;
-    border: 1px solid #cdcbcb;
-    outline: none;
-}
-
-.container-table-crud-subject{
-    padding: 0 40px;
+#form-crud-subject {
     width: 100%;
 }
 
-.container-table-crud-subject table{
-    border-collapse: collapse;
-    margin: 5px 0px 10px 0px;
-    font-size: 0.9em;
+.container-table-crud-subject {
+    flex: 1;
+}
+
+#table-crud-subject {
     width: 100%;
 }
 
-.table-crud-subject thead tr {
-    background-color: #009879;
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label {
     font-weight: bold;
-    color: aliceblue;
 }
 
-.table-crud-subject th{
-    padding: 5px 5px;
-    text-align: center;
-    background-color: #291670;
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.table-crud-subject tbody tr{
-    border-bottom: 1px solid #dddddd;
-}
-
-.table-crud-subject td{
-    height: 50px;
-    text-align: center;
-}
-
-.table-crud-subject .equipamentTd{
-    position: relative;
-}
-
-.table-crud-subject .equipament{
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.table-crud-subject .add_circle{
-    position: absolute;
-    right: 2px;
-    top: 2px;
+.btn-primary {
+    background-color: #007bff;
 }
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+.table-crud-subject {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-crud-subject th,
+.table-crud-subject td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.table-crud-subject th {
+    background-color: #f2f2f2;
+}
+
+
+
+
 
 
