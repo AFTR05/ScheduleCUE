@@ -1,0 +1,47 @@
+<h1 >Gestión de estudiantes</h1>
+<div id="total-form">
+  <div id="div-form">
+    <form>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="username" placeholder="#">
+        <label for="username">Nombre</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="#">
+        <label for="floatingInput">Correo electrónico</label>
+      </div>
+      <div class="form-group">
+        <label class="form-label mt-4">Tipo de administrador</label>
+        <select class="form-select" id="exampleDisabledSelect1">
+          <option>Decanatura</option>
+          <option>Coordinación de programas</option>
+          <option>Coordinación de laboratorios</option>
+        </select>
+      </div>
+      <div id="submit-btn">
+        <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+
+    </form>
+  </div>
+  <div id="div-table">
+    <table id="tablaEstudiantes" class="table table-hover">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Tipo de adminitrativo</th>
+        <th scope="col">Active</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Nombre de estudiante</td>
+        <td>Email de estudiante</td>
+        <td>Contraseña de estudiante</td>
+        <td>Programa de estudiante</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

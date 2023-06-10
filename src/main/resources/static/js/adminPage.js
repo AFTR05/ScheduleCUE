@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
     $('#admin-schedules').addClass('active');
     navigate('admin-schedules');
@@ -36,6 +38,10 @@ document.getElementById("admin-schedules").onclick = function() {
 
 document.getElementById("admin-students").onclick = function() {
     navigate('admin-students');
+};
+
+document.getElementById("admin-admins").onclick = function() {
+    navigate('admin-admins');
 };
 
 document.getElementById("admin-subjects").onclick = function() {

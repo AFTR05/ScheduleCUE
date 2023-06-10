@@ -3,6 +3,33 @@
     margin: 0;
     box-sizing: border-box;
 }
+#div-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-right: 40px;
+}
+
+.form-floating{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#submit-btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    justify-items: center;
+}
+
+#total-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80%;
+}
+
+
 
 :root{
     --color-cells: #fff;
@@ -16,6 +43,18 @@
     max-height: 500px;
     overflow: auto;
     padding: 30px 30px;
+}
+
+
+#total-form{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.table{
+    height: 100%;
 }
 .header{
     display: flex;
@@ -164,4 +203,9 @@
     padding: 5px;
     background-color: #291670;
     color: #fff;
+}
+
+.form-group{
+    margin-top: -20px;
+    margin-bottom: 20px;
 }
