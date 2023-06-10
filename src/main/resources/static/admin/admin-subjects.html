@@ -1,34 +1,39 @@
-<div id="Registrar-materia">
-    <div class="container-form-crud-subject">
+<div id="Registrar-materia" class="main-container-crud-room">
+    <div class="container-form-crud-room">
         <h2>Registrar Materia</h2>
-        <form id="form-crud-subject">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" class="form-input" required>
+        <form>
+            <div class="form-floating">
+                <input class="form-control" type="text" id="nombre" placeholder="#">
+                <label for="nombre">Nombre</label>
             </div>
-            <div class="form-group">
-                <label for="tipoMateria">Tipo de Materia:</label>
-                <input type="text" id="tipoMateria" class="form-input" required>
+
+            <div class="form-floating">
+                <input class="form-control" type="text" id="tipoMateria" placeholder="#">
+                <label for="tipoMateria">Tipo de Materia</label>
             </div>
-            <div class="form-group">
-                <label for="duracion">Duración de Materia:</label>
-                <input type="number" id="duracion" class="form-input" required>
+
+            <div class="form-floating">
+                <input class="form-control" type="number" id="duracion" placeholder="#">
+                <label for="duracion">Duración de Materia</label>
             </div>
-            <div class="form-group">
-                <label for="horasSemanales">Horas Semanales:</label>
-                <input type="number" id="horasSemanales" class="form-input" required>
+
+            <div class="form-floating">
+                <input class="form-control" type="number" id="horasSemanales" placeholder="#">
+                <label for="horasSemanales">Horas Semanales</label>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <button type="submit">Guardar</button>
         </form>
     </div>
-    <div class="container-table-crud-subject">
-        <table id="table-crud-subject" class="table table-hover">
+
+    <div class="container-table-crud-room">
+        <table class="table table-hover">
             <thead>
             <tr class="table-primary">
-                <th scope="row">Nombre</th>
-                <th scope="row">Tipo de Materia</th>
-                <th scope="row">Duración de Materia</th>
-                <th scope="row">Horas Semanales</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo de Materia</th>
+                <th scope="col">Duración de Materia</th>
+                <th scope="col">Horas Semanales</th>
             </tr>
             </thead>
             <tbody>
@@ -36,3 +41,4 @@
         </table>
     </div>
 </div>
+

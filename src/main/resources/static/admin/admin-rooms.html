@@ -1,74 +1,50 @@
-<div class="main-container-crud-room">
-    <div class="container-title-crud-room">
-        <h2>Listado de salones</h2>
+<div class="main-container-crud-room" id="Registrar-salones">
+    <div class="container-form-crud-room">
+        <h2>Registrar Salón</h2>
+        <form>
+            <div class="form-floating">
+                <input class="form-control" type="text" id="nombreSalon" placeholder="#">
+                <label for="nombreSalon">Nombre</label>
+            </div>
+
+            <div class="form-floating">
+                <input class="form-control"  type="text" id="sedeSalon" placeholder="#">
+                <label for="sedeSalon">Sede</label>
+            </div>
+
+            <div class="form-floating">
+                <input class="form-control" type="number" id="capacidadSalon" placeholder="#">
+                <label for="capacidadSalon">Capacidad</label>
+            </div>
+
+            <div class="form-floating">
+                <input class="form-control" type="text" id="equipamientoSalon" placeholder="#">
+                <label for="equipamientoSalon">Equipamiento</label>
+            </div>
+
+            <button type="submit">Guardar</button>
+        </form>
     </div>
-    <div class="container-search-crud-room">
-        <span class="material-symbols-outlined">search</span>
-        <input type="text">
-    </div>
+
     <div class="container-table-crud-room">
         <table class="table table-hover">
             <thead>
-            <tr>
-                <th scope="col">Type</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
+            <tr class="table-primary">
+                <th scope="col">Nombre</th>
+                <th scope="col">Sede</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Equipamiento</th>
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Default</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
+            <tr>
+                <td>104b</td>
+                <td>Principal</td>
+                <td>40</td>
+                <td>Column</td>
+            </tr>
             </tbody>
         </table>
     </div>
-    <div class="overlay-crud-rooms">
-        <div class="pop-up">
-            <div class="title">
-                <h2>
-                   Equipamiento
-                </h2>
-                <h4>
-                    Seleccionar
-                </h4>
-            </div>
-            <div class="container-checkbox">
-                <div>
-                    <input type="checkbox" value="Aire acondicionado">
-                    <label>Ventilador</label>
-                </div>
-                <div>
-                    <input type="checkbox" value="Ventilador">
-                    <label>Ventilador</label>
-                </div>
-                <div>
-
-                    <input type="checkbox" value="Ventilador">
-                    <label>Ventilador</label>
-                </div>
-                <div>
-                    <input type="checkbox" value="Ventilador">
-                    <label>Ventilador</label>
-                </div>
-                <div>
-                    <input type="checkbox" value="Ventilador">
-                    <label>Ventilador</label>
-                </div>
-                <div>
-                    <input type="checkbox" value="Ventilador">
-                    <label>Ventilador</label>
-                </div>
-            </div>
-            <div class="container-load">
-               <input type="submit">
-            </div>
-            <div class="container-close">
-                <span class="material-symbols-outlined close">close</span>
-            </div>
-        </div>
-    </div>
 </div>
+
