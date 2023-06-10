@@ -26,10 +26,6 @@ document.getElementById("admin-profile").onclick = function() {
     navigate('admin-profile');
 };
 
-document.getElementById("admin-reserve").onclick = function() {
-    navigate('admin-reserve');
-};
-
 document.getElementById("admin-rooms").onclick = function() {
     navigate('admin-rooms');
 };
