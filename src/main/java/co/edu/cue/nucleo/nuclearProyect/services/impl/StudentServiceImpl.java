@@ -1,13 +1,20 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.ProgramSemester;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.Modality;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.ProgramSemesterImpl;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.SearchEntity;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +22,9 @@ import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
     private final ObjectDao<Student> objectDao;
+    private final ObjectDao<Program> programDao;
+    private final ObjectDao<Modality> modalityDao;
+    private final ProgramSemesterImpl programSemesterDao;
     private final StudentMapper mapper;
      /**
          * Devuelve una lista de todos los estudiantes.
@@ -46,8 +56,10 @@ public class StudentServiceImpl implements StudentService {
          * @return Objeto StudentRequestDTO que representa al estudiante creado.
          */
     @Override
-    public StudentRequestDTO createStudent(StudentRequestDTO student) {
-        Student studentAb=mapper.mapToEntity(student);
+    public StudentRequestDTO createStudent(StudentInterfaceDTO student) {
+        ProgramSemester ps=SearchEntity.getProgramSemester(student.program(),student.modality(),student.semester(),modalityDao,programDao,programSemesterDao);
+        Student studentAb=mapper.mapToEntity(new StudentRequestDTO(student.id(),student.name(),student.active(),student.email()
+                ,student.id(), new ArrayList<>(),ps));
         studentAb.setPassword(student.id());
         return mapper.mapToDTO(
                 objectDao.save(studentAb

@@ -3,23 +3,46 @@
         <h2>Gestión de estudiantes</h2>
         <form>
             <div class="form-floating">
-                <input type="text" class="form-control" id="username" placeholder="#">
-                <label for="username">Nombre</label>
+                <input type="text" class="form-control" id="id-txt-students" placeholder="#">
+                <label for="id-txt-students">Numero de identificación</label>
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="#">
-                <label for="floatingInput">Correo electrónico</label>
+                <input type="text" class="form-control" id="username-txt-students" placeholder="#">
+                <label for="username-txt-students">Nombre</label>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control" id="program" placeholder="#">
-                <label for="program">Programa</label>
+                <input type="email" class="form-control" id="email-txt-students" placeholder="#">
+                <label for="email-txt-students">Correo electrónico</label>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Programas</label>
+                <select class="form-select" id="program-txt-students">
+                    <option>Administracion de empresas</option>
+                    <option>Ingeniería civil</option>
+                    <option>Derecho</option>
+                    <option>Enfermeria</option>
+                    <option>Ingeniería industrial</option>
+                    <option>Marketing digital y comunicacion estrategica</option>
+                    <option>Medicina</option>
+                    <option>Psicologia</option>
+                    <option>Ingeniería de software </option>
+                    <option>Tecnologia en gestion del turismo cultural y de naturaleza</option>
+                    <option>Medicina veterinaria y zootecnia</option>
+                </select>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control" id="semester" placeholder="#">
-                <label for="semester">Semestre</label>
+                <input type="text" class="form-control" id="semester-txt-students" placeholder="#">
+                <label for="semester-txt-students">Semestre</label>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Modalidad</label>
+                <select class="form-select" id="modal-txt-students">
+                    <option>Diurno</option>
+                    <option>Nocturno</option>
+                </select>
             </div>
             <div id="submit-btn">
-                <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" id="submit-button" onclick="registrarStudent()" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </form>
     </div>
@@ -27,10 +50,12 @@
     <table id="tablaEstudiantes" class="table table-hover">
         <thead>
         <tr class="table-primary">
+            <th scope="col">Numero de identificación</th>
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Programa</th>
             <th scope="col">Semestre</th>
+            <th scope="col">Modalidad</th>
             <th scope="col">Active</th>
         </tr>
         </thead>

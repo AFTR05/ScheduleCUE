@@ -1,6 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateStudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
@@ -24,7 +25,7 @@ public class StudentController {
     @PostMapping("/create")
     public StudentRequestDTO createStudent(@RequestBody
                                            @Valid
-                                           StudentRequestDTO student){
+                                           StudentInterfaceDTO student){
         return service.createStudent(student);
     }
 
