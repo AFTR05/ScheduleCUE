@@ -1,4 +1,4 @@
-#Registrar-salones {
+#Gestion-estudiantes {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -19,7 +19,7 @@
     margin-top: 20px;
 }
 
-.container-form-crud-room .form-group {
+.container-form-crud-room .form-floating {
     margin-bottom: 15px;
 }
 
@@ -62,3 +62,4 @@
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
+
