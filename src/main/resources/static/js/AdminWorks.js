@@ -34,7 +34,6 @@ async function registrarAdministrador() {
     });
     navigate("admin-admins")
 }
-
 async function registrarStudent() {
     let data = {};
     data.id=document.getElementById('id-txt-students').value;
@@ -53,4 +52,39 @@ async function registrarStudent() {
         body: JSON.stringify(data)
     });
     navigate("admin-students")
+}
+
+async function registrarRoom() {
+    let data = {};
+    data.name = document.getElementById('name-txt-rooms').value;
+    data.capacity = document.getElementById('capacity-txt-rooms').value;
+    data.campus=document.getElementById('campus-txt-rooms').value;
+    data.equitmentRoom=document.getElementById('equitment-txt-rooms').value;
+    data.active=true;
+    const request = await fetch('room_ad/create', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    navigate("admin-rooms")
+}
+
+async function registrarSubject() {
+    let data = {};
+    data.name = document.getElementById('name-txt-subjects').value;
+    data.typeSubject = document.getElementById('type-txt-subjects').value;
+    data.durationType=document.getElementById('duration-txt-subjects').value;
+    data.countSemanalHours=document.getElementById('hours-txt-subjects').value;
+    const request = await fetch('subject_ad/create', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    navigate("admin-subjects")
 }

@@ -2,6 +2,7 @@ package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Subject;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.SubjectInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.SubjectRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.SubjectUpdateDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.SubjectService;
@@ -33,7 +34,7 @@ public class SubjectController {
     @PostMapping("/create")
     public SubjectRequestDTO saveSubject(@RequestBody
                                    @Valid
-                                   SubjectRequestDTO subject) {
+                                         SubjectInterfaceDTO subject) {
         return service.createSubject(subject);
     }
     @PutMapping("/update")

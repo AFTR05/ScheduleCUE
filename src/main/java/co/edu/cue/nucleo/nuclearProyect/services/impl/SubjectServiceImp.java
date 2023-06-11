@@ -1,7 +1,10 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Subject;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.DurationType;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.TypeSubject;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.SubjectInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.SubjectRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.SubjectMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.SubjectService;
@@ -16,6 +19,8 @@ public class SubjectServiceImp implements SubjectService {
     private final ObjectDao<Subject> objectDao;
 
     private final SubjectMapper mapper;
+    private final ObjectDao<TypeSubject> typeSubjectDao;
+    private final ObjectDao<DurationType> durationTypeDao;
 
     /**
      *Este metodo mapea una lista de Subjects a List<SubjectRequestDTO>.Es
@@ -51,9 +56,10 @@ public class SubjectServiceImp implements SubjectService {
      * de datos
      */
     @Override
-    public SubjectRequestDTO createSubject(SubjectRequestDTO subject) {
-        Subject sub=mapper.mapToEntity(subject);
-        sub.setId(subject.name()+subject.typeSubject().getId());
+    public SubjectRequestDTO createSubject(SubjectInterfaceDTO subject) {
+        Subject sub=mapper.mapToEntity(new SubjectRequestDTO(subject.name(),typeSubjectDao.byName(subject.typeSubject())
+                ,durationTypeDao.byName(subject.durationType()),subject.countSemanalHours()));
+        sub.setId(sub.getName()+sub.getTypeSubject().getId());
         return mapper.mapToDTO(
                 objectDao.save(
                         sub

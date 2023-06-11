@@ -40,6 +40,12 @@ function navigate(page) {
                 case 'admin-teachers':
                     getTeacher();
                     break;
+                case 'admin-rooms':
+                    getRoom();
+                    break;
+                case 'admin-subjects':
+                    getSubject();
+                    break;
             }
 /*            if (page === 'admin-students') {
                 cargarStudents();
@@ -126,6 +132,42 @@ async function getTeacher(){
     }
     console.log(listadoHtml);
     document.querySelector('#teachers-content').innerHTML = listadoHtml;
+}
+
+async function getRoom(){
+    const request = await fetch('room_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const rooms = await request.json();
+    console.log(rooms);
+    let listadoHtml = '';
+    for (let room of rooms){
+        let roomHtml = '<tr><td>'+room.name+'</td><td>'+room.campus+'</td><td>'
+            + room.capacity + '</td><td>'+room.equitmentRoom.id+'</td><td>'+room.active+'</td></tr>';
+        console.log(roomHtml);
+        listadoHtml += roomHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#rooms-content').innerHTML = listadoHtml;
+}
+
+async function getSubject(){
+    const request = await fetch('subject_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const subjects = await request.json();
+    console.log(subjects);
+    let listadoHtml = '';
+    for (let subject of subjects){
+        let subjectHtml = '<tr><td>'+subject.name+'</td><td>'+subject.typeSubject.typeSubject+'</td><td>'
+            + subject.durationType.type + '</td><td>'+subject.countSemanalHours+'</td></tr>';
+        console.log(subjectHtml);
+        listadoHtml += subjectHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#subjects-content').innerHTML = listadoHtml;
 }
 
 async function getAdministrator(){

@@ -1,7 +1,9 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Room;
+import co.edu.cue.nucleo.nuclearProyect.domain.enums.EquitmentRoom;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.RoomMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.RoomService;
@@ -14,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomServiceImpl implements RoomService {
     private final ObjectDao<Room> objectDao;
+    private final ObjectDao<EquitmentRoom> equitmentDao;
 
     private final RoomMapper mapper;
 
@@ -49,8 +52,8 @@ public class RoomServiceImpl implements RoomService {
      * @return record RoomRequestDTO
      */
     @Override
-    public RoomRequestDTO createRoom(RoomRequestDTO room) {
-        Room roomAb=mapper.mapToEntity(room);
+    public RoomRequestDTO createRoom(RoomInterfaceDTO room) {
+        Room roomAb=mapper.mapToEntity(new RoomRequestDTO(room.name(),room.campus(),room.capacity(),equitmentDao.byId(room.equitmentRoom()),true));
         roomAb.setId(room.name()+room.campus());
         return mapper.mapToDTO(
                  objectDao.save(
