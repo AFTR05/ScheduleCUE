@@ -44,6 +44,19 @@ public class AuthLogin {
         }
     }
 
+    public static String authLogin(Optional<Student> s,Optional<Teacher> t,Optional<Administrator> a){
+        if (s.isPresent()){
+            return "student";
+        }
+        if (t.isPresent()){
+            return "teacher";
+        }
+        if (a.isPresent()){
+            return "administrator";
+        }
+        return "no";
+    }
+
     public static String getTypeString(Object object) {
         if (object instanceof Administrator) {
             return "admin";

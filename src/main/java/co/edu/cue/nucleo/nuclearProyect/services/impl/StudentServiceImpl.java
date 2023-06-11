@@ -11,6 +11,8 @@ import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -55,16 +57,19 @@ public class StudentServiceImpl implements StudentService {
          * @param student Objeto StudentRequestDTO que contiene los detalles del estudiante a crear.
          * @return Objeto StudentRequestDTO que representa al estudiante creado.
          */
-    @Override
-    public StudentRequestDTO createStudent(StudentInterfaceDTO student) {
-        ProgramSemester ps=SearchEntity.getProgramSemester(student.program(),student.modality(),student.semester(),modalityDao,programDao,programSemesterDao);
-        Student studentAb=mapper.mapToEntity(new StudentRequestDTO(student.id(),student.name(),student.active(),student.email()
-                ,student.id(), new ArrayList<>(),ps));
-        studentAb.setPassword(student.id());
-        return mapper.mapToDTO(
-                objectDao.save(studentAb
-                ));
-    }
+        @Override
+        public StudentRequestDTO createStudent(StudentInterfaceDTO student) {
+            ProgramSemester ps=SearchEntity.getProgramSemester(student.program(),student.modality(),student.semester(),modalityDao,programDao,programSemesterDao);
+            Student studentAb=mapper.mapToEntity(new StudentRequestDTO(student.id(),student.name(),student.active(),student.email()
+                    ,student.id(), new ArrayList<>(),ps));
+            Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            String hash=argon2.hash(1,1024,1,studentAb.getId());
+            studentAb.setPassword(hash);
+            return mapper.mapToDTO(
+                    objectDao.save(studentAb
+                    ));
+        }
+
         /**
          * Actualiza un estudiante existente.
          *

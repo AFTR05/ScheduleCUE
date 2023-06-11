@@ -5,6 +5,8 @@ import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.TeacherMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,9 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
         Teacher teacherAb=mapper.mapToEntity(teacher);
-        teacherAb.setPassword(teacher.id());
+        Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash=argon2.hash(1,1024,1,teacherAb.getId());
+        teacherAb.setPassword(hash);
         return mapper.mapToDTO(
                 objectDao.save(teacherAb
                 ));

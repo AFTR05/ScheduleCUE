@@ -29,18 +29,19 @@
             <div class="main-container-login">
                 <form th:action="@{/login}" method="post" class="form">
                     <div>
-                        <input type="text" class="form-control" id="id-user" name="id-user" placeholder="Nombre de usuario">
+                        <input type="text" class="form-control" id="id-txt-login" placeholder="Nombre de usuario">
                     </div>
                     <div>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="password-txt-login" placeholder="Contraseña">
                     </div>
                     <div class="div-btn">
-                        <button type="submit" class="btn btn-primary">Acceder</button>
+                        <button type="submit" class="btn btn-primary" onclick="iniciarSesion()">Acceder</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </main>
+<script src="/js/mainLogin.js"></script>
 </body>
 </html>

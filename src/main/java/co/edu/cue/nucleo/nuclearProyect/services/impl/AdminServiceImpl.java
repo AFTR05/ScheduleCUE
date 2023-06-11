@@ -7,6 +7,8 @@ import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.AdminMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.AdminService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +57,9 @@ public class AdminServiceImpl implements AdminService {
     public AdminRequestDTO createAdmin(AdminInterfaceDTO admin) {
         Administrator AdminnAb=mapper.mapToEntity(new AdminRequestDTO(admin.id(), admin.name(),
                 admin.email(),typeDao.byName(admin.typeAdmin()),admin.active()));
-        AdminnAb.setPassword(AdminnAb.getId());
+        Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash=argon2.hash(1,1024,1,AdminnAb.getId());
+        AdminnAb.setPassword(hash);
         return mapper.mapToDTO(
                 objectDao.save(AdminnAb
                 ));
