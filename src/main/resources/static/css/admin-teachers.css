@@ -52,6 +52,24 @@
     width: 60%;
 }
 
+.container-input-search-teacher{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+.container-input-search-teacher input{
+    border: solid 1px #a9a8a8;
+    padding: 2px 2px;
+    border-radius: 3px;
+}
+
+.container-input-search-teacher input:hover{
+    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
+    outline: deepskyblue 1px solid;
+}
 .table {
     width: 100%;
     border-collapse: collapse;

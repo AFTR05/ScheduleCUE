@@ -57,6 +57,27 @@
     flex: 1;
 }
 
+.container-input-search{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+.container-input-search input{
+   border: solid 1px #a9a8a8;
+   padding: 2px 2px;
+   border-radius: 3px;
+}
+
+.container-input-search input:hover{
+  box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
+  outline: deepskyblue solid 1px;
+}
+
+
+
 #table-crud-subject {
     width: 100%;
 }
