@@ -8,7 +8,7 @@ import lombok.*;
 
 @Data
 @Entity
-public class DurationType {
+public class    DurationType {
 
     /*TRIMESTRAL("Trimestral",12),SEMESTRAL("Semestral",24);*/
     @Id

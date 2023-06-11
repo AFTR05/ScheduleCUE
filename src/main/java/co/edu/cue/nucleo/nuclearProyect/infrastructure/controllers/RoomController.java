@@ -1,6 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.ChangeActiveRoomDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateRoomRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.RoomService;
@@ -34,7 +35,7 @@ public class RoomController {
     @PostMapping("/create")
     public RoomRequestDTO saveRoom(@RequestBody
                                            @Valid
-                                           RoomRequestDTO room) {
+                                   RoomInterfaceDTO room) {
         return service.createRoom(room);
     }
 

@@ -3,26 +3,34 @@
         <h2>Registrar Materia</h2>
         <form>
             <div class="form-floating">
-                <input class="form-control" type="text" id="nombre" placeholder="#">
-                <label for="nombre">Nombre</label>
+                <input class="form-control" type="text" id="name-txt-subjects" placeholder="#">
+                <label for="name-txt-subjects">Nombre</label>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mt-4">Tipo de materia</label>
+                <select class="form-select" id="type-txt-subjects">
+                    <option>Asignatura electiva</option>
+                    <option>Asignaturas obligatorias</option>
+                    <option>Asignaturas optativas</option>
+                    <option>Ciclo básico universitario</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mt-4">Tipo de duración</label>
+                <select class="form-select" id="duration-txt-subjects">
+                    <option>Semestral</option>
+                    <option>Trimestral</option>
+                </select>
             </div>
 
             <div class="form-floating">
-                <input class="form-control" type="text" id="tipoMateria" placeholder="#">
-                <label for="tipoMateria">Tipo de Materia</label>
+                <input class="form-control" type="number" id="hours-txt-subjects" placeholder="#">
+                <label for="hours-txt-subjects">Horas Semanales</label>
             </div>
 
-            <div class="form-floating">
-                <input class="form-control" type="number" id="duracion" placeholder="#">
-                <label for="duracion">Duración de Materia</label>
-            </div>
-
-            <div class="form-floating">
-                <input class="form-control" type="number" id="horasSemanales" placeholder="#">
-                <label for="horasSemanales">Horas Semanales</label>
-            </div>
-
-            <button type="submit">Guardar</button>
+            <button type="submit" onclick="registrarSubject()">Guardar</button>
         </form>
     </div>
 
@@ -36,7 +44,7 @@
                 <th scope="col">Horas Semanales</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="subjects-content">
             </tbody>
         </table>
     </div>

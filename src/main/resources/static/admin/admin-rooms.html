@@ -3,26 +3,36 @@
         <h2>Registrar Salón</h2>
         <form>
             <div class="form-floating">
-                <input class="form-control" type="text" id="nombreSalon" placeholder="#">
-                <label for="nombreSalon">Nombre</label>
+                <input class="form-control" type="text" id="name-txt-rooms" placeholder="#">
+                <label for="name-txt-rooms">Nombre</label>
             </div>
-
+            <div class="form-group">
+                <label class="form-label mt-4">Sede</label>
+                <select class="form-select" id="campus-txt-rooms">
+                    <option>-P</option>
+                    <option>-A</option>
+                    <option>-M</option>
+                    <option>-N</option>
+                    <option>-C</option>
+                </select>
+            </div>
             <div class="form-floating">
-                <input class="form-control"  type="text" id="sedeSalon" placeholder="#">
-                <label for="sedeSalon">Sede</label>
+                <input class="form-control" type="number" id="capacity-txt-rooms" placeholder="#">
+                <label for="capacity-txt-rooms">Capacidad</label>
             </div>
-
-            <div class="form-floating">
-                <input class="form-control" type="number" id="capacidadSalon" placeholder="#">
-                <label for="capacidadSalon">Capacidad</label>
+            <div class="form-group">
+                <label class="form-label mt-4">Equipamiento</label>
+                <select class="form-select" id="equitment-txt-rooms">
+                    <option>ALLNOC</option>
+                    <option>LAB</option>
+                    <option>SCA</option>
+                    <option>SCNP</option>
+                    <option>SCP</option>
+                    <option>SN</option>
+                    <option>SS</option>
+                </select>
             </div>
-
-            <div class="form-floating">
-                <input class="form-control" type="text" id="equipamientoSalon" placeholder="#">
-                <label for="equipamientoSalon">Equipamiento</label>
-            </div>
-
-            <button type="submit">Guardar</button>
+            <button type="submit" onclick="registrarRoom()">Guardar</button>
         </form>
     </div>
 
@@ -34,15 +44,10 @@
                 <th scope="col">Sede</th>
                 <th scope="col">Capacidad</th>
                 <th scope="col">Equipamiento</th>
+                <th scope="col">Active</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>104b</td>
-                <td>Principal</td>
-                <td>40</td>
-                <td>Column</td>
-            </tr>
+            <tbody id="rooms-content">
             </tbody>
         </table>
     </div>
