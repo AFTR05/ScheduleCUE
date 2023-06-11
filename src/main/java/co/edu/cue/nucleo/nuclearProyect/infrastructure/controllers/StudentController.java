@@ -1,9 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateStudentRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.*;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -38,8 +35,8 @@ public class StudentController {
     @PutMapping("/update")
     public StudentRequestDTO updateStudent(@RequestBody
                                            @Valid
-                                           UpdateStudentRequestDTO updateStudentRequestDTO){
-        return service.updateStudent(updateStudentRequestDTO.password(),updateStudentRequestDTO.studentRequestDTO());
+                                           StudentUpdateInterfaceDTO studentUpdateInterfaceDTO){
+        return service.updateStudent(studentUpdateInterfaceDTO);
     }
 
 }

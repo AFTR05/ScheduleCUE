@@ -48,7 +48,9 @@ public class AdminDaoImpl implements ObjectDao<Administrator> {
     public Administrator update(String password, Administrator a) {
         Administrator admin=entityManager.find(Administrator.class, a.getId());
         admin.setName(a.getName());
-        admin.setPassword(password);
+        Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash=argon2.hash(1,1024,1,password);
+        admin.setPassword(hash);
         admin.setEmail(a.getEmail());
         admin.setTypeAdmin(a.getTypeAdmin());
         admin.setId(a.getId());

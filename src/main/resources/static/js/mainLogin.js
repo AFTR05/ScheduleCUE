@@ -2,7 +2,7 @@ async function iniciarSesion() {
     let data = {};
     data.id=document.getElementById('id-txt-login').value;
     data.password = document.getElementById('password-txt-login').value;
-    localStorage.data=JSON.stringify(data)
+    localStorage.data=JSON.stringify(data);
     const request = await fetch('/login', {
         method: 'POST',
         headers: {
@@ -22,10 +22,10 @@ async function iniciarSesion() {
                     go('admin');
                     break;
                 case 'teacher':
-                    go('teacher')
+                    go('teacher');
                     break;
                 case 'student':
-                    go("student")
+                    go("student");
                     break;
             }
         } else {

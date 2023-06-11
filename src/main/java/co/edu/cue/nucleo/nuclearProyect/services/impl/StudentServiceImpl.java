@@ -9,6 +9,7 @@ import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.ProgramSemesterI
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.SearchEntity;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentUpdateInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
 import de.mkammerer.argon2.Argon2;
@@ -73,13 +74,13 @@ public class StudentServiceImpl implements StudentService {
         /**
          * Actualiza un estudiante existente.
          *
-         * @param password Contraseña requerida para realizar la actualización.
          * @param student  Objeto StudentRequestDTO que contiene los detalles actualizados del estudiante.
          * @return Objeto StudentRequestDTO que representa al estudiante actualizado.
          */
 
     @Override
-    public StudentRequestDTO updateStudent(String password,StudentRequestDTO student) {
-        return mapper.mapToDTO(objectDao.update(password,mapper.mapToEntity(student)));
+    public StudentRequestDTO updateStudent(StudentUpdateInterfaceDTO student) {
+        Student s=objectDao.byId(student.id());
+        return mapper.mapToDTO(objectDao.update(student.newPassword(),s));
     }
 }
