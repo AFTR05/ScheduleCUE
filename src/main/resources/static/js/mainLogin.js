@@ -15,6 +15,8 @@ async function iniciarSesion() {
         if (respuesta.token !== 'FAIL') {
             const token = respuesta.token;
             localStorage.token = token;
+            localStorage.id=respuesta.id;
+            localStorage.role=respuesta.role;
             switch (respuesta.role) {
                 case 'administrator':
                     go('admin');

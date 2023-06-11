@@ -46,6 +46,9 @@ function navigate(page) {
                 case 'admin-subjects':
                     getSubject();
                     break;
+                case 'admin-profile':
+                    justAdmin(localStorage.id);
+                    break
             }
 /*            if (page === 'admin-students') {
                 cargarStudents();
@@ -96,7 +99,21 @@ function getHeaders() {
         'Authorization': localStorage.token
     };
 }
-
+async function justAdmin(id) {
+    const url = `admin_ad/get-by-id/${id}`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+        const admin = await response.json();
+        document.querySelector('#email-txt-admin-profile').value=admin.email;
+        document.querySelector('#username-txt-admin-profile').value=admin.name;
+        document.querySelector('#type-txt-admin-profile').value=admin.typeAdmin.typeAdmin;
+        console.log(admin);
+}
 async function getStudents() {
     const request = await fetch('student_ad/get-all', {
         method: 'GET',
