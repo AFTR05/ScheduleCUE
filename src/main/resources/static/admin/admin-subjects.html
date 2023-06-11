@@ -1,52 +1,59 @@
-<div id="Registrar-materia" class="main-container-crud-room">
-    <div class="container-form-crud-room">
-        <h2>Registrar Materia</h2>
-        <form>
-            <div class="form-floating">
-                <input class="form-control" type="text" id="name-txt-subjects" placeholder="#">
-                <label for="name-txt-subjects">Nombre</label>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label mt-4">Tipo de materia</label>
-                <select class="form-select" id="type-txt-subjects">
-                    <option>Asignatura electiva</option>
-                    <option>Asignaturas obligatorias</option>
-                    <option>Asignaturas optativas</option>
-                    <option>Ciclo básico universitario</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label mt-4">Tipo de duración</label>
-                <select class="form-select" id="duration-txt-subjects">
-                    <option>Semestral</option>
-                    <option>Trimestral</option>
-                </select>
-            </div>
-
-            <div class="form-floating">
-                <input class="form-control" type="number" id="hours-txt-subjects" placeholder="#">
-                <label for="hours-txt-subjects">Horas Semanales</label>
-            </div>
-
-            <button type="submit" onclick="registrarSubject()">Guardar</button>
-        </form>
+<div class="container-all-register-subject">
+    <div class="container-input-search">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" id="input-search" onkeyup="filter()">
     </div>
+    <div id="Registrar-materia" class="main-container-crud-room">
+        <div class="container-form-crud-room">
+            <h2>Registrar Materia</h2>
+            <form>
+                <div class="form-floating">
+                    <input class="form-control" type="text" id="name-txt-subjects" placeholder="#">
+                    <label for="name-txt-subjects">Nombre</label>
+                </div>
 
-    <div class="container-table-crud-room">
-        <table class="table table-hover">
-            <thead>
-            <tr class="table-primary">
-                <th scope="col">Nombre</th>
-                <th scope="col">Tipo de Materia</th>
-                <th scope="col">Duración de Materia</th>
-                <th scope="col">Horas Semanales</th>
-            </tr>
-            </thead>
-            <tbody id="subjects-content">
-            </tbody>
-        </table>
+                <div class="form-group">
+                    <label class="form-label mt-4">Tipo de materia</label>
+                    <select class="form-select" id="type-txt-subjects">
+                        <option>Asignatura electiva</option>
+                        <option>Asignaturas obligatorias</option>
+                        <option>Asignaturas optativas</option>
+                        <option>Ciclo básico universitario</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label mt-4">Tipo de duración</label>
+                    <select class="form-select" id="duration-txt-subjects">
+                        <option>Semestral</option>
+                        <option>Trimestral</option>
+                    </select>
+                </div>
+
+                <div class="form-floating">
+                    <input class="form-control" type="number" id="hours-txt-subjects" placeholder="#">
+                    <label for="hours-txt-subjects">Horas Semanales</label>
+                </div>
+
+                <button type="submit" onclick="registrarSubject()">Guardar</button>
+            </form>
+        </div>
+
+        <div class="container-table-crud-room">
+            <table class="table table-hover">
+                <thead>
+                <tr class="table-primary">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo de Materia</th>
+                    <th scope="col">Duración de Materia</th>
+                    <th scope="col">Horas Semanales</th>
+                </tr>
+                </thead>
+                <tbody id="subjects-content">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
 

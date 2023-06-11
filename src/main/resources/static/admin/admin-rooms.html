@@ -1,55 +1,62 @@
-<div class="main-container-crud-room" id="Registrar-salones">
-    <div class="container-form-crud-room">
-        <h2>Registrar Salón</h2>
-        <form>
-            <div class="form-floating">
-                <input class="form-control" type="text" id="name-txt-rooms" placeholder="#">
-                <label for="name-txt-rooms">Nombre</label>
-            </div>
-            <div class="form-group">
-                <label class="form-label mt-4">Sede</label>
-                <select class="form-select" id="campus-txt-rooms">
-                    <option>-P</option>
-                    <option>-A</option>
-                    <option>-M</option>
-                    <option>-N</option>
-                    <option>-C</option>
-                </select>
-            </div>
-            <div class="form-floating">
-                <input class="form-control" type="number" id="capacity-txt-rooms" placeholder="#">
-                <label for="capacity-txt-rooms">Capacidad</label>
-            </div>
-            <div class="form-group">
-                <label class="form-label mt-4">Equipamiento</label>
-                <select class="form-select" id="equitment-txt-rooms">
-                    <option>ALLNOC</option>
-                    <option>LAB</option>
-                    <option>SCA</option>
-                    <option>SCNP</option>
-                    <option>SCP</option>
-                    <option>SN</option>
-                    <option>SS</option>
-                </select>
-            </div>
-            <button type="submit" onclick="registrarRoom()">Guardar</button>
-        </form>
+<div class="container-all-crud-room">
+    <div class="container-input-search-room">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" id="input-search-room" onkeyup="filterRoom()">
     </div>
+    <div class="main-container-crud-room" id="Registrar-salones">
+        <div class="container-form-crud-room">
+            <h2>Registrar Salón</h2>
+            <form>
+                <div class="form-floating">
+                    <input class="form-control" type="text" id="name-txt-rooms" placeholder="#">
+                    <label for="name-txt-rooms">Nombre</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label mt-4">Sede</label>
+                    <select class="form-select" id="campus-txt-rooms">
+                        <option>-P</option>
+                        <option>-A</option>
+                        <option>-M</option>
+                        <option>-N</option>
+                        <option>-C</option>
+                    </select>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" type="number" id="capacity-txt-rooms" placeholder="#">
+                    <label for="capacity-txt-rooms">Capacidad</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label mt-4">Equipamiento</label>
+                    <select class="form-select" id="equitment-txt-rooms">
+                        <option>ALLNOC</option>
+                        <option>LAB</option>
+                        <option>SCA</option>
+                        <option>SCNP</option>
+                        <option>SCP</option>
+                        <option>SN</option>
+                        <option>SS</option>
+                    </select>
+                </div>
+                <button type="submit" onclick="registrarRoom()">Guardar</button>
+            </form>
+        </div>
 
-    <div class="container-table-crud-room">
-        <table class="table table-hover">
-            <thead>
-            <tr class="table-primary">
-                <th scope="col">Nombre</th>
-                <th scope="col">Sede</th>
-                <th scope="col">Capacidad</th>
-                <th scope="col">Equipamiento</th>
-                <th scope="col">Active</th>
-            </tr>
-            </thead>
-            <tbody id="rooms-content">
-            </tbody>
-        </table>
+        <div class="container-table-crud-room">
+            <table class="table table-hover">
+                <thead>
+                <tr class="table-primary">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Sede</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Equipamiento</th>
+                    <th scope="col">Active</th>
+                </tr>
+                </thead>
+                <tbody id="rooms-content">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
 
