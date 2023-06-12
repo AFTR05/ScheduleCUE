@@ -5,6 +5,7 @@ import co.edu.cue.nucleo.nuclearProyect.domain.enums.TypeAdmin;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminUpdateInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.AdminMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.AdminService;
 import de.mkammerer.argon2.Argon2;
@@ -69,14 +70,12 @@ public class AdminServiceImpl implements AdminService {
          * Actualiza un administrador existente.
          *
          * @param admin    Objeto AdminRequestDTO que contiene los detalles actualizados del administrador.
-         * @param password Contraseña requerida para realizar la actualización.
          * @return Objeto AdminRequestDTO que representa al administrador actualizado.
          */
 
     @Override
-    public AdminRequestDTO updateAdmin(AdminRequestDTO admin, String password) {
-        Administrator a=mapper.mapToEntity(admin);
-        a.setPassword(password);
-        return mapper.mapToDTO(objectDao.update(admin.id(),a));
+    public AdminRequestDTO updateAdmin(AdminUpdateInterfaceDTO admin) {
+        Administrator a=objectDao.byId(admin.id());
+        return mapper.mapToDTO(objectDao.update(admin.newPassword(),a));
     }
 }

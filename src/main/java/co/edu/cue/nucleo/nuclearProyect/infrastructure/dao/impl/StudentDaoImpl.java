@@ -48,8 +48,10 @@ public class StudentDaoImpl implements ObjectDao<Student> {
     @Override
     public Student update(String password, Student s) {
         Student student=entityManager.find(Student.class, s.getId());
+        Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash=argon2.hash(1,1024,1,password);
+        student.setPassword(hash);
         student.setName(s.getName());
-        student.setPassword(password);
         student.setEmail(s.getEmail());
         student.setOwnSemester(s.getOwnSemester());
         student.setId(s.getId());

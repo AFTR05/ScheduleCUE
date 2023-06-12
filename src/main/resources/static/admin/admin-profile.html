@@ -1,21 +1,43 @@
-<div class="profile-container">
-    <div class="profile-header">
-        <h2>Modificar Perfil</h2>
+<div id="no-disponibility-profile">
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Perfil</h2>
+        </div>
+        <div class="profile-icon"></div>
+        <form>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username-txt-admin-profile" readonly="">
+                <label for="username-txt-admin-profile">Nombre</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email-txt-admin-profile" readonly="">
+                <label for="email-txt-admin-profile">Correo electrónico</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="type-txt-admin-profile" readonly="">
+                <label for="type-txt-admin-profile">Tipo de administrador</label>
+            </div>
+            <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
+        </form>
     </div>
-    <div class="profile-icon"></div>
-    <form>
-        <div class="form-floating">
-            <input type="text" class="form-control" id="username-txt-admin-profile">
-            <label for="username-txt-admin-profile">Nombre</label>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Cambio de contraseña</h2>
         </div>
-        <div class="form-floating">
-            <input type="email" class="form-control" id="email-txt-admin-profile">
-            <label for="email-txt-admin-profile">Correo electrónico</label>
-        </div>
-        <div class="form-floating">
-            <input type="text" class="form-control" id="type-txt-admin-profile">
-            <label for="type-txt-admin-profile">Tipo de administrador</label>
-        </div>
-        <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
-    </form>
+        <form>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="actual-password-txt-admin">
+                <label for="actual-password-txt-admin">Contraseña actual</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="new-password-txt-admin">
+                <label for="new-password-txt-admin">Contraseña nueva</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="confirm-password-txt-admin">
+                <label for="confirm-password-txt-admin">Confirmar contraseña nueva</label>
+            </div>
+            <button type="submit" id="change-button" onclick="changePasswordAdmin()" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
 </div>

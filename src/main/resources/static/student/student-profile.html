@@ -1,17 +1,39 @@
+<div id="no-disponibility-profile">
 <div class="profile-container">
     <div class="profile-header">
-        <h2>Modificar Perfil</h2>
+        <h2>Perfil</h2>
     </div>
     <div class="profile-icon"></div>
     <form>
         <div class="form-floating">
-            <input type="text" class="form-control" id="username">
-            <label for="username">Nombre</label>
+            <input type="text" class="form-control" id="username-txt-profile-student" readonly="">
+            <label for="username-txt-profile-student">Nombre</label>
         </div>
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput">
-            <label for="floatingInput">Correo electrónico</label>
+            <input type="email" class="form-control" id="email-txt-profile-student" readonly="">
+            <label for="email-txt-profile-student">Correo electrónico</label>
         </div>
         <button type="submit" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
     </form>
+</div>
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>Cambio de contraseña</h2>
+    </div>
+    <form>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="actual-password-txt-student">
+            <label for="actual-password-txt-student">Contraseña actual</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="new-password-txt-student">
+            <label for="new-password-txt-student">Contraseña nueva</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="confirm-password-txt-student">
+            <label for="confirm-password-txt-student">Confirmar contraseña nueva</label>
+        </div>
+        <button type="submit" id="change-button" onclick="changePasswordStudent()" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
 </div>

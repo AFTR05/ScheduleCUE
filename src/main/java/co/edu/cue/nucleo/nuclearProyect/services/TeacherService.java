@@ -1,6 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.services;
 
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ public interface TeacherService {
 
     TeacherRequestDTO getOneTeacher(String id);
 
-    TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password);
+    TeacherRequestDTO updateTeacher(TeacherUpdateInterfaceDTO teacherUpdateInterfaceDTO);
 }

@@ -17,6 +17,21 @@ async function registrarProfesores() {
     navigate("admin-teachers")
 }
 
+async function changePasswordAdmin(){
+    let data = {};
+    data.id=localStorage.id
+    data.actualPassword = document.getElementById('actual-password-txt-admin').value;
+    data.newPassword=document.getElementById('confirm-password-txt-admin').value;
+    const request = await fetch('admin_ad/update', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    navigate("admin-profile")
+}
 async function registrarAdministrador() {
     let data = {};
     data.id=document.getElementById('id-txt-admins').value;
