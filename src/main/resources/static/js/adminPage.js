@@ -225,10 +225,10 @@ async function getAdministrator(){
 function insertHourAndDays(){
     var contenidoPila = ()=>{
         let content = "";
-        let arrayHoras = ["6 am","7 am","8 am" ,"9 am ",
-            "10 am","11 am","12 pm","1 pm "," 2pm "," 3 pm ",
-            "4 pm "," 5 pm "," 6 pm "," 7 pm "," 8 pm ",
-            "9 pm"," 10 pm ","11 pm"]
+        let arrayHoras = ["6:00","7:00","8:00" ,"9:00",
+            "10:00","11:00","12:00","13:00"," 14:00"," 15:00",
+            "16:00"," 17:00"," 18:00"," 19:00"," 20:00",
+            "21:00"," 22:00","23:00"]
         for(let i=0;i<arrayHoras.length;i++){
             content += `<tr class="tr-body">
                  <th>`+arrayHoras[i]+`</th>
