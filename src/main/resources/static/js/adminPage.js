@@ -232,13 +232,13 @@ function insertHourAndDays(){
         for(let i=0;i<arrayHoras.length;i++){
             content += `<tr class="tr-body">
                  <th>`+arrayHoras[i]+`</th>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
-                 <td onclick="showCard(event)">Mat</td>
+                 <td id="Lun-${arrayHoras[i]}-${arrayHoras[i+1]}" onclick="showCard(event)">Mat</td>
+                 <td id="Mar-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
+                 <td id="Mie-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
+                 <td id="Jue-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
+                 <td id="Vie-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
+                 <td id="Sab-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
+                 <td id="Dom-${arrayHoras[i]}-${arrayHoras[i+1]}"  onclick="showCard(event)">Mat</td>
                </tr>
    `
         }
