@@ -25,3 +25,8 @@ document.getElementById("teacher-profile").onclick = function() {
 document.getElementById("teacher-schedule").onclick = function() {
     navigate('teacher-schedule');
 };
+
+
+
+
+

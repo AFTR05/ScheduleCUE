@@ -1,3 +1,13 @@
+var domV;
+var overlay;
+var weekContent
+var tablaContenido;
+const formatoCabecera = "MMMM D"
+const formatoBD = "YYYY-MM-DD"
+var fechaComodin;
+var inicioSemana;
+var finalSemana;
+
 class dom{
     constructor(td){
         this.td = td;
@@ -7,38 +17,59 @@ class dom{
         return this.td;
     }
 }
-
-const btnClose = document.getElementById('cerrarPopup');
-var overlay = document.getElementById('overlay');
-var dataCourse = document.getElementById('dataCourse');
-var dataTeachers = document.getElementById('dataTeachers');
-const btnEdit = document.getElementById('btn-edit');
-var domV = null;
-
-const edit = ()=>{
-    let textDataCourse = dataCourse.value;
-    let textDataTeacher = dataTeachers.value;
-    let message = textDataCourse + " "+ textDataTeacher;
-    let td = domV.getTd();
-    td.innerHTML = message;
+function showCard(e){
+    overlay = document.getElementById('overlay');
+    let td;
+    td = e.target;
+    domV = new dom(td);
+    overlay.classList.add('active');
+}
+function closePopUp(){
+    overlay.classList.remove('active');
 }
 
-document.querySelectorAll('.tr-body td').
-forEach(td=>{
-    td.addEventListener('click',(e)=>{
-        e.preventDefault()
-        td = e.target;
-        domV = new dom(td);
-        overlay.classList.add('active');
-    })
-})
+function setWeek(){
+    weekContent =document.getElementById('nameWeek');
+    fechaComodin = moment();
+    inicioSemana = getInicioSemana(fechaComodin);
+    finalSemana = getFinalSemana(fechaComodin);
+    weekContent.innerText =  content(inicioSemana,finalSemana,formatoCabecera);
+}
 
-btnClose.addEventListener('click',e=>{
-    overlay.classList.remove('active');
-})
+function getInicioSemana(fechaComodin){
+    let fechaActualClone = fechaComodin.clone();
+    return fechaActualClone.startOf('week');
+}
 
-btnEdit.addEventListener('click',edit);
+function getFinalSemana(fechaComodin){
+    let fechaActualClone = fechaComodin.clone();
+    return fechaActualClone.endOf('week');
+}
 
-function getTd(td){
-    console.log(td);
+function content(inicioSemana,finalSemana,formatoCabecera){
+    let semanaInicio = inicioSemana.clone().format(formatoCabecera)
+    let semanaFinal = finalSemana.clone().format(formatoCabecera)
+    return semanaInicio+" / "+semanaFinal
+}
+
+function backArrow(){
+    LessWeek();
+}
+
+function nextArrow(){
+    addWeek();
+}
+
+function addWeek(){
+    fechaComodin.add(1,'weeks');
+    inicioSemana = getInicioSemana(fechaComodin);
+    finalSemana = getFinalSemana(fechaComodin);
+    weekContent.innerText =  content(inicioSemana,finalSemana,formatoCabecera);
+}
+
+function LessWeek(){
+    fechaComodin.subtract(1,'weeks');
+    inicioSemana = getInicioSemana(fechaComodin);
+    finalSemana = getFinalSemana(fechaComodin)
+    weekContent.innerText =  content(inicioSemana,finalSemana,formatoCabecera);
 }

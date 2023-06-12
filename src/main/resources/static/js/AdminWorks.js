@@ -88,3 +88,51 @@ async function registrarSubject() {
     });
     navigate("admin-subjects")
 }
+
+function deleleF(element,event){
+    let id;
+    switch (element){
+        case 'teacher':
+             id = event.target.parentNode.parentNode.children[0].innerHTML;
+             deleteTeacher(id);
+            break
+        case 'student':
+             id = event.target.parentNode.parentNode.children[0].innerHTML;
+             deleteStudent(id);
+            break
+        default:
+            break;
+    }
+}
+
+function updateF(element,event) {
+    let id;
+    switch (element) {
+        case 'teacher':
+            id = event.target.parentNode.parentNode.children[0].innerHTML;
+            updateTeacher(id);
+            break
+        case 'student':
+            id = event.target.parentNode.parentNode.children[0].innerHTML;
+            updateStudent(id);
+            break
+        default:
+            break;
+    }
+}
+
+function deleteTeacher(id){
+
+}
+
+function updateTeacher(id){
+    console.log(id)
+}
+
+function deleteStudent(id){
+
+}
+
+function  updateStudent(id){
+
+}
