@@ -1,6 +1,6 @@
 #Gestion-cursos {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -14,6 +14,10 @@
 
 .container-form-crud-room h2 {
     margin-top: 0;
+}
+#add-content-students-course{
+    display: flex;
+    flex-direction: row;
 }
 
 .container-form-crud-room form {
@@ -50,11 +54,17 @@
 }
 
 .container-table-crud-room {
-    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 30px;
     gap: 20px;
-    margin-top: 20px;
+}
+.container-table-view {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .table {
@@ -62,6 +72,18 @@
     border-collapse: collapse;
 }
 
+#organizate-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#select-content-course{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .table th,
 .table td {
     padding: 10px;
