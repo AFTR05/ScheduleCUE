@@ -43,6 +43,4 @@ public class Course {
     @ManyToOne
     @JoinColumn(name="program_id")
     private Program program;
-
-
 }

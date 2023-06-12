@@ -1,1 +1,104 @@
-<h1>Course gestion</h1>
+<div id="Gestion-cursos" class="main-container-crud-room">
+    <div class="container-form-crud-room">
+        <h2>Gestión de cursos</h2>
+        <form>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="nombreCurso" placeholder="#">
+                <label for="nombreCurso">Nombre del Curso</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" class="form-control" id="duracionCurso" placeholder="#">
+                <label for="duracionCurso">Duración del Curso</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="profesorCurso" placeholder="#">
+                <label for="profesorCurso">Profesor</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="materiaCurso" placeholder="#">
+                <label for="materiaCurso">Materia</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="equipamientoCurso" placeholder="#">
+                <label for="equipamientoCurso">Equipamiento</label>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Programa</label>
+                <select class="form-select" id="programaCurso">
+                    <option>Administracion de empresas</option>
+                    <option>Ingeniería civil</option>
+                    <option>Derecho</option>
+                    <option>Enfermeria</option>
+                    <option>Ingeniería industrial</option>
+                    <option>Marketing digital y comunicacion estrategica</option>
+                    <option>Medicina</option>
+                    <option>Psicologia</option>
+                    <option>Ingeniería de software </option>
+                    <option>Tecnologia en gestion del turismo cultural y de naturaleza</option>
+                    <option>Medicina veterinaria y zootecnia</option>
+                </select>
+            </div>
+            <div id="submit-btn">
+                <button type="submit" id="submit-button" onclick="registrarCurso()" class="btn btn-primary">Guardar Cambios</button>
+                <button type="button" id="generar-horario-button" onclick="generarHorario()" class="btn btn-primary">Generar Horario</button>
+            </div>
+        </form>
+    </div>
+    <div class="container-table-crud-room">
+        <table id="tablaCursos" class="table table-hover">
+            <thead>
+            <tr class="table-primary">
+                <th scope="col">Nombre del Curso</th>
+                <th scope="col">Duración del Curso</th>
+                <th scope="col">Profesor</th>
+                <th scope="col">Materia</th>
+                <th scope="col">Equipamiento</th>
+                <th scope="col">Programa</th>
+                <th scope="col">Active</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="container-table-crud-room">
+        <h2>Todos los estudiantes</h2>
+        <table id="tablaTodosEstudiantes" class="table table-hover">
+            <thead>
+            <tr class="table-primary">
+                <th scope="col">Numero de identificación</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Programa</th>
+                <th scope="col">Semestre</th>
+                <th scope="col">Modalidad</th>
+                <th scope="col">Active</th>
+            </tr>
+            </thead>
+            <tbody id="todos-estudiantes-content">
+            </tbody>
+        </table>
+    </div>
+    <div class="container-table-crud-room">
+        <h2>Estudiantes del curso</h2>
+        <table id="tablaEstudiantesCurso" class="table table-hover">
+            <thead>
+            <tr class="table-primary">
+                <th scope="col">Numero de identificación</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Programa</th>
+                <th scope="col">Semestre</th>
+                <th scope="col">Modalidad</th>
+                <th scope="col">Active</th>
+            </tr>
+            </thead>
+            <tbody id="estudiantes-curso-content">
+            </tbody>
+        </table>
+        <div id="agregar-estudiante-btn">
+            <button type="button" id="agregar-estudiante-button" onclick="agregarEstudiante()" class="btn btn-primary">Agregar Estudiante</button>
+        </div>
+    </div>
+</div>
+
+
+
