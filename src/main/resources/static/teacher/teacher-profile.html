@@ -22,18 +22,64 @@
         </div>
         <form>
             <div class="form-floating">
-                <input type="password" class="form-control" id="actual-password-txt-teacher">
+                <input type="password" class="form-control" id="actual-password-txt-teacher" placeholder="#">
                 <label for="actual-password-txt-teacher">Contraseña actual</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="new-password-txt-teacher">
+                <input type="password" class="form-control" id="new-password-txt-teacher" placeholder="#">
                 <label for="new-password-txt-teacher">Contraseña nueva</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="confirm-password-txt-teacher">
+                <input type="password" class="form-control" id="confirm-password-txt-teacher" placeholder="#">
                 <label for="confirm-password-txt-teacher">Confirmar contraseña nueva</label>
             </div>
             <button type="submit" onclick="changePasswordTeacher()" id="change-button" class="btn btn-primary">Guardar Cambios</button>
         </form>
     </div>
+</div>
+<div id="total-disponibility">
+<div class="disponibility-container">
+    <div>
+        <div class="profile-header">
+            <h2>Disponibilidad</h2>
+        </div>
+    </div>
+    <div id="content-disponibility">
+        <div id="form-disponibility">
+            <div class="form-floating">
+                <select class="form-select" id="day-txt-disponibility">
+                    <option>Lunes</option>
+                    <option>Martes</option>
+                    <option>Miércoles</option>
+                    <option>Jueves</option>
+                    <option>Viernes</option>
+                    <option>Sábado</option>
+                </select>
+                <label for="day-txt-disponibility">Dia</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" min=6 max=22 class="form-control" id="begin-txt-disponibility" placeholder="#">
+                <label for="begin-txt-disponibility">Inicio</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" min=6 max=22 class="form-control" id="end-txt-disponibility" placeholder="#">
+                <label for="end-txt-disponibility">Fin</label>
+            </div>
+            <button type="submit" id="disponibility-button" onclick="createHourInterval()" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+        <div id="table-disponibility">
+            <table id="tablaEstudiantes" class="table table-hover">
+                <thead>
+                <tr class="table-primary">
+                    <th scope="col">Dia</th>
+                    <th scope="col">Inicio</th>
+                    <th scope="col">Fin</th>
+                </tr>
+                </thead>
+                <tbody id="disponibility-content">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </div>

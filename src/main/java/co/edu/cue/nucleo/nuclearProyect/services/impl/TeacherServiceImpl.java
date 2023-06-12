@@ -1,7 +1,13 @@
 package co.edu.cue.nucleo.nuclearProyect.services.impl;
 
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.HourInterval;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.HourIntervalDao;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.HourTeacherImpl;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.SearchEntity;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.HourIntervalDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.HourIntervalInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.TeacherMapper;
@@ -11,6 +17,8 @@ import de.mkammerer.argon2.Argon2Factory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,6 +26,8 @@ import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService {
     private final ObjectDao<Teacher> objectDao;
+    private final HourTeacherImpl hourTeacherDao;
+    private final HourIntervalDao hourIntervalDao;
     private final TeacherMapper mapper;
 
         /**
@@ -75,4 +85,23 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher t=objectDao.byId(teacher.id());
         return mapper.mapToDTO(objectDao.update(teacher.newPassword(), t));
     }
+
+    @Override
+    public List<HourIntervalDTO> getDisponibility(String id){
+        TeacherRequestDTO teacher=getOneTeacher(id);
+        List<HourIntervalDTO> hidtos=new ArrayList<>();
+        for (HourInterval h:teacher.availability()) {
+            hidtos.add(new HourIntervalDTO(h.getDay(),h.getIntervalBegin().toString(),h.getIntervalEnd().toString()));
+        }
+        return hidtos;
+    }
+
+    @Override
+    public HourIntervalDTO addDisponibility(HourIntervalInterfaceDTO hourIntervalInterfaceDTO){
+        HourInterval hi=SearchEntity.getHourInterval(hourIntervalInterfaceDTO.day(), LocalTime.of(hourIntervalInterfaceDTO.begin(),0)
+                , LocalTime.of(hourIntervalInterfaceDTO.end(),0),hourIntervalDao);
+        hourTeacherDao.createWithAtt(hi,objectDao.byId(hourIntervalInterfaceDTO.id()));
+        return new HourIntervalDTO(hi.getDay(),hi.getIntervalBegin().toString(),hi.getIntervalEnd().toString());
+    }
+
 }
