@@ -2,9 +2,11 @@ package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateTeacherRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,14 @@ public class TeacherController {
     @PutMapping("/update")
     public TeacherRequestDTO updateTeacher(@RequestBody
                                            @Valid
-                                           UpdateTeacherRequestDTO updateTeacher){
-        return service.updateTeacher(updateTeacher.teacherRequestDTO(),updateTeacher.password());
+                                           TeacherUpdateInterfaceDTO updateTeacher){
+        return service.updateTeacher(updateTeacher);
+    }
+
+    @GetMapping("/get-by-id/{id}")
+    public TeacherRequestDTO getById(@PathVariable
+                                         @Size(max = 20)
+                                         String id){
+        return service.getOneTeacher(id);
     }
 }

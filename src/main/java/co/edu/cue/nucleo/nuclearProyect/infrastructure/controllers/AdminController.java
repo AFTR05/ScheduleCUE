@@ -1,9 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminUpdateDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.*;
 import co.edu.cue.nucleo.nuclearProyect.services.AdminService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -34,9 +31,8 @@ public class AdminController {
     @PutMapping("/update")
     public AdminRequestDTO updateAdmin(@RequestBody
                                        @Valid
-                                       AdminUpdateDTO adminUpdateDTO){
-        return service.updateAdmin(adminUpdateDTO.adminRequestDTO(), adminUpdateDTO.password());}
-
+                                       AdminUpdateInterfaceDTO adminUpdateDTO){
+        return service.updateAdmin(adminUpdateDTO);}
 }
 
 

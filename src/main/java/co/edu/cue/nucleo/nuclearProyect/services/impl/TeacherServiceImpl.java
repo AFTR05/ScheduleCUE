@@ -3,8 +3,11 @@ package co.edu.cue.nucleo.nuclearProyect.services.impl;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.TeacherMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +43,9 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherRequestDTO createTeacher(TeacherRequestDTO teacher) {
         Teacher teacherAb=mapper.mapToEntity(teacher);
-        teacherAb.setPassword(teacher.id());
+        Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash=argon2.hash(1,1024,1,teacherAb.getId());
+        teacherAb.setPassword(hash);
         return mapper.mapToDTO(
                 objectDao.save(teacherAb
                 ));
@@ -63,12 +68,11 @@ public class TeacherServiceImpl implements TeacherService {
          * Actualiza un profesor existente.
          *
          * @param teacher  Objeto TeacherRequestDTO que contiene los detalles actualizados del profesor.
-         * @param password Contraseña requerida para realizar la actualización.
          * @return Objeto TeacherRequestDTO que representa al profesor actualizado.
          */
     @Override
-    public TeacherRequestDTO updateTeacher(TeacherRequestDTO teacher, String password) {
-        Teacher t=mapper.mapToEntity(teacher);
-        return mapper.mapToDTO(objectDao.update(password,t));
+    public TeacherRequestDTO updateTeacher(TeacherUpdateInterfaceDTO teacher) {
+        Teacher t=objectDao.byId(teacher.id());
+        return mapper.mapToDTO(objectDao.update(teacher.newPassword(), t));
     }
 }

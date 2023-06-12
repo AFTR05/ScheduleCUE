@@ -3,6 +3,7 @@ package co.edu.cue.nucleo.nuclearProyect.services;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminUpdateDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.AdminUpdateInterfaceDTO;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface AdminService {
     AdminRequestDTO createAdmin(AdminInterfaceDTO admin);
 
 
-    AdminRequestDTO updateAdmin(AdminRequestDTO admin, String password);
+    AdminRequestDTO updateAdmin(AdminUpdateInterfaceDTO admin);
 }

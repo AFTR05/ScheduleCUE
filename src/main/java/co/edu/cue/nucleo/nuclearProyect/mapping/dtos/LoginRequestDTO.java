@@ -1,4 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.mapping.dtos;
 
-public record LoginRequestDTO(String id, String password) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record LoginRequestDTO(@JsonProperty("id")
+                              String id, @JsonProperty("password")
+                                            String password) {
 }
