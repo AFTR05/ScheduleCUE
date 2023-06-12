@@ -31,6 +31,10 @@ function navigate(page) {
         success: function(response) {
             $('#content').html(response);
             switch (page) {
+                case 'admin-schedules':
+                    insertHourAndDays();
+                    setWeek();
+                    break;
                 case 'admin-students':
                      getStudents();
                     break;
@@ -139,15 +143,30 @@ async function getTeacher(){
         headers: getHeaders()
     });
     const teachers = await request.json();
-    console.log(teachers);
     let listadoHtml = '';
     for (let teacher of teachers){
-        let teacherHtml = '<tr><td>'+teacher.id+'</td><td>'+teacher.name+'</td><td>'
-            + teacher.email + '</td><td>'+teacher.active+'</td></tr>';
-        console.log(teacherHtml);
+        /*
+        let teacherHtml = '<tr>' +
+            '<td>'+teacher.id+'</td>' +
+            '<td>'+teacher.name+'</td>' +
+            '<td>' + teacher.email + '</td>' +
+            '<td>'+teacher.active+'</td>' +
+            '</tr>';
+
+         */
+
+        let teacherHtml = `<tr>
+             <td>`+teacher.id+`</td>
+             <td><input type="text" value="${teacher.name}"></td>
+             <td><input type="text" value="${teacher.email}"></td>
+             <td><input type="text" value="${teacher.active}"></td>
+             <td>
+             <span class="material-symbols-outlined" onclick="deleleF('teacher',event)">delete</span>
+             <span class="material-symbols-outlined" onclick="updateF('teacher',event)">save</span>
+             </td>
+             </tr>`
         listadoHtml += teacherHtml;
     }
-    console.log(listadoHtml);
     document.querySelector('#teachers-content').innerHTML = listadoHtml;
 }
 
@@ -205,6 +224,30 @@ async function getAdministrator(){
     document.querySelector('#admins-content').innerHTML = listadoHtml;
 }
 
+function insertHourAndDays(){
+    var contenidoPila = ()=>{
+        let content = "";
+        let arrayHoras = ["6 am","7 am","8 am" ,"9 am ",
+            "10 am","11 am","12 pm","1 pm "," 2pm "," 3 pm ",
+            "4 pm "," 5 pm "," 6 pm "," 7 pm "," 8 pm ",
+            "9 pm"," 10 pm ","11 pm"]
+        for(let i=0;i<arrayHoras.length;i++){
+            content += `<tr class="tr-body">
+                 <th>`+arrayHoras[i]+`</th>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+                 <td onclick="showCard(event)">Mat</td>
+               </tr>
+   `
+        }
+        return content;
+    }
+    document.querySelector('#table-body').innerHTML = contenidoPila();
+}
 function getHeaders() {
     return {
         'Accept': 'application/json',

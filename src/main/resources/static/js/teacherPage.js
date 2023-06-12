@@ -31,6 +31,11 @@ document.getElementById("teacher-schedule").onclick = function() {
     navigate('teacher-schedule');
 };
 
+
+
+
+
+
 async function justTeacher(id) {
     const url = `teacher_ad/get-by-id/${id}`;
     const response = await fetch(url, {
@@ -45,3 +50,4 @@ async function justTeacher(id) {
     document.querySelector('#username-txt-profile-teacher').value=teacher.name;
     console.log(teacher);
 }
+
