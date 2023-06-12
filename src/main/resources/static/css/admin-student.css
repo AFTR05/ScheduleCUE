@@ -47,7 +47,24 @@
 .container-form-crud-room button:hover {
     background-color: #0056b3;
 }
+.container-input-search-student{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
 
+.container-input-search-student input{
+    border: solid 1px #a9a8a8;
+    padding: 2px 2px;
+    border-radius: 3px;
+}
+
+.container-input-search-student input:hover{
+    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
+    outline: deepskyblue solid 1px;
+}
 .container-table-crud-room {
     width: 60%;
 }

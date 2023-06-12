@@ -52,6 +52,23 @@
     width: 60%;
 }
 
+.container-table-crud-admin {
+    width: 60%;
+}
+.container-input-search-admin{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+.container-input-search-admin input{
+    border: solid 1px #a9a8a8;
+    padding: 2px 2px;
+    border-radius: 3px;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;

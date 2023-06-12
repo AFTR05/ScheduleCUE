@@ -196,12 +196,15 @@
 }
 
 .container-popUp .container-button input{
+    width: 50%;
     font-size: 20px;
     border-radius: 3px 3px;
     border: none;
     padding: 5px;
     background-color: #291670;
     color: #fff;
+    text-align: center;
+
 }
 
 .form-group{

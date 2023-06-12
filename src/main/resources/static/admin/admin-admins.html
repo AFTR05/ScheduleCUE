@@ -1,48 +1,56 @@
-<div id="Gestion-administrativos" class="main-container-crud-room">
-  <div class="container-form-crud-room">
-    <h2>Gestión de administrativos</h2>
-    <form>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="id-txt-admins" placeholder="#">
-        <label for="id-txt-admins">Numero de identificación</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="username-txt-admins" placeholder="#">
-        <label for="username-txt-admins">Nombre</label>
-      </div>
-      <div class="form-floating">
-        <input type="email" class="form-control" id="email-txt-admins" placeholder="#">
-        <label for="email-txt-admins">Correo electrónico</label>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label mt-4">Tipo de administrador</label>
-        <select class="form-select" id="type-txt-admins">
-          <option>Decanatura</option>
-          <option>Coordinación de programas</option>
-          <option>Coordinación de laboratorios</option>
-        </select>
-      </div>
-
-      <div id="submit-btn">
-        <button type="submit" onclick="registrarAdministrador()" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
-      </div>
-    </form>
+<div class="container-all-management-admin">
+  <div class="container-input-search-admin">
+    <span class="material-symbols-outlined">search</span>
+    <input type="text" id="input-search-admin" onkeyup="filterAdmin()">
   </div>
+  <div id="Gestion-administrativos" class="main-container-crud-room">
+    <div class="container-form-crud-room">
+      <h2>Gestión de administrativos</h2>
+      <form>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="id-txt-admins" placeholder="#">
+          <label for="id-txt-admins">Numero de identificación</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="username-txt-admins" placeholder="#">
+          <label for="username-txt-admins">Nombre</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email-txt-admins" placeholder="#">
+          <label for="email-txt-admins">Correo electrónico</label>
+        </div>
 
-  <div class="container-table-crud-room">
-    <table class="table">
-      <thead>
-      <tr class="table-primary">
-        <th scope="col">Numero de identificación</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Email</th>
-        <th scope="col">Tipo de administrativo</th>
-        <th scope="col">Activo</th>
-      </tr>
-      </thead>
-      <tbody id="admins-content">
-      </tbody>
-    </table>
+        <div class="form-group">
+          <label class="form-label mt-4">Tipo de administrador</label>
+          <select class="form-select" id="type-txt-admins">
+            <option>Decanatura</option>
+            <option>Coordinación de programas</option>
+            <option>Coordinación de laboratorios</option>
+          </select>
+        </div>
+
+        <div id="submit-btn">
+          <button type="submit" onclick="registrarAdministrador()" id="submit-button" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container-table-crud-room">
+      <table class="table">
+        <thead>
+        <tr class="table-primary">
+          <th scope="col">Numero de identificación</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Tipo de administrativo</th>
+          <th scope="col">Activo</th>
+        </tr>
+        </thead>
+        <tbody id="admins-content">
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+
