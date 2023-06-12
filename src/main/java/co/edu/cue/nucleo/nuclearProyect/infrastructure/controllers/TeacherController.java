@@ -1,9 +1,8 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.HourInterval;
 import co.edu.cue.nucleo.nuclearProyect.domain.entities.Teacher;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateTeacherRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.*;
 import co.edu.cue.nucleo.nuclearProyect.services.TeacherService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -21,6 +20,12 @@ public class TeacherController {
     @GetMapping("/get-all")
     public List<TeacherRequestDTO> getAllTeachers(){
         return service.getAllTeachers();
+    }
+    @GetMapping("/disponibility/{id}")
+    public List<HourIntervalDTO> getDisponibility(@PathVariable
+                                                   @Size(max = 20)
+                                                   String id){
+        return service.getDisponibility(id);
     }
     @PostMapping("/create")
     public TeacherRequestDTO createTeacher(@RequestBody
@@ -40,5 +45,11 @@ public class TeacherController {
                                          @Size(max = 20)
                                          String id){
         return service.getOneTeacher(id);
+    }
+    @PostMapping("/add-hour-interval")
+    public HourIntervalDTO createHourInterval(@RequestBody
+                                              @Valid
+                                              HourIntervalInterfaceDTO hourIntervalInterfaceDTO){
+        return service.addDisponibility(hourIntervalInterfaceDTO);
     }
 }

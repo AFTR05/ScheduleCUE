@@ -13,3 +13,20 @@ async function changePasswordTeacher(){
     });
     navigate("teacher-profile")
 }
+
+async function createHourInterval(){
+    let data = {};
+    data.begin=document.getElementById('begin-txt-disponibility').value;
+    data.end=document.getElementById('end-txt-disponibility').value;
+    data.day=document.getElementById('day-txt-disponibility').value;
+    data.id=localStorage.id;
+    const request = await fetch('teacher_ad/add-hour-interval', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    navigate("teacher-profile")
+}

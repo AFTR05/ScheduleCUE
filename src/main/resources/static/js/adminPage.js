@@ -103,10 +103,7 @@ async function justAdmin(id) {
     const url = `admin_ad/get-by-id/${id}`;
     const response = await fetch(url, {
         method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     });
         const admin = await response.json();
         document.querySelector('#email-txt-admin-profile').value=admin.email;
@@ -205,10 +202,3 @@ async function getAdministrator(){
     document.querySelector('#admins-content').innerHTML = listadoHtml;
 }
 
-function getHeaders() {
-    return {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': localStorage.token
-    };
-}

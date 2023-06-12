@@ -14,6 +14,7 @@ function navigate(page) {
             switch (page) {
                 case 'teacher-profile':
                     justTeacher(localStorage.id);
+                    getDisponibility(localStorage.id)
                     break;
             }
         },
@@ -35,13 +36,35 @@ async function justTeacher(id) {
     const url = `teacher_ad/get-by-id/${id}`;
     const response = await fetch(url, {
         method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     });
     const teacher = await response.json();
     document.querySelector('#email-txt-profile-teacher').value=teacher.email;
     document.querySelector('#username-txt-profile-teacher').value=teacher.name;
     console.log(teacher);
+}
+
+async function getDisponibility(id) {
+    const request = await fetch(`teacher_ad/disponibility/${id}`, {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const disponibilities = await request.json();
+    console.log(disponibilities);
+    let listadoHtml = '';
+    for (let disponibility of disponibilities){
+        let disponibilityHtml = '<tr><td>'+disponibility.day+'</td><td>'+disponibility.begin+'</td><td>' + disponibility.end+'</td></tr>';
+        console.log(disponibilityHtml);
+        listadoHtml += disponibilityHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#disponibility-content').innerHTML = listadoHtml;
+}
+
+function getHeaders() {
+    return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.token
+    };
 }

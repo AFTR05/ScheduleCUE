@@ -1,5 +1,7 @@
 package co.edu.cue.nucleo.nuclearProyect.services;
 
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.HourIntervalDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.HourIntervalInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.TeacherUpdateInterfaceDTO;
 
@@ -12,4 +14,8 @@ public interface TeacherService {
     TeacherRequestDTO getOneTeacher(String id);
 
     TeacherRequestDTO updateTeacher(TeacherUpdateInterfaceDTO teacherUpdateInterfaceDTO);
+
+    List<HourIntervalDTO> getDisponibility(String id);
+
+    HourIntervalDTO addDisponibility(HourIntervalInterfaceDTO hourIntervalInterfaceDTO);
 }
