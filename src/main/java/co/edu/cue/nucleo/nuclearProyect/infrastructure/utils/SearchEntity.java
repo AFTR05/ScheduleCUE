@@ -1,16 +1,18 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.utils;
 
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.HourInterval;
-import co.edu.cue.nucleo.nuclearProyect.domain.entities.ProgramSemester;
+import co.edu.cue.nucleo.nuclearProyect.domain.entities.*;
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.Modality;
 import co.edu.cue.nucleo.nuclearProyect.domain.enums.Program;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.HourIntervalDao;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.HourRoomDao;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.ObjectDao;
-import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.HourTeacherImpl;
+import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.DurationDaoImpl;
 import co.edu.cue.nucleo.nuclearProyect.infrastructure.dao.impl.ProgramSemesterImpl;
-import lombok.AllArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 public class SearchEntity {
@@ -28,12 +30,43 @@ public class SearchEntity {
         return programSemesterDao.byProps(mod.getModality(),semester,pro.getName()).get();
     }
 
-    public static HourInterval getHourInterval(String day, LocalTime begin, LocalTime end,HourIntervalDao hourIntervalDao){
-        Optional<HourInterval> hi=hourIntervalDao.byProps(day,begin,end);
-        if (hi.isPresent()){
-            return hi.get();
+    public static Duration getDuration(String begin, String end, DurationDaoImpl durationDao){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate beginDate = LocalDate.parse(begin, formatter);
+        LocalDate endDate = LocalDate.parse(end, formatter);
+        Optional<Duration> ops=durationDao.byProps(beginDate,endDate);
+        if (ops.isPresent()){
+            return ops.get();
         }
-        hourIntervalDao.createWithNoID(day,begin.toString()+":00",end.toString()+":00");
-        return hourIntervalDao.byProps(day,begin,end).get();
+        durationDao.save(createByProps(beginDate,endDate));
+        return durationDao.byProps(beginDate,endDate).get();
     }
+
+    public static void createHourRooms(Course course, HourRoomDao hourRoomDao,HourIntervalDao hourIntervalDao){
+/*        course.getHourRoom().stream().forEach(r->{
+            HourInterval hi=getHourInterval(r.getHourInterval().getDay(),r.getHourInterval().getIntervalBegin()
+                    ,r.getHourInterval().getIntervalEnd(),hourIntervalDao);
+            r.setId(r.getHourInterval().getIntervalBegin()+"-"+r.getHourInterval().getIntervalEnd()+"-"+r.getRoom().getName()+"-"+course.getId());
+            hourRoomDao.createWithAtt(hi,r.getRoom(),course);
+        });*/
+        for (RoomHour r:course.getHourRoom()) {
+            HourInterval hi=getHourInterval(r.getHourInterval().getDay(),r.getHourInterval().getIntervalBegin()
+                    , r.getHourInterval().getIntervalEnd(),hourIntervalDao);
+            hourRoomDao.createWithAtt(hi,r.getRoom(),course);
+        }
+    }
+
+    public static Duration createByProps(LocalDate beginDate, LocalDate endDate){
+        String id=beginDate.toString()+"-"+endDate.toString();
+        return new Duration(id,beginDate,endDate);
+    }
+
+        public static HourInterval getHourInterval(String day, LocalTime begin, LocalTime end,HourIntervalDao hourIntervalDao){
+            Optional<HourInterval> hi=hourIntervalDao.byProps(day,begin,end);
+            if (hi.isPresent()){
+                return hi.get();
+            }
+            hourIntervalDao.createWithNoID(day,begin.toString()+":00",end.toString()+":00");
+            return hourIntervalDao.byProps(day,begin,end).get();
+        }
 }

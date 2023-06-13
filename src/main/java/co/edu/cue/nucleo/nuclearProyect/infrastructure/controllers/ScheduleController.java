@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/schedule_ad")
 public class ScheduleController {
     ScheduleService service;
-        @PutMapping("/create-schedule")
+    @PutMapping("/create-schedule")
     public List<CourseWithSchedule> createSchedule(){
         return service.createSchedule();
     }

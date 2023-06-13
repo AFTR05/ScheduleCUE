@@ -6,6 +6,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
+import org.hibernate.id.IdentifierGenerationException;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalTime;
@@ -26,7 +27,7 @@ public class HourIntervalDaoImpl implements HourIntervalDao {
             query.setParameter(3, end);
             query.setMaxResults(1);
             return Optional.of((HourInterval) query.getSingleResult());
-        }catch(NoResultException ex){
+        }catch(NoResultException | IdentifierGenerationException ex){
             return Optional.empty();
         }
     }

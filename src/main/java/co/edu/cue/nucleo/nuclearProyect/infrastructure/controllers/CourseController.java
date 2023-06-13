@@ -1,9 +1,6 @@
 package co.edu.cue.nucleo.nuclearProyect.infrastructure.controllers;
 
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.CourseRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.RoomRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateCourseRequestDTO;
-import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.UpdateRoomRequestDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.*;
 import co.edu.cue.nucleo.nuclearProyect.services.CourseService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -18,25 +15,43 @@ import java.util.List;
 public class CourseController {
     CourseService service;
     @GetMapping("/get-all")
-    public List<CourseRequestDTO> getAllRooms() {
+    public List<CourseRequestDTO> getAllCourse() {
         return service.getAllCourses();
     }
 
     @GetMapping("/get-by-name/{name}")
-    public CourseRequestDTO getRoomByName(@PathVariable
-                                        @Size(max = 20)
+    public CourseRequestDTO getCourseByName(@PathVariable
                                         String name) {
         return service.getOneCourse(name);
     }
 
+    @GetMapping("/get-students/{course}")
+    public List<StudentRequestDTO> getStudentsCourse(@PathVariable
+                                                         String course){
+        return service.getCourseStudents(course);
+    }
+
+    @GetMapping("/get-no-students/{course}")
+    public List<StudentRequestDTO> getStudentsNoCourse(@PathVariable
+                                                     String course){
+        return service.getCourseNoStudents(course);
+    }
+
+    @PutMapping("/add-student")
+    public CourseRequestDTO addStudent(@RequestBody
+                                           @Valid
+                                       AddStudentInterfaceDTO addStudentInterfaceDTO){
+        return service.addStudent(addStudentInterfaceDTO);
+    }
+
     @PostMapping("/create")
-    public CourseRequestDTO saveRoom(@RequestBody
+    public CourseRequestDTO saveCourse(@RequestBody
                                    @Valid
-                                   CourseRequestDTO course) {
+                                     CourseInterfaceDTO course) {
         return service.createCourse(course);
     }
     @PutMapping("/update")
-    public CourseRequestDTO updateRoom(@RequestBody
+    public CourseRequestDTO updateCourse(@RequestBody
                                      @Valid
                                        UpdateCourseRequestDTO updateRoomRequestDTO){
         return service.updateRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.courseRequestDTO());

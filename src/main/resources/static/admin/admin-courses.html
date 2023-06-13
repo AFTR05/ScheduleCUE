@@ -3,28 +3,40 @@
             <h2>Gestión de cursos</h2>
             <form>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="nombreCurso" placeholder="#">
-                    <label for="nombreCurso">Nombre del Curso</label>
+                    <input type="date" class="form-control" id="begin-txt-course" placeholder="#">
+                    <label for="begin-txt-course">Inicio del Curso</label>
                 </div>
                 <div class="form-floating">
-                    <input type="number" class="form-control" id="duracionCurso" placeholder="#">
-                    <label for="duracionCurso">Duración del Curso</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="profesorCurso" placeholder="#">
-                    <label for="profesorCurso">Profesor</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="materiaCurso" placeholder="#">
-                    <label for="materiaCurso">Materia</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="equipamientoCurso" placeholder="#">
-                    <label for="equipamientoCurso">Equipamiento</label>
+                    <input type="date" class="form-control" id="end-txt-course" placeholder="#">
+                    <label for="end-txt-course">Fin del Curso</label>
                 </div>
                 <div class="form-group">
-                    <label class="form-label mt-4">Programa</label>
-                    <select class="form-select" id="programaCurso">
+                    <label class="form-label mt-4" for="teacher-txt-course">Profesor</label>
+                    <select class="form-select" id="teacher-txt-course">
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label mt-4" for="subject-txt-course">Materia</label>
+                    <select class="form-select" id="subject-txt-course">
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label mt-4" for="equitment-txt-course">Equipamiento</label>
+                    <select class="form-select" id="equitment-txt-course">
+                        <option>ALLNOC</option>
+                        <option>LAB</option>
+                        <option>SCA</option>
+                        <option>SCNP</option>
+                        <option>SCP</option>
+                        <option>SN</option>
+                        <option>SS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label mt-4" for="program-txt-course">Programa</label>
+                    <select class="form-select" id="program-txt-course">
                         <option>Administracion de empresas</option>
                         <option>Ingeniería civil</option>
                         <option>Derecho</option>
@@ -39,8 +51,7 @@
                     </select>
                 </div>
                 <div id="submit-btn">
-                    <button type="submit" id="submit-button" onclick="registrarCurso()" class="btn btn-primary">Guardar Cambios</button>
-                    <button type="button" id="generar-horario-button" onclick="generarHorario()" class="btn btn-primary">Generar Horario</button>
+                    <button type="submit" id="submit-button" onclick="registerCourse()" class="btn btn-primary">Guardar Cambios</button>
                 </div>
             </form>
         </div>
@@ -48,40 +59,41 @@
             <table id="tablaCursos" class="table table-hover">
                 <thead>
                 <tr class="table-primary">
-                    <th scope="col">Nombre del Curso</th>
-                    <th scope="col">Duración del Curso</th>
+                    <th scope="col">Inicio de curso</th>
+                    <th scope="col">Fin de curso</th>
                     <th scope="col">Profesor</th>
                     <th scope="col">Materia</th>
                     <th scope="col">Equipamiento</th>
                     <th scope="col">Programa</th>
-                    <th scope="col">Active</th>
                 </tr>
                 </thead>
+                <tbody id="courses-content">
+
+                </tbody>
             </table>
         </div>
 </div>
 <hr>
+<div id="content-generator">
+<div id="hours-generator">
+    <div id="content-title-generator">
+        <h1>Generador de horarios</h1>
+    </div>
+    <button type="button" id="generar-horario-button" onclick="generateHours()" class="btn btn-primary">Generar Horario</button>
+</div>
+</div>
+<hr>
 <div id="add-content-students-course">
     <div id="select-content-course">
+        <h2>Seleccion de curso</h2>
         <div class="form-group">
             <label class="form-label mt-4">Curso</label>
-            <select class="form-select" id="select-course">
-                <option>Administracion de empresas</option>
-                <option>Ingeniería civil</option>
-                <option>Derecho</option>
-                <option>Enfermeria</option>
-                <option>Ingeniería industrial</option>
-                <option>Marketing digital y comunicacion estrategica</option>
-                <option>Medicina</option>
-                <option>Psicologia</option>
-                <option>Ingeniería de software </option>
-                <option>Tecnologia en gestion del turismo cultural y de naturaleza</option>
-                <option>Medicina veterinaria y zootecnia</option>
+            <select class="form-select" id="course-txt-course">
             </select>
         </div>
     </div>
     <div class="container-table-view">
-        <h2>Todos los estudiantes</h2>
+        <h2>Estudiantes no matriculados en el curso</h2>
         <table id="tablaTodosEstudiantes" class="table table-hover">
             <thead>
             <tr class="table-primary">
@@ -92,11 +104,16 @@
                 <th scope="col">Modalidad</th>
             </tr>
             </thead>
-            <tbody id="todos-estudiantes-content">
+            <tbody id="no-students-course-content">
             </tbody>
         </table>
+        <div class="form-group">
+            <label class="form-label mt-4">Seleccionar estudiante</label>
+            <select class="form-select" id="student-select-txt-course">
+            </select>
+        </div>
         <div id="agregar-estudiante-btn">
-            <button type="button" id="agregar-estudiante-button" onclick="agregarEstudiante()" class="btn btn-primary">Agregar Estudiante</button>
+            <button type="button" id="agregar-estudiante-button" onclick="addStudent()" class="btn btn-primary">Agregar Estudiante</button>
         </div>
     </div>
     <div class="container-table-view">
@@ -111,7 +128,7 @@
                 <th scope="col">Modalidad</th>
             </tr>
             </thead>
-            <tbody id="estudiantes-curso-content">
+            <tbody id="students-course-content">
             </tbody>
         </table>
     </div>

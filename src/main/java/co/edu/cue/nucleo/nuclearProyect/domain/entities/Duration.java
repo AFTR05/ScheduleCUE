@@ -7,6 +7,8 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Duration {
     @Id
