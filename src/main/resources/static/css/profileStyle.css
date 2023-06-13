@@ -9,6 +9,25 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+#logout-button {
+    position: absolute;
+    top: 40px;
+    right: 120px;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/3456/3456192.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: black;
+    cursor: pointer;
+}
+
+.btn-logout:focus {
+    outline: none;
+}
+
+
 
 #total-disponibility{
     display: flex;
