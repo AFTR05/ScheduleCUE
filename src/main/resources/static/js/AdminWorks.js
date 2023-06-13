@@ -17,6 +17,24 @@ async function registrarProfesores() {
     navigate("admin-teachers")
 }
 
+async function registerCourse() {
+    let data = {};
+    data.begin=document.getElementById('begin-txt-course').value;
+    data.end = document.getElementById('end-txt-course').value;
+    data.teacher = document.getElementById('teacher-txt-course').value;
+    data.subject=document.getElementById('subject-txt-course').value;
+    data.equitment=document.getElementById('equitment-txt-course').value;
+    data.program=document.getElementById('program-txt-course').value;
+    const request = await fetch('course_ad/create', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    navigate("admin-courses")
+}
 async function changePasswordAdmin(){
     let data = {};
     data.id=localStorage.id
@@ -48,6 +66,14 @@ async function registrarAdministrador() {
         body: JSON.stringify(data)
     });
     navigate("admin-admins")
+}
+
+function getHeaders() {
+    return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.token
+    };
 }
 async function registrarStudent() {
     let data = {};
@@ -102,6 +128,18 @@ async function registrarSubject() {
         body: JSON.stringify(data)
     });
     navigate("admin-subjects")
+}
+async function generateHours(){
+    const request = await fetch('schedule_ad/create-schedule', {
+        method: 'PUT',
+        headers:getHeaders()
+    });
+    const response=await request.json();
+    Swal.fire({
+        icon: 'success',
+        title: 'Generación exitosa',
+        text: 'Generación exitosa de los horarios!',
+    })
 }
 
 function deleleF(element,event){

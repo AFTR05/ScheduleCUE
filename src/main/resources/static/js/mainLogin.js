@@ -2,7 +2,6 @@ async function iniciarSesion() {
     let data = {};
     data.id=document.getElementById('id-txt-login').value;
     data.password = document.getElementById('password-txt-login').value;
-    localStorage.data=JSON.stringify(data);
     const request = await fetch('/login', {
         method: 'POST',
         headers: {

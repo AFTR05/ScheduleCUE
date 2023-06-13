@@ -26,9 +26,10 @@ public class CourseHourGenerator {
                     continue ;
                 }
                 List<Student> studentRegret = validateTotalhours(course,hourInterval.get()); // codigo de validacion de dia total de
-                List<Student> rh= searchSpace(course.getStudent(), interval).get(); // horas dia
+                List<Student> rh= searchSpace(course.getStudent(), hourInterval.get()).get(); // horas dia
                 if (studentRegret.isEmpty() && rh.isEmpty()){
                     Optional<List<Student>> campusStudent= searchCampus(course.getStudent(),interval);
+                    campusStudent.get();
                     if (campusStudent.get().isEmpty()){return hourInterval;}
                     else {
                         Optional<HourInterval> fixHour=TimeOperator.plusBoth(hourInterval.get(),interval,1);
@@ -53,13 +54,13 @@ public class CourseHourGenerator {
                 .toList();
     }
     public static Optional<List<Student>> searchSpace(List<Student> students, HourInterval hourInterval) {
-        return Optional.of(students.stream().filter(x -> DisponibilitySearcher
+        return Optional.of(students.stream().filter(x -> !DisponibilitySearcher
                 .studentDisponibility(hourInterval, x).get().isEmpty()).collect(Collectors.toList()));
     } // busca si hay disponibilidad en un determinado espacio
 
     public static Optional<List<Student>> searchCampus(List<Student> students, HourInterval hourInterval){
         return Optional.of(students.stream().filter(x->DisponibilitySearcher.studentBeforeDisponibility(hourInterval,x)
-                .get().stream().map(y->y.getRoom().getCampus()).distinct().count()!=1).collect(Collectors.toList()));
+                .get().stream().map(y->y.getRoom().getCampus()).distinct().count()==1).collect(Collectors.toList()));
     } // busca si todos los estudiantes antes de ese espacio estan en la misma sede
 
     public static void generateWithAll(Course course,List<Room> rooms){  //fix

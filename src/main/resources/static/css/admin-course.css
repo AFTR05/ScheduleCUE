@@ -53,6 +53,8 @@
     background-color: #0056b3;
 }
 
+
+
 .container-table-crud-room {
     display: flex;
     flex-direction: row;
@@ -66,12 +68,38 @@
     flex-direction: column;
     gap: 20px;
 }
-
+#content-generator{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#hours-generator {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 .table {
     width: 100%;
     border-collapse: collapse;
 }
 
+.selected{
+    background-color: grey;
+}
+
+#content-title-generator{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 #organizate-button{
     display: flex;
     flex-direction: column;

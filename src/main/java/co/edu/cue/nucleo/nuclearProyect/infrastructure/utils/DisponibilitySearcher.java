@@ -29,6 +29,7 @@ public class DisponibilitySearcher {
                         .toList();
         List<RoomHour> coursesWithTime =cc.stream().filter(x-> TimeOperator.isIn(hourInterval,x.getHourInterval()))
                 .collect(Collectors.toList());
+
         return Optional.of(coursesWithTime);
     }
 

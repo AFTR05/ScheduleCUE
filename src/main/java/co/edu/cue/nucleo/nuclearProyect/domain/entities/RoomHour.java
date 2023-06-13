@@ -11,15 +11,15 @@ import lombok.*;
     @AllArgsConstructor
     public class RoomHour {
         @Id
-        private Integer id;
-        @ManyToOne(fetch = FetchType.LAZY)
+        private String id;
+        @ManyToOne
         @JoinColumn(name="hour_interval_id")
         private HourInterval hourInterval;
 
         @ManyToOne
         @JoinColumn(name="room_id")
         private Room room;
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne
         @JoinColumn(name="course_id")
         @JsonBackReference
         private Course course;

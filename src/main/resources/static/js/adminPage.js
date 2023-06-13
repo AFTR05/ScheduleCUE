@@ -53,6 +53,18 @@ function navigate(page) {
                 case 'admin-profile':
                     justAdmin(localStorage.id);
                     break
+                case 'admin-courses':
+                    getCourse();
+                    getSelectCourse();
+                    getSelectSubject();
+                    getSelectTeacher();
+                    const courseInput=document.getElementById('course-txt-course');
+                    courseInput.addEventListener('change', function() {
+                        getCourseStudents(courseInput.value);
+                        getNoCourseStudents(courseInput.value)
+                        getNoCourseStudentsSelected(courseInput.value);
+                    });
+                    break
             }
 /*            if (page === 'admin-students') {
                 cargarStudents();
@@ -167,6 +179,68 @@ async function getTeacher(){
     document.querySelector('#teachers-content').innerHTML = listadoHtml;
 }
 
+
+async function getCourse(){
+    const request = await fetch('course_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const courses = await request.json();
+    console.log(courses);
+    let listadoHtml = '';
+    for (let course of courses){
+        let courseHtml = '<tr><td>'+course.duration.begin+'</td><td>'+course.duration.end+'</td><td>'
+            + course.teacher.name + '</td><td>'+course.subject.name+'</td><td>'+course.equitmentRoom.id+'</td>' +
+            '<td>'+course.program.name+'</td></tr>';
+        console.log(courseHtml);
+        listadoHtml += courseHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#courses-content').innerHTML = listadoHtml;
+}
+
+async function getSelectCourse(){
+    const request = await fetch('course_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const courses=await request.json();
+    let optionsHtml="";
+    for (let course of courses){
+        let courseHtml=`<option> ${course.subject.name}-${course.program.name}-${course.teacher.name} </option>`;
+        optionsHtml+=courseHtml;
+    }
+    document.querySelector('#course-txt-course').innerHTML = optionsHtml;
+}
+
+async function getSelectTeacher(){
+    const request = await fetch('teacher_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const teachers=await request.json();
+    let optionsHtml="";
+    for (let teacher of teachers){
+        let teacherHtml=`<option> ${teacher.id}-${teacher.name} </option>`;
+        optionsHtml+=teacherHtml;
+    }
+    document.querySelector('#teacher-txt-course').innerHTML = optionsHtml;
+}
+
+
+async function getSelectSubject(){
+    const request = await fetch('subject_ad/get-all', {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const subjects=await request.json();
+    let optionsHtml="";
+    for (let subject of subjects){
+        let subjectHtml=`<option> ${subject.name} </option>`;
+        optionsHtml+=subjectHtml;
+    }
+    document.querySelector('#subject-txt-course').innerHTML = optionsHtml;
+}
 async function getRoom(){
     const request = await fetch('room_ad/get-all', {
         method: 'GET',
@@ -255,3 +329,74 @@ function getHeaders() {
     };
 }
 
+async function getCourseStudents(course){
+    const url = `course_ad/get-students/${course}`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const students = await response.json()
+    let listadoHtml = '';
+    for (let student of students){
+        let studentHtml = '<tr><td>'+student.id+'</td><td>'+student.name+'</td><td>'
+            + student.ownSemester.program.name + '</td><td>'+student.ownSemester.semester+
+            '</td><td>'+student.ownSemester.modality.modality+'</td>' +
+            '</tr>';
+        console.log(studentHtml);
+        listadoHtml += studentHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#students-course-content').innerHTML = listadoHtml
+}
+
+async function getNoCourseStudents(course){
+    const url = `course_ad/get-no-students/${course}`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const students = await response.json()
+    let listadoHtml = '';
+    for (let student of students){
+        let studentHtml = '<tr><td>'+student.id+'</td><td>'+student.name+'</td><td>'
+            + student.ownSemester.program.name + '</td><td>'+student.ownSemester.semester+
+            '</td><td>'+student.ownSemester.modality.modality+'</td>' +
+            '</tr>';
+        console.log(studentHtml);
+        listadoHtml += studentHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#no-students-course-content').innerHTML = listadoHtml
+}
+
+async function getNoCourseStudentsSelected(course){
+    const url = `course_ad/get-no-students/${course}`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: getHeaders()
+    });
+    const students = await response.json()
+    let listadoHtml = '';
+    for (let student of students){
+        let studentHtml = `<option> ${student.id}-${student.name} </option>`;
+        console.log(studentHtml);
+        listadoHtml += studentHtml;
+    }
+    console.log(listadoHtml);
+    document.querySelector('#student-select-txt-course').innerHTML = listadoHtml
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+async function addStudent(){
+    const data={}
+    const courseInput=document.getElementById('course-txt-course').value;
+    data.student=document.getElementById('student-select-txt-course').value;
+    data.courseData=courseInput
+    const response = await fetch('course_ad/add-student', {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify(data)
+    });
+
+    getCourseStudents(courseInput);
+    getNoCourseStudents(courseInput);
+}

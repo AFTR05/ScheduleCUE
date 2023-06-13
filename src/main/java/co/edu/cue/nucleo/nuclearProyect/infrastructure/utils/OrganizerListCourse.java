@@ -14,6 +14,7 @@ public class OrganizerListCourse {
         List<Course> courseListWithNoSchedule=courseListWithNoSchedule(courses);
         List<Course> coursesWithNoSchedule=organizeBySubject(courseListWithNoSchedule);
         coursesWithNoSchedule.forEach(x->CourseHourGenerator.generateWithAll(x,rooms));
+
         List<Course> coursesWithLowDisponibility=sortByDisponibility(courseListWithNoSchedule(courses));
         coursesWithLowDisponibility.forEach(x->CourseHourGenerator.generateWithAll(x,rooms));
         return courses;
