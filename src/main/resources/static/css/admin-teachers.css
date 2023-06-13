@@ -55,7 +55,7 @@
 .container-input-search-teacher{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-right: 4px;
     padding-bottom: 4px;
 }
@@ -67,8 +67,9 @@
 }
 
 .container-input-search-teacher input:hover{
-    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
-    outline: deepskyblue 1px solid;
+    box-shadow: 0 0 0 3px rgba(50, 181, 229, 0.20);
+    border: rgba(0, 191, 255, 0.30) solid 1px;
+    outline: none;
 }
 .table {
     width: 100%;

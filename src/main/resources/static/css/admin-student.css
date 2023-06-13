@@ -48,12 +48,14 @@
     background-color: #0056b3;
 }
 .container-input-search-student{
-    display: block;
+    display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-right: 4px;
     padding-bottom: 4px;
 }
+
+
 
 .container-input-search-student input{
     border: solid 1px #a9a8a8;
@@ -62,8 +64,9 @@
 }
 
 .container-input-search-student input:hover{
-    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
-    outline: deepskyblue solid 1px;
+    box-shadow: 0 0 0 3px rgba(50, 181, 229, 0.20);
+    border: rgba(0, 191, 255, 0.30) solid 1px;
+    outline: none;
 }
 .container-table-crud-room {
     width: 60%;
