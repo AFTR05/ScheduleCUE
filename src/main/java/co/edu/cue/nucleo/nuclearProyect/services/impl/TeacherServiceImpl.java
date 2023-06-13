@@ -104,4 +104,20 @@ public class TeacherServiceImpl implements TeacherService {
         return new HourIntervalDTO(hi.getDay(),hi.getIntervalBegin().toString(),hi.getIntervalEnd().toString());
     }
 
+    @Override
+    public void desactive(String id) {
+        Teacher teacher = objectDao.byId(id);
+        teacher.setActive(false);
+        objectDao.save(teacher);
+    }
+
+    @Override
+    public TeacherRequestDTO updateTeacherData(TeacherRequestDTO teacherRequestDTO) {
+        System.out.println(teacherRequestDTO.toString());
+        Teacher teacher = objectDao.byId(teacherRequestDTO.id());
+        teacher.setName(teacherRequestDTO.name());
+        teacher.setEmail(teacherRequestDTO.email());
+        return mapper.mapToDTO(objectDao.save(teacher));
+    }
+
 }

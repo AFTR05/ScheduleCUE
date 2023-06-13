@@ -55,6 +55,8 @@
     padding-bottom: 4px;
 }
 
+
+
 .container-input-search-student input{
     border: solid 1px #a9a8a8;
     padding: 2px 2px;
@@ -62,8 +64,9 @@
 }
 
 .container-input-search-student input:hover{
-    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
-    outline: deepskyblue solid 1px;
+    box-shadow: 0 0 0 3px rgba(50, 181, 229, 0.20);
+    border: rgba(0, 191, 255, 0.30) solid 1px;
+    outline: none;
 }
 .container-table-crud-room {
     width: 60%;
@@ -80,3 +83,9 @@
     border-bottom: 1px solid #ddd;
 }
 
+.table td input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+}

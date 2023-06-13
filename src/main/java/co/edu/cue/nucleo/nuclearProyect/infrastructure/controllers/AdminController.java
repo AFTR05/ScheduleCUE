@@ -33,6 +33,17 @@ public class AdminController {
                                        @Valid
                                        AdminUpdateInterfaceDTO adminUpdateDTO){
         return service.updateAdmin(adminUpdateDTO);}
+
+    @PutMapping("/update-data-admin")
+    public AdminRequestDTO updateDataAdmin(@RequestBody AdminInterfaceDTO adminInterfaceDTO){
+        return service.updateDataAdmin(adminInterfaceDTO);
+    }
+
+    @PutMapping("/delete-admin/{id}")
+    public void deleteAdmin(@PathVariable String id){
+        service.desactiveAdmin(id);
+    }
+
 }
 
 

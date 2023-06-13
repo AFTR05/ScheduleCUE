@@ -16,4 +16,8 @@ public interface AdminService {
 
 
     AdminRequestDTO updateAdmin(AdminUpdateInterfaceDTO admin);
+
+    AdminRequestDTO updateDataAdmin(AdminInterfaceDTO adminInterfaceDTO);
+
+    void desactiveAdmin(String id);
 }

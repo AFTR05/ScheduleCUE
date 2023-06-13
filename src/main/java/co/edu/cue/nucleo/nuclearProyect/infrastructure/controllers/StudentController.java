@@ -39,4 +39,13 @@ public class StudentController {
         return service.updateStudent(studentUpdateInterfaceDTO);
     }
 
+
+    @PutMapping("/update-data-student")
+    public StudentRequestDTO updateDataStudent(@RequestBody StudentUpdateRequestDTO studentUpdateRequestDTO){
+        return service.updateStudentData(studentUpdateRequestDTO);
+    }
+    @PutMapping("/delete-student/{id}")
+    public void deleteStudent(@PathVariable String id){
+        service.desactiveStudent(id);
+    }
 }

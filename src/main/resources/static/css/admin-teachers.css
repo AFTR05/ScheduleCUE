@@ -67,8 +67,9 @@
 }
 
 .container-input-search-teacher input:hover{
-    box-shadow: 0 0 0 4px rgba(50, 181, 229, 0.51);
-    outline: deepskyblue 1px solid;
+    box-shadow: 0 0 0 3px rgba(50, 181, 229, 0.20);
+    border: rgba(0, 191, 255, 0.30) solid 1px;
+    outline: none;
 }
 .table {
     width: 100%;
@@ -81,9 +82,4 @@
     border-bottom: 1px solid #ddd;
 }
 
-.table td input{
-    background-color: transparent;
-    border: none;
-    outline: none;
-    text-align: center;
-}
+

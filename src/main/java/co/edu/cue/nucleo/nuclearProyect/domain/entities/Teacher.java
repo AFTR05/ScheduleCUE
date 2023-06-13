@@ -25,6 +25,7 @@ public class Teacher{
     @JoinColumn(name = "email_address")
     @Column(name = "email_address")
     private String email;
+
     private String password;
     @ManyToMany
     @ToString.Exclude

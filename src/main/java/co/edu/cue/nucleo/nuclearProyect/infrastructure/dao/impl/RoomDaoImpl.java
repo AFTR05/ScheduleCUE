@@ -39,7 +39,7 @@ public class RoomDaoImpl implements ObjectDao<Room> {
 
     @Override
     public Room update(String id, Room o) {
-        Room room=entityManager.find(Room.class, id);
+        Room room=entityManager.find(Room.class,id);
         room.setName(o.getName());
         room.setEquitmentRoom(o.getEquitmentRoom());
         room.setCapacity(o.getCapacity());

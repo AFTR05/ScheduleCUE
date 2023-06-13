@@ -10,6 +10,7 @@ import co.edu.cue.nucleo.nuclearProyect.infrastructure.utils.SearchEntity;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentUpdateInterfaceDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentUpdateRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.mappers.StudentMapper;
 import co.edu.cue.nucleo.nuclearProyect.services.StudentService;
 import de.mkammerer.argon2.Argon2;
@@ -82,5 +83,20 @@ public class StudentServiceImpl implements StudentService {
     public StudentRequestDTO updateStudent(StudentUpdateInterfaceDTO student) {
         Student s=objectDao.byId(student.id());
         return mapper.mapToDTO(objectDao.update(student.newPassword(),s));
+    }
+
+    @Override
+    public StudentRequestDTO updateStudentData(StudentUpdateRequestDTO studentUpdateRequestDTO) {
+        Student student = objectDao.byId(studentUpdateRequestDTO.id());
+        student.setName(studentUpdateRequestDTO.name());
+        student.setEmail(studentUpdateRequestDTO.email());
+        return mapper.mapToDTO(objectDao.save(student));
+    }
+
+    @Override
+    public void desactiveStudent(String id) {
+        Student student = objectDao.byId(id);
+        student.setActive(false);
+        objectDao.save(student);
     }
 }
