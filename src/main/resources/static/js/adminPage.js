@@ -299,10 +299,6 @@ async function getAdministrator(){
             <td><input type="text" value="${admin.email}"></td>
             <td><input type="text" value="${admin.typeAdmin.typeAdmin}"></td>
             <td><input type="text" value="${admin.active}"></td>
-            <td>
-                <span class="material-symbols-outlined" onclick="deleleF('admin',event)">delete</span>
-                <span class="material-symbols-outlined" onclick="updateF('admin',event)">save</span>
-            </td>
             </tr>
             `
         listadoHtml += adminHtml;
