@@ -49,15 +49,17 @@ function getFinalSemana(fechaComodin){
 function content(inicioSemana,finalSemana,formatoCabecera){
     let semanaInicio = inicioSemana.clone().format(formatoCabecera)
     let semanaFinal = finalSemana.clone().format(formatoCabecera)
-    return semanaInicio+" / "+semanaFinal
+    return semanaInicio+" - "+semanaFinal
 }
 
 function backArrow(){
     LessWeek();
+    generateValues();
 }
 
 function nextArrow(){
     addWeek();
+    generateValues();
 }
 
 function addWeek(){
@@ -72,4 +74,8 @@ function LessWeek(){
     inicioSemana = getInicioSemana(fechaComodin);
     finalSemana = getFinalSemana(fechaComodin)
     weekContent.innerText =  content(inicioSemana,finalSemana,formatoCabecera);
+}
+
+function generateValues(){
+    insertHourAndDays();
 }

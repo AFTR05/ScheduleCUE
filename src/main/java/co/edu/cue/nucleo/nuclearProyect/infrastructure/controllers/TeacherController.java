@@ -52,4 +52,16 @@ public class TeacherController {
                                               HourIntervalInterfaceDTO hourIntervalInterfaceDTO){
         return service.addDisponibility(hourIntervalInterfaceDTO);
     }
+
+    @PutMapping("/deactivate/{id}")
+    public void desactiveTeacher(@PathVariable String id){
+         service.desactive(id);
+    }
+
+    @PutMapping("/update-data-teacher")
+    public TeacherRequestDTO updateDataTeacher(@RequestBody TeacherRequestDTO teacherRequestDTO){
+        return service.updateTeacherData(teacherRequestDTO);
+    }
+
+
 }

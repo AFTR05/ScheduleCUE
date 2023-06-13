@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="../css/styleNoAdmin.css">
 <div class="container-all-management-student">
     <div class="container-input-search-student">
-        <span class="material-symbols-outlined">search</span>
-        <input type="text" id="input-search-student" onkeyup="filterStudent()">
+        <div>
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="input-search-student" onkeyup="filterStudent()">
+        </div>
     </div>
     <div id="Gestion-estudiantes" class="main-container-crud-room">
         <div class="container-form-crud-room">
@@ -63,6 +65,7 @@
                     <th scope="col">Semestre</th>
                     <th scope="col">Modalidad</th>
                     <th scope="col">Active</th>
+                    <th scope="col">Acciones</th>
                 </tr>
                 </thead>
                 <tbody id="students-content">

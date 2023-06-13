@@ -82,15 +82,17 @@ public class RoomServiceImpl implements RoomService {
     /**
      * Este metodo activara o desactivara la disponibilidad de un Salon y
      * lo actualizara en la base de Datos
-     * @param active: Nos sirve para cambiar el estado a un Salon
+     * @param id: Nos sirve para identificar el salon
      * @param roomRequestDTO: objecto que actualizaremos en la base de Datos
      * @return un record RoomRequestDTO que actualizamos en la base de datos
      */
     @Override
-    public RoomRequestDTO activeChangeRoom(Boolean active, RoomRequestDTO roomRequestDTO) {
-        Room room=mapper.mapToEntity(roomRequestDTO);
-        room.setActive(active);
+    public RoomRequestDTO activeChangeRoom(String id,RoomRequestDTO roomRequestDTO) {
+        Room room = mapper.mapToEntity(roomRequestDTO);
+        room.setActive(!room.getActive());
         return mapper.mapToDTO(objectDao.update(
-                roomRequestDTO.name()+roomRequestDTO.campus(),room));
+                id,room));
     }
+
+
 }

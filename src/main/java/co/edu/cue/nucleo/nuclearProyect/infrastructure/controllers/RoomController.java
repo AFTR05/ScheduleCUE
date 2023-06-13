@@ -45,9 +45,11 @@ public class RoomController {
             return service.updateRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.roomRequestDTO());
     }
     @PutMapping("/changeActive")
-    public RoomRequestDTO activeRoom(@RequestBody@Valid ChangeActiveRoomDTO changeActiveRoomDTO){
-        return service.activeChangeRoom(changeActiveRoomDTO.active(),changeActiveRoomDTO.roomRequestDTO());
-
+    public RoomRequestDTO activeRoom(@RequestBody
+                                         @Valid UpdateRoomRequestDTO updateRoomRequestDTO){
+        System.out.println(updateRoomRequestDTO);
+        return service.activeChangeRoom(updateRoomRequestDTO.id(),updateRoomRequestDTO.roomRequestDTO());
     }
+
 }
 

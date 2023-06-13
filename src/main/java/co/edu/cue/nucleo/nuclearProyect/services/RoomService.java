@@ -14,5 +14,6 @@ public interface RoomService {
 
     RoomRequestDTO updateRoom(String id, RoomRequestDTO room);
 
-    RoomRequestDTO activeChangeRoom(Boolean active, RoomRequestDTO roomRequestDTO);
+    RoomRequestDTO activeChangeRoom(String id,RoomRequestDTO roomRequestDTO);
+
 }

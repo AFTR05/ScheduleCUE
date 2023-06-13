@@ -78,4 +78,20 @@ public class AdminServiceImpl implements AdminService {
         Administrator a=objectDao.byId(admin.id());
         return mapper.mapToDTO(objectDao.update(admin.newPassword(),a));
     }
+
+    @Override
+    public AdminRequestDTO updateDataAdmin(AdminInterfaceDTO adminInterfaceDTO) {
+        Administrator a = objectDao.byId(adminInterfaceDTO.id());
+        a.setName(adminInterfaceDTO.name());
+        a.setEmail(adminInterfaceDTO.email());
+        return mapper.mapToDTO(objectDao.save(a));
+    }
+
+    @Override
+    public void desactiveAdmin(String id) {
+        Administrator a = objectDao.byId(id);
+        a.setActive(false);
+        objectDao.save(a);
+    }
+
 }

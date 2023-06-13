@@ -4,6 +4,7 @@ import co.edu.cue.nucleo.nuclearProyect.domain.entities.Student;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentInterfaceDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentRequestDTO;
 import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentUpdateInterfaceDTO;
+import co.edu.cue.nucleo.nuclearProyect.mapping.dtos.StudentUpdateRequestDTO;
 
 import java.util.List;
 
@@ -14,4 +15,8 @@ public interface StudentService {
     StudentRequestDTO createStudent(StudentInterfaceDTO student);
 
     StudentRequestDTO updateStudent(StudentUpdateInterfaceDTO studentUpdateInterfaceDTO);
+
+    StudentRequestDTO updateStudentData(StudentUpdateRequestDTO studentUpdateRequestDTO);
+
+    void desactiveStudent(String id);
 }

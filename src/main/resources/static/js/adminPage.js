@@ -113,7 +113,6 @@ async function justAdmin(id) {
         document.querySelector('#email-txt-admin-profile').value=admin.email;
         document.querySelector('#username-txt-admin-profile').value=admin.name;
         document.querySelector('#type-txt-admin-profile').value=admin.typeAdmin.typeAdmin;
-        console.log(admin);
 }
 async function getStudents() {
     const request = await fetch('student_ad/get-all', {
@@ -121,16 +120,24 @@ async function getStudents() {
         headers: getHeaders()
     });
     const students = await request.json();
-    console.log(students);
+    console.log(students)
     let listadoHtml = '';
     for (let student of students){
-        let studentHtml = '<tr><td>'+student.id+'</td><td>'+student.name+'</td><td>' + student.email +'</td><td>'
-            + student.ownSemester.program.name+'</td><td>'+student.ownSemester.semester
-            + '</td><td>'+student.ownSemester.modality.modality+'</td><td>'+student.active+'</td></tr>';
-        console.log(studentHtml);
+        let studentHtml = `<tr>
+            <td>`+student.id+`</td>
+            <td><input type="text" value="${student.name}"></td>
+            <td><input type="text" value="${student.email}"></td>
+            <td><input type="text" value="${student.ownSemester.program.name}"></td>
+            <td><input type="text" value="${student.ownSemester.semester}"></td>
+            <td><input type="text" value="${student.ownSemester.modality.modality}"></td>
+            <td><input type="text" value="${student.active}"></td>
+            <td>
+            <span class="material-symbols-outlined" onclick="deleleF('student',event)">delete</span>
+            <span class="material-symbols-outlined" onclick="updateF('student',event)">save</span>
+            </td>
+            </tr>`;
         listadoHtml += studentHtml;
     }
-    console.log(listadoHtml);
     document.querySelector('#students-content').innerHTML = listadoHtml;
 }
 
@@ -140,18 +147,9 @@ async function getTeacher(){
         headers: getHeaders()
     });
     const teachers = await request.json();
+    console.log(teachers);
     let listadoHtml = '';
     for (let teacher of teachers){
-        /*
-        let teacherHtml = '<tr>' +
-            '<td>'+teacher.id+'</td>' +
-            '<td>'+teacher.name+'</td>' +
-            '<td>' + teacher.email + '</td>' +
-            '<td>'+teacher.active+'</td>' +
-            '</tr>';
-
-         */
-
         let teacherHtml = `<tr>
              <td>`+teacher.id+`</td>
              <td><input type="text" value="${teacher.name}"></td>
@@ -173,15 +171,22 @@ async function getRoom(){
         headers: getHeaders()
     });
     const rooms = await request.json();
-    console.log(rooms);
+    console.log(rooms)
     let listadoHtml = '';
     for (let room of rooms){
-        let roomHtml = '<tr><td>'+room.name+'</td><td>'+room.campus+'</td><td>'
-            + room.capacity + '</td><td>'+room.equitmentRoom.id+'</td><td>'+room.active+'</td></tr>';
-        console.log(roomHtml);
+        let roomHtml = `<tr>
+                  <td>`+room.name+`</td>
+                  <td><input type="text" value="${room.campus}"></td>
+                  <td><input type="text" value="${room.capacity}"></td>
+                  <td><input type="text" value="${room.equitmentRoom.id}"></td>
+                  <td><input type="text" value="${room.active}"></td>
+                  <td>
+                   <span class="material-symbols-outlined" onclick="deleleF('room',event)">change_circle</span>
+                   <span class="material-symbols-outlined" onclick="updateF('room',event)">save</span>
+                  </td>
+                  </tr>`
         listadoHtml += roomHtml;
     }
-    console.log(listadoHtml);
     document.querySelector('#rooms-content').innerHTML = listadoHtml;
 }
 
@@ -191,15 +196,17 @@ async function getSubject(){
         headers: getHeaders()
     });
     const subjects = await request.json();
-    console.log(subjects);
+    console.log(subjects)
     let listadoHtml = '';
     for (let subject of subjects){
-        let subjectHtml = '<tr><td>'+subject.name+'</td><td>'+subject.typeSubject.typeSubject+'</td><td>'
-            + subject.durationType.type + '</td><td>'+subject.countSemanalHours+'</td></tr>';
-        console.log(subjectHtml);
+        let subjectHtml = `<tr> 
+            <td>`+subject.name+`</td>
+            <td>`+subject.typeSubject.typeSubject+`</td>
+            <td>` + subject.durationType.type + `</td>
+            <td>`+subject.countSemanalHours+`</td>
+            </tr>`;
         listadoHtml += subjectHtml;
     }
-    console.log(listadoHtml);
     document.querySelector('#subjects-content').innerHTML = listadoHtml;
 }
 
@@ -212,18 +219,26 @@ async function getAdministrator(){
     console.log(admins);
     let listadoHtml = '';
     for (let admin of admins){
-        let adminHtml = '<tr><td>'+admin.id+'</td><td>'+admin.name+'</td><td>' + admin.email +'</td><td>'
-            + admin.typeAdmin.typeAdmin+'</td><td>'+admin.active+'</td></tr>';
-        console.log(adminHtml);
+        let adminHtml = `<tr>
+            <td>`+admin.id+`</td>
+            <td><input type="text" value="${admin.name}"></td>
+            <td><input type="text" value="${admin.email}"></td>
+            <td><input type="text" value="${admin.typeAdmin.typeAdmin}"></td>
+            <td><input type="text" value="${admin.active}"></td>
+            <td>
+                <span class="material-symbols-outlined" onclick="deleleF('admin',event)">delete</span>
+                <span class="material-symbols-outlined" onclick="updateF('admin',event)">save</span>
+            </td>
+            </tr>
+            `
         listadoHtml += adminHtml;
     }
-    console.log(listadoHtml);
     document.querySelector('#admins-content').innerHTML = listadoHtml;
 }
 
 
 function insertHourAndDays(){
-    var contenidoPila = ()=>{
+    const contenidoPila = ()=>{
         let content = "";
         let arrayHoras = ["6:00","7:00","8:00" ,"9:00",
             "10:00","11:00","12:00","13:00"," 14:00"," 15:00",
