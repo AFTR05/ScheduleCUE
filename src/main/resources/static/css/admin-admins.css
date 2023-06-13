@@ -58,12 +58,16 @@
 .container-input-search-admin{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-right: 4px;
     padding-bottom: 4px;
 }
 
 .container-input-search-admin input{
+    border: solid 1px #a9a8a8;
+    outline: none;
+}
+.container-input-search-admin input:hover{
     box-shadow: 0 0 0 3px rgba(50, 181, 229, 0.20);
     border: rgba(0, 191, 255, 0.30) solid 1px;
     outline: none;
@@ -76,7 +80,7 @@
 
 .table th,
 .table td {
-    padding: 10px;
+    padding: 5px;
     border-bottom: 1px solid #ddd;
 }
 
