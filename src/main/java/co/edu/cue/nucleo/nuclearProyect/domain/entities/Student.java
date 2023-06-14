@@ -32,10 +32,7 @@ public class Student{
     @ToString.Exclude
     @JsonIgnoreProperties("student")
     @JoinColumn(name="course_id")
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    },fetch = FetchType.LAZY)
+    @ManyToMany()
     @JoinTable(
             name = "student_course",
             joinColumns = {@JoinColumn(name = "student_id")},

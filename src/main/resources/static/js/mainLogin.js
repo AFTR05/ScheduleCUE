@@ -18,13 +18,13 @@ async function iniciarSesion() {
             localStorage.role=respuesta.role;
             switch (respuesta.role) {
                 case 'administrator':
-                    go('admin');
+                    window.location.href = '/admin';
                     break;
                 case 'teacher':
-                    go('teacher');
+                    window.location.href = '/teacher';
                     break;
                 case 'student':
-                    go("student");
+                    window.location.href = '/student';
                     break;
             }
         } else {
